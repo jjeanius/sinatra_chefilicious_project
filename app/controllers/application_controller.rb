@@ -8,9 +8,10 @@ class ApplicationController < Sinatra::Base
     set :views, 'app/views'
     enable :sessions
     set :session_secret, "mealkits"
-
   end
 
   get "/" do
     erb :welcome
   end
+
+end
