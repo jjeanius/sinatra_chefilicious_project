@@ -1,3 +1,7 @@
-class CustomersController < ApplicationController
+#class CustomersController < ApplicationController
 
-end
+#  def Customer
+#    customer.count
+#  #end
+
+#end
