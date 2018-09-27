@@ -1,3 +1,3 @@
-#class MealkitsController < ApplicationController
+class MealkitsController < ApplicationController
 
-#end
+end
