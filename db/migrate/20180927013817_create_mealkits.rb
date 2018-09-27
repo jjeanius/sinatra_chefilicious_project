@@ -6,5 +6,6 @@ class CreateMealkits < ActiveRecord::Migration
       t.integer :customer_id
       t.integer :time
       t.integer :serving_size
+    end
   end
 end
