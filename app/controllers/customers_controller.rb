@@ -4,8 +4,8 @@ class CustomersController < ApplicationController
   end
 
   get '/customers/login' do
-    "raise params.inspect"
-  #  erb :'/customer/login'
+  #  "raise params.inspect"
+  erb :'/customer/login'
   end
 
 
