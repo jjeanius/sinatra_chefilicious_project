@@ -9,8 +9,12 @@ class CustomersController < ApplicationController
   end
 
   get '/customers/Signup' do
-    "Hello World"
+
     redirect "/show"
+  end
+
+  get '/show' do
+    "Hello World"
   end
 
 

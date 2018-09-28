@@ -1,12 +1,19 @@
 <!DOCTYPE html>
-  <head>
-    <title>Welcome to Sinatra_Chefilicious_Project!</title>
-  </head>
+  <html>
+    <head>
+      <title> </title>
+    </head>
+        <body>
+          <form method="post" action="Signup">
+            <p> Name: <input type ="text" name="customer.name" value="Name"</p>
+            <p> Username: <input type ="text" name="customer.username" value="Username"</p>
+            <p> Email: <input type ="text" name="customer.email" value="Email"</p>
 
-    <body>
-      <p> Please make your selection:</p>
-        <p> <a href="customers/login"> Login </a> </p>
-        <p> <a href="customers/Signup"> Signup </a> </p>
-    </body>
-
-</html>
+            <p> <a href="/mealkits/delete"> Delete Mealkit </a> </p>
+            <p> <a href="/mealkits/edit"> Edit Mealkit </a> </p>
+            <p> <a href="/mealkits/new"> New Mealkit </a> </p>
+            <p> <a href="/mealkits/show"> Show Mealkit </a> </p>
+            <p> <a href="/mealkits/logout"> Logout Mealkit </a> </p>
+          </form>
+        </body>
+    </html>
