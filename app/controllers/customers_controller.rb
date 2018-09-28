@@ -5,7 +5,12 @@ class CustomersController < ApplicationController
 
   get '/customers/login' do
   #  "raise params.inspect"
-  erb :'/customer/login'
+    redirect "/show"
+  end
+
+  get '/customers/Signup' do
+    "Hello World"
+    redirect "/show"
   end
 
 
