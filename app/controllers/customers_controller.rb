@@ -1,7 +1,6 @@
 class CustomersController < ApplicationController
 
-  get '/' do
-    erb :'/login'
+  def customer
   end
 
 
