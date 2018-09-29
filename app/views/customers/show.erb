@@ -1,14 +1,15 @@
 <!DOCTYPE html>
   <html>
     <head>
-      <title> </title>
+      <title>Welcome, <%= customer.name %> </title>
     </head>
         <body>
-          <form method="post" action="/customers/<%=@customer%>
-            <p> Name: <input type ="text" name="customer.name" value="Name"</p>
-            <p> Username: <input type ="text" name="customer.username" value="Username"</p>
-            <p> Email: <input type ="text" name="customer.email" value="Email"</p>
-            <input type="submit" name="submit" value="Submit">
+          <form method="post" action="/customers/<%=@ customer %>"
+
+            <% @customers.each do|customer| %>
+            <p> Customer Name: <%= customer.name %> </p>
+            <p> Username: <%= customer.username %></p>
+            <p> Email: <%= customer.email %> </p>
 
             <p> <a href="/mealkits/delete"> Delete Mealkit </a> </p>
             <p> <a href="/mealkits/edit"> Edit Mealkit </a> </p>
