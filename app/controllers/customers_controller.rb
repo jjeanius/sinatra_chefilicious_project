@@ -1,21 +1,34 @@
 class CustomersController < ApplicationController
 
-  def customer
+
+  get '/signup' do      #  signup/get request/create action
+    if logged_in? && @customer = current_customer
+      redirect "/show"
+    else
+      erb :'/signup'
+    end
   end
 
-  get '/customers/login' do
-  #  "raise params.inspect"
-    redirect "/show"
+  post '/signup' do     #    signup/get request create post
+    @customer = Customer.new(params)
   end
 
-  get '/customers/Signup' do
-
-    redirect "/show"
-  end
 
   get '/show' do
     "Hello World"
   end
+
+helpers do
+
+  def logged_in?
+    !!session[:user_id]
+  end
+
+  def current_customer
+    Customer.find(session[:user_id])
+  end
+
+end
 
 
 
