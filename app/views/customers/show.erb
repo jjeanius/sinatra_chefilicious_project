@@ -1,12 +1,10 @@
 <!DOCTYPE html>
   <html>
     <head>
-      <title>Welcome, <%= customer.name %> </title>
+      <title>Welcome, <%= @customer %> </title>
     </head>
         <body>
-          <form method="post" action="/customers/<%=@ customer %>"
-
-            <% @customers.each do|customer| %>
+            <% @customer.all.each do|customer| %>
             <p> Customer Name: <%= customer.name %> </p>
             <p> Username: <%= customer.username %></p>
             <p> Email: <%= customer.email %> </p>

@@ -9,20 +9,47 @@ class CustomersController < ApplicationController
     end
   end
 
-  post '/signup' do     #    signup/get request create post
+  post '/signup' do     #    signup/get request create action
     @customer = Customer.new(:name =>params[:name], :username =>params[:usrname], :email =>params[:email], :password =>params[:password])
-    if @customer save
+    if @customer.save
       @customer.id = session[:customer_id]
-        redirect "/show"
+      redirect "/show"
     else
-        redirect "/signup"
+      erb :'/customers/signup'
     end
   end
 
-
-  get '/show' do
-    "Hello World"
+  get '/login' do      #  login/get request/create action
+    if logged_in?
+      redirect "/show"
+    else
+      erb :'/customers/login'
+    end
   end
+
+  post '/login' do     #    signup/get request create action
+    @customer = Customer.find_by(:username =>params[:usrname]) || @customer = Customer.find_by(:email =>params[:email])
+      @customer.password = session[:customer_password]
+      redirect "/show"
+    else
+      erb :'/customers/signup'
+    end
+  end
+
+  get '/show' do     #  show/get request show action
+    @customer = Customer.find_by_id(params[:id])
+    erb :'/customers/show'
+  end
+
+  get '/logout' do
+    if logged_in?
+      session.destroy
+        redirect '/login'
+      else
+        redirect '/show'
+      end
+  end
+
 
 helpers do
 
@@ -35,7 +62,5 @@ helpers do
   end
 
 end
-
-
 
 end
