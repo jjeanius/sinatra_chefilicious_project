@@ -5,7 +5,7 @@ class CustomersController < ApplicationController
     if logged_in? && @customer = current_customer
       redirect "/show"
     else
-      erb :'/signup'
+      erb :'/customers/signup'
     end
   end
 
