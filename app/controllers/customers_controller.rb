@@ -10,8 +10,7 @@ class CustomersController < ApplicationController
   end
 
   post '/signup' do     #    signup/get request create action
-    @customer = Customer.new(:name =>params[:name], :username =>params[:usrname], :email =>params[:email], :password =>params[:password])
-    binding.pry
+    @customer = Customer.new(:name =>params[:name], :username =>params[:username], :email =>params[:email], :password =>params[:password])
     if @customer.save
       @customer.id = session[:customer_id]
       redirect "/show"

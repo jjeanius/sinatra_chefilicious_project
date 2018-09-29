@@ -4,7 +4,7 @@
       <title>Welcome, <%= @customer %> </title>
     </head>
         <body>
-            <% @customer.all.each do|customer| %>
+            <% @customers.each do|customer| %>
             <p> Customer Name: <%= customer.name %> </p>
             <p> Username: <%= customer.username %></p>
             <p> Email: <%= customer.email %> </p>
