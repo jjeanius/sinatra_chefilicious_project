@@ -11,11 +11,12 @@ class CustomersController < ApplicationController
 
   post '/signup' do     #    signup/get request create action
     @customer = Customer.new(:name =>params[:name], :username =>params[:usrname], :email =>params[:email], :password =>params[:password])
+    binding.pry
     if @customer.save
       @customer.id = session[:customer_id]
       redirect "/show"
     else
-      erb :'/customers/signup'
+      redirect "/signup"
     end
   end
 
@@ -28,11 +29,11 @@ class CustomersController < ApplicationController
   end
 
   post '/login' do     #    signup/get request create action
-    @customer = Customer.find_by(:username =>params[:usrname]) || @customer = Customer.find_by(:email =>params[:email])
-      if @customer.password = session[:customer_password]
-      redirect "/show"
+    @customer = Customer.find_by(:username =>params[:usrname])
+      if @customer && @customer.authenticate(params[:password])
+        redirect "/show"
     else
-      erb :'/customers/signup'
+        erb :'/customers/signup'
     end
   end
 

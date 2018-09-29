@@ -11,7 +11,7 @@ a)	Signup.rb
 •	It does not allow customer to signup again
 
 b)	Login.rb
-•	It renders a login view that allows a customer to login by inputting username or email address and password
+•	It renders a login view that allows a customer to login by inputting username and password
 •	The username (or email address) and password cannot be blank or incorrect
 •	After verification, it will direct the customer to the ‘customers/show.rb’
 •	It does not allow a customer to login or signup again
