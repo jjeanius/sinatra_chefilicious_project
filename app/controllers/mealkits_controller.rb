@@ -1,6 +1,18 @@
 class MealkitsController < ApplicationController
 
-  def mealkit
+
+  delete '/delete' do
+    if logged_in? &&  @customer.id = session[:id]
+    @mealkit.destory
   end
+
+  end
+
+
+
+
+
+
+
 
 end
