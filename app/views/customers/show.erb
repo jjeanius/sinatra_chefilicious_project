@@ -4,10 +4,11 @@
       <title>Welcome, <%= @customer %> </title>
     </head>
         <body>
-            <% @customers.each do|customer| %>
-            <p> Customer Name: <%= customer.name %> </p>
-            <p> Username: <%= customer.username %></p>
-            <p> Email: <%= customer.email %> </p>
+
+            <% @customer.mealkits.each do|customer| %>
+              <p> Customer Name: <%= customer.name %> </p>
+              <p> Username: <%= customer.username %></p>
+              <p> Email: <%= customer.email %> </p>
             <% end %>
 
             <p> <a href="/mealkits/delete"> Delete Mealkit </a> </p>

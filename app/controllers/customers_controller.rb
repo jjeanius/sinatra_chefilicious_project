@@ -27,40 +27,39 @@ class CustomersController < ApplicationController
     end
   end
 
-  post '/login' do     #    signup/get request create action
-    @customer = Customer.find_by(:username =>params[:usrname])
-      if @customer && @customer.authenticate(params[:password])
-        redirect "/show"
-    else
-        erb :'/customers/signup'
-    end
-  end
+   post '/login' do     #    signup/get request create action
+     @customer = Customer.find_by(:username =>params[:usrname])
+       if @customer && @customer.authenticate(params[:password])
+         redirect "/show"
+       else
+          erb :'/customers/signup'
+       end
+   end
 
-  get '/show' do     #  show/get request show action
-    @customer = Customer.find_by_id(params[:id])
-    erb :'/customers/show'
-  end
+   get '/show' do     #  show/get request show action
+      customer = Customer.find_by_id(params[:id])
+      erb :'/customers/show'
+   end
 
-  get '/logout' do
-    if logged_in?
-      session.destroy
+   get '/logout' do
+      if logged_in?
+        session.destroy
         redirect '/login'
       else
         redirect '/show'
       end
+   end
+
+
+ helpers do
+
+    def logged_in?
+      !!session[:user_id]
+    end
+
+    def current_customer
+      Customer.find(session[:user_id])
+    end
+
   end
-
-
-helpers do
-
-  def logged_in?
-    !!session[:user_id]
-  end
-
-  def current_customer
-    Customer.find(session[:user_id])
-  end
-
-end
-
 end
