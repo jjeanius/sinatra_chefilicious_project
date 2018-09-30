@@ -39,9 +39,13 @@ class CustomersController < ApplicationController
 
    get '/show' do     #  show/get request show action
       @customer = Customer.find_by(params[:id])
-      @customers = Customer.all
+    #  @customers = Customer.all
       erb :'/customers/show'
    end
+
+   # post '/show/:id' do
+
+#   end
 
    get '/logout' do
       if logged_in?

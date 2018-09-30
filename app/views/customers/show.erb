@@ -1,14 +1,15 @@
 <!DOCTYPE html>
   <html>
     <head>
-      <title>Welcome, <%= @customer.name %> </title>
+        <title>Show.erb </title>
     </head>
         <body>
-            <% @customers.each do |customer| %>
-              <p> Customer Name:  <%= customer.name %> </p>
-              <p> Username: <%= customer.username %></p>
-              <p> Email: <%= customer.email %> </p>
-            <% end %>
+          <form method ="post" action="/customers/<%=@customer.id%>">
+            <h2> <p> Welcome, <%= @customer.name %> </p> </h2>
+
+            <h3><p> Name:  <%= @customer.name %> </p>
+            <p> Username: <%= @customer.username %></p>
+            <p> Email: <%= @customer.email %> </p></h3>
             <br> </br>
             <p> What would you like to do? </p>
             <p> <a href="/mealkits/delete"> Delete Mealkit </a> </p>
@@ -16,6 +17,7 @@
             <p> <a href="/mealkits/new"> New Mealkit </a> </p>
             <p> <a href="/mealkits/show"> Show Mealkit </a> </p>
             <p> <a href="/mealkits/logout"> Logout Mealkit </a> </p>
+            <br> </br>
           </form>
         </body>
     </html>
