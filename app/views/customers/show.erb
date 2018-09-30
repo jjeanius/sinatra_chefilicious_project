@@ -1,14 +1,14 @@
 <!DOCTYPE html>
   <html>
     <head>
-      <title>Welcome, <%= @customer %> </title>
+      <title>Welcome, <%= @customer.name %> </title>
     </head>
         <body>
-
-            <% @customer.mealkits.each do|customer| %>
-              <p> Customer Name: <%= customer.name %> </p>
-              <p> Username: <%= customer.username %></p>
-              <p> Email: <%= customer.email %> </p>
+          <%binding.pry%>
+            <% @customer.mealkits.each do |customer| %>
+              <p> <%= customer.name %> </p>
+              <p> <%= customer.username %></p>
+              <p> <%= customer.email %> </p>
             <% end %>
             <br> </br>
             <p> What would you like to do? </p>

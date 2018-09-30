@@ -28,7 +28,7 @@ class CustomersController < ApplicationController
   end
 
    post '/login' do     #    signup/get request create action
-     @customer = Customer.find_by(:username =>params[:usrname])
+     @customer = Customer.find_by(:username =>params[:username])
        if @customer && @customer.authenticate(params[:password])
          redirect "/show"
        else
@@ -37,7 +37,7 @@ class CustomersController < ApplicationController
    end
 
    get '/show' do     #  show/get request show action
-      @customer = Customer.find_by_id(params[:id])
+      @customer = Customer.find_by(params[:id])
       erb :'/customers/show'
    end
 

@@ -10,7 +10,7 @@ class MealkitsController < ApplicationController
     end
   end
 
-  get '/mealkits/new'     # get requst /new action
+  get '/mealkits/new' do     # get requst /new action
     if logged_in?
       @customer = current_customer
       erb :'/mealkits/show'
@@ -22,4 +22,4 @@ class MealkitsController < ApplicationController
 #  get '/edit' do
 #    if logged_in?
 #      @customer = Customer.find_by_id(session[:id])
-  `end
+  end
