@@ -13,10 +13,22 @@ class MealkitsController < ApplicationController
   get '/mealkits/new' do     # get requst /new action
     if logged_in?
       @customer = current_customer
-      erb :'/mealkits/show'
+    erb :'/mealkits/show'
     else
       redirect "/login"
     end
+  end
+
+  post '/mealkits' do     #  post request /create action
+    if !params[:content].empty?
+      mealkit = Mealkit.create(:content =>params[:content])
+      @customer = current_customer
+      @customer.mealkits << mealkit
+      @customer.save
+      redirect "/show"
+    else
+      redirect "/mealkits/new"
+
   end
 
 #  get '/edit' do

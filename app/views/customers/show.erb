@@ -4,8 +4,7 @@
       <title>Welcome, <%= @customer.name %> </title>
     </head>
         <body>
-          <%binding.pry%>
-            <% @customer.mealkits.each do |customer| %>
+            <% @customers.each do |customer| %>
               <p> <%= customer.name %> </p>
               <p> <%= customer.username %></p>
               <p> <%= customer.email %> </p>
