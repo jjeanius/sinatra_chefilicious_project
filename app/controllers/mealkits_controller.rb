@@ -28,6 +28,7 @@ class MealkitsController < ApplicationController
       redirect "/show"
     else
       redirect "/mealkits/new"
+    end
 
   end
 

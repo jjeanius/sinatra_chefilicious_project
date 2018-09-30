@@ -39,6 +39,7 @@ class CustomersController < ApplicationController
 
    get '/show' do     #  show/get request show action
       @customer = Customer.find_by(params[:id])
+      @customers = Customer.all
       erb :'/customers/show'
    end
 
