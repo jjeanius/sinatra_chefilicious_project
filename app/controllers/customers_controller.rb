@@ -37,7 +37,7 @@ class CustomersController < ApplicationController
    end
 
    get '/show' do     #  show/get request show action
-      customer = Customer.find_by_id(params[:id])
+      @customer = Customer.find_by_id(params[:id])
       erb :'/customers/show'
    end
 
@@ -51,15 +51,4 @@ class CustomersController < ApplicationController
    end
 
 
- helpers do
-
-    def logged_in?
-      !!session[:user_id]
-    end
-
-    def current_customer
-      Customer.find(session[:user_id])
-    end
-
-  end
 end

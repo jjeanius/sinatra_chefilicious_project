@@ -28,8 +28,8 @@ d)	 Update.rb
 
 Views/Mealkits:
 a)	Delete.rb
-•	It renders a delete view with all the mealkits
-•	It allows a customer to delete a mealkit
+•	It renders a delete view
+•	It allows a customer to find a mealkit and delete a mealkit
 •	It directs a customer to show mealkits.rb
 •	It allows a customer the following options: logout; edit; new; show_mealkit; customers/show; customers/update
 
@@ -41,7 +41,7 @@ b)	Edit.rb
 •	It provides a customer the following options: logout; delete; new; show_mealkit; customers/show; customers/update
 
 c)	  New.rb
-•	It renders a new view that allows a customer to order a new mealkit
+•	It renders a new view that allows a customer to make a new mealkit
 •	It provides a customer the following options: logout; delete; edit; show_mealkit; customers/show; customers/update
 
 d)	   Show_Mealkits.rb

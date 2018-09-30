@@ -25,6 +25,9 @@ class ApplicationController < Sinatra::Base
        Customer.find(session[:user_id])
      end
 
+     def mealkits
+     end
+
    end
 
 
