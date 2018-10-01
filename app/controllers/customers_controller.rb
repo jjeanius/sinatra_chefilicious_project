@@ -28,17 +28,17 @@ class CustomersController < ApplicationController
   end
 
    post '/login' do     #    signup/get request create action
-     @customer = Customer.find_by(:username =>params[:username], :customer_id =>params[:customer_id])
+     @customer = Customer.find_by(:username =>params[:username])
+     @customer.id = session[:customer_id]
        if @customer && @customer.authenticate(params[:password])
-
-         redirect "/show/#{@custmer.id}"
+         redirect "/show/#{@customer.id}"
        else
           redirect "/signup"
        end
    end
 
    get '/show/:id' do     #  show/get request show action
-      @customer = Customer.find_by(params[:id])
+      @customer = Customer.find_by_id(params[:id])
     erb :'/customers/show'
    end
 

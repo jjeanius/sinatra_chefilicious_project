@@ -5,6 +5,10 @@
     </head>
         <body>
           <form method="post" action="/new">
+
+            <p>Create a new Meal Kit </p>
+            <br> </br>
+            <%@mealkits.each do |mealkit|%>
             <p> Meal Kit: <input type ="text" name="mealkit.name" value="Meal Kit"</p>
             <p> ingredients : <input type ="text" name="mealkit.ingredients" value="Meal Kit ingredients"</p>
             <p> Time: <input type ="text" name="mealkits.time" value="Cooking Time"</p>

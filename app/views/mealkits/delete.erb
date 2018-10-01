@@ -4,14 +4,17 @@
       <title> </title>
     </head>
         <body>
-          <form method="post" action="/delete">
-            <p> Meal Kit: <input type ="text" name="mealkit.name" value="Meal Kit"</p>
-            <input type="submit" name="submit" value="Submit">
-
-            <p> <a href="/mealkits/edit"> Edit Meal Kit </a> </p>
-            <p> <a href="/mealkits/new"> New Meal Kit </a> </p>
-            <p> <a href="/mealkits/show"> Show Meal Kit </a> </p>
-            <p> <a href="/mealkits/logout"> Logout Meal Kit </a> </p>
+          <form method="post" action="/mealkits/<%=@mealkits_ide%>/delete">
+            <p> Delete a Meal Kit </p>
+              <p> Meal Kit: <input id="hidden" type="hidden" name="_method" value="delete"></p>
+              <input type="submit" value="Delete Meal Kit">
+              <br> </br>
+              <p> What would you like to do? </p>
+              <br> </br>
+              <p> <a href="/mealkits/edit"> Edit Meal Kit </a> </p>
+              <p> <a href="/mealkits/new"> New Meal Kit </a> </p>
+              <p> <a href="/mealkits/show"> Show Meal Kit </a> </p>
+              <p> <a href="/mealkits/logout"> Logout Meal Kit </a> </p>
           </form>
         </body>
     </html>
