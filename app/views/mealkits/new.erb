@@ -18,7 +18,7 @@
             <p><h2> Select from the existing Meal Kit: </h> </p>
 
               <% @mealkits.each do |mealkit|
-                <input type="checkbox" name="mealkit.mealkit_id[] id="<%=mealkit.id%>" value="<%=mealkit.id%>"
+                <input type="checkbox" name="mealkit[mealkit_id][] id="<%=mealkit.id%>" value="<%=mealkit.id%>"<%=mealkit.name%></input>
                 <% end %>
 
             <input type="submit" name="submit" value="Submit">
