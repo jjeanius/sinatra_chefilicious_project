@@ -14,6 +14,13 @@
             <p> Time: <input type ="text" name="mealkits.time" value="Cooking Time"</p>
             <p> Serving Size: <input type ="text" name="mealkit.serving_size" value="Serving Size"</p>
             <p> User Name: <input type ="text" name="customer.username" value="User Name"</p>
+
+            <p><h2> Select from the existing Meal Kit: </h> </p>
+
+              <% @mealkits.each do |mealkit|
+                <input type="checkbox" name="mealkit.mealkit_id[] id="<%=mealkit.id%>" value="<%=mealkit.id%>"
+                <% end %>
+
             <input type="submit" name="submit" value="Submit">
 
             <p> <a href="/mealkits/delete"> Delete Meal Kit </a> </p>
