@@ -3,7 +3,7 @@ class CustomersController < ApplicationController
 
   get '/signup' do      #  signup/get request/create action
     if logged_in? && @customer = current_customer
-      redirect "/show"
+      redirect "/show/:id"
     else
       erb :'/customers/signup'
     end
@@ -13,7 +13,7 @@ class CustomersController < ApplicationController
     @customer = Customer.new(:name =>params[:name], :username =>params[:username], :email =>params[:email], :password =>params[:password])
     if @customer.save
       @customer.id = session[:customer_id]
-      redirect "/show"
+      redirect "/show/#{@customer.id}"
     else
       redirect "/signup"
     end
@@ -21,38 +21,33 @@ class CustomersController < ApplicationController
 
   get '/login' do      #  login/get request/create action
     if logged_in?
-      redirect "/show"
+      redirect "/show/:id"
     else
       erb :'/customers/login'
     end
   end
 
    post '/login' do     #    signup/get request create action
-     @customer = Customer.find_by(:username =>params[:username])
+     @customer = Customer.find_by(:username =>params[:username], :customer_id =>params[:customer_id])
        if @customer && @customer.authenticate(params[:password])
-         @customers = Customer.all
-         redirect "/show"
+
+         redirect "/show/#{@custmer.id}"
        else
           redirect "/signup"
        end
    end
 
-   get '/show' do     #  show/get request show action
+   get '/show/:id' do     #  show/get request show action
       @customer = Customer.find_by(params[:id])
-    #  @customers = Customer.all
-      erb :'/customers/show'
+    erb :'/customers/show'
    end
 
-   # post '/show/:id' do
-
-#   end
-
-   get '/logout' do
+ get '/logout' do
       if logged_in?
         session.destroy
         redirect '/login'
       else
-        redirect '/show'
+        redirect '/show/:id'
       end
    end
 
