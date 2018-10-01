@@ -16,9 +16,8 @@ b)	Login.rb
 •	After verification, it will direct the customer to the ‘customers/show.rb’
 •	It does not allow a customer to login or signup again
 
-c)	Show.rb
+c)	Main_Menu.rb
 •	It renders a show view that allows a customer to choose the following options: Delete; Edit; New; Show or logout
-•	It lists customer’s information
 
 
 d)	 Update.rb

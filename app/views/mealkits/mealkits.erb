@@ -7,7 +7,7 @@
           <h2> <p> Welcome, <%= @customer.name %> </p> </h2>
             <p> Here are your Meal Kits: </p>
             <p>-----------------------------------------------------------------------------------------</p>
-            <% @mealkits.each do |mealkit| %>
+            <%customer.mealkits.each do |mealkit| %>
               <p> Meal Kit Name: <%=mealkit.name %> </p>
               <p> Ingredients: <%=mealkit.ingredients %> </p>
               <p> Cooking Time: <%=mealkit.time %> </p>
@@ -17,11 +17,8 @@
 
               <p> Please make a selection: </p>
 
-                <p> <a href="/mealkits/delete"> Delete Meal Kit </a> </p>
-                <p> <a href="/mealkits/edit"> Edit Meal Kit </a> </p>
-                <p> <a href="/mealkits/new">New Meal Kit </a> </p>
-                <p> <a href="/mealkits/logout"> Logout </a> </p>
-                <p> <a href="/customers/update"> Customer Update </a> </p>
+              <p> <a href="/mealkits/main_menu"> Main Menu </a> </p>
+              <p> <a href="/mealkits/logout"> Logout </a> </p>
 
           </form>
         </body>
