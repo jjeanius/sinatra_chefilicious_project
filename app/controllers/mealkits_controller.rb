@@ -33,7 +33,23 @@ class MealkitsController < ApplicationController
 
   end
 
-#  get '/edit' do
-#    if logged_in?
-#      @customer = Customer.find_by_id(session[:id])
+  get '/mealkits/:id/edit' do    # get request/ load edit action
+     @mealkits = Mealkit.find_by_id(params[:id])
+     erb :edit
+  end
+
+  patch '/mealkits/:id' do   #  patch request / edit action
+    @mealkit = Mealkit.find_by_id(params[:id])
+    @mealkit.ingredients = params[:ingredients]
+    @mealkit.name = params[:name]
+    @mealkit.time = params[:time]
+    @mealkit.serving_size = params[serving_size]
+    @mealkit.save
+    redirect to "/mealkits/#{@mealkit.id}"
+  end
+
+
+
+
+
   end
