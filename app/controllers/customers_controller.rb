@@ -22,7 +22,7 @@ class CustomersController < ApplicationController
     if logged_in?
       redirect "/show"
     else
-      redirect "/show"
+      erb :'/customers/login'
     end
   end
 
@@ -32,22 +32,27 @@ class CustomersController < ApplicationController
          @customer.id = session[:customer_id]
          redirect "/show"
        else
-          redirect "/signup"
+          redirect "/customers/signup"
        end
    end
 
   get '/show' do      #  show/get request show action
-     @customer = Customer.find_by_id(params[:id])
-     erb :show
+  #  if logged_in?
+     @customer = Customer.find_by(params)
+     @customer.name = params[:name]
+     @customer.username = params[:username]
+     @customer.email = params[:email]
+     @customer.password = params[:passworde]
+     @customer.save
+     erb :'/customers/show'
    end
 
-
- get '/logout' do
+   get '/logout' do
       if logged_in?
         session.destroy
         redirect '/login'
       else
-        redirect '/show/:id'
+        redirect '/show'
       end
    end
 
