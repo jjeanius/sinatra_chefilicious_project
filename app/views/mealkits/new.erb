@@ -4,22 +4,15 @@
       <title> </title>
     </head>
         <body>
-          <form method="post" action="/new">
+          <form method="post" action="/mealkits/new">
 
             <p>Create a new Meal Kit </p>
             <br> </br>
-            <%@mealkits.each do |mealkit|%>
-            <p> Meal Kit: <input type ="text" name="mealkit.name" value="Meal Kit"</p>
-            <p> ingredients : <input type ="text" name="mealkit.ingredients" value="Meal Kit ingredients"</p>
-            <p> Time: <input type ="text" name="mealkits.time" value="Cooking Time"</p>
-            <p> Serving Size: <input type ="text" name="mealkit.serving_size" value="Serving Size"</p>
-            <p> User Name: <input type ="text" name="customer.username" value="User Name"</p>
-
-            <p><h2> Select from the existing Meal Kit: </h> </p>
-
-              <% @mealkits.each do |mealkit|
-                <input type="checkbox" name="mealkit[mealkit_id][] id="<%=mealkit.id%>" value="<%=mealkit.id%>"<%=mealkit.name%></input>
-                <% end %>
+              <label>Meal Kit: </label>
+            <p> Meal Kit:  </p>
+            <p> ingredients : <input type ="text" name="mealkit[ingredients]"> </p>
+            <p> Time: <input type ="text" name="mealkit[time]" ></p>
+            <p> Serving Size: <input type ="text" name="mealkit[serving_size]"> </p>
 
             <input type="submit" name="submit" value="Submit">
 

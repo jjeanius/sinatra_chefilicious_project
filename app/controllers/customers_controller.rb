@@ -11,7 +11,7 @@ class CustomersController < ApplicationController
   post '/signup' do     #    signup/get request create action
     @customer = Customer.new(:name =>params[:name], :username =>params[:username], :email =>params[:email], :password =>params[:password])
     if @customer.save
-      @customer.id = session[:customer_id]
+      session[:customer_id] = @customer.id
       redirect "/main_menu"
     else
       redirect "/signup"
