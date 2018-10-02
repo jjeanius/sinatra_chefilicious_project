@@ -5,20 +5,33 @@
     </head>
         <body>
           <form method="post" action="/mealkits/new">
-
-            <p>Create a new Meal Kit </p>
-            <br> </br>
-              <label>Meal Kit: </label>
-            <p> Meal Kit:  </p>
-            <p> ingredients : <input type ="text" name="mealkit[ingredients]"> </p>
-            <p> Time: <input type ="text" name="mealkit[time]" ></p>
-            <p> Serving Size: <input type ="text" name="mealkit[serving_size]"> </p>
-
-            <input type="submit" name="submit" value="Submit">
-
             <p> <a href="/mealkits/main_menu"> Main Menu </a> </p>
-            <p> <a href="/mealkits/logout"> Logout </a> </p>
+              <br> </br>
+            <label> <p> Create a new Meal Kit </p> </label>
+            <br> </br>
+              <p> <label> Meal Kit:   </label></p>
+              <input type ="text" name="mealkit[name]">
+              <br> </br>
 
+              <p><label> Ingredients :  </label> </p>
+              <input type ="text" name="mealkit[ingredients]">
+              <br> </br>
+
+              <p><label> Cooking Time: </label></p>
+              <input type ="text" name="mealkit[time]">
+              <br> </br>
+
+              <p><label> Serving Size:  </label></p>
+              <input type ="text" name="mealkit[serving_size]">
+              <br> </br>
+              <br> </br>
+
+              <p> <input type="submit" name="submit" value="SUBMIT " </p>
+              <br> </br>
+              <br> </br>
+
+              <a href="/mealkits/logout"> Logout </a> </p>
+              <br> </br>
           </form>
         </body>
     </html>
