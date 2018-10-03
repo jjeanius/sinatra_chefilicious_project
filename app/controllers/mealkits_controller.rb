@@ -9,16 +9,18 @@ class MealkitsController < ApplicationController
     end
   end
 
-   post '/mealkits' do       #  post request /create new action
-     if !params[:id].empty?
-       @mealkit = Mealkit.create(:name =>params[:name], :ingredients =>params[:ingredients], :customer_id =>params[:customer_id], :time =>params[:time], :serving_size =>params[:serving_size])
-       current_customer = @customer
+   post '/mealkits/new' do       #  post request /create new action
+    # current_customer = @customer
+     @mealkit = Mealkit.create(params[:mealkit])
+    #   @mealkit = Mealkit.create(:name =>params[:name], :ingredients =>params[:ingredients], :time =>params[:time], :serving_size =>params[:serving_size])
+     if !params[:name][:ingredients][:serving_size][:time].empty?
        @customer.mealkits << mealkit
+     end
        @customer.save
        redirect "/mealkits/#{@mealkit.id}"
-    else
-        redirect "/mealkits/new"
-    end
+  #  else
+  #      redirect "/mealkits/new"
+  #  end
   end
 
 

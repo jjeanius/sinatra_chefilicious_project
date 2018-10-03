@@ -32,7 +32,7 @@ class CustomersController < ApplicationController
          @customer.id = session[:customer_id]
          redirect "/main_menu"
        else
-          redirect "/customers/signup"
+          redirect "/signup"
        end
    end
 

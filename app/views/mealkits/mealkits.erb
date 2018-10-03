@@ -4,10 +4,11 @@
       <title> </title>
     </head>
         <body>
+          <form action"/mealkit" method="post">
           <h2> <p> Welcome, <%= @customer.name %> </p> </h2>
             <p> Here are your Meal Kits: </p>
             <p>-----------------------------------------------------------------------------------------</p>
-            <%customer.mealkits.each do |mealkit| %>
+              <%customer.mealkits.each do |mealkit| %>
               <p> Meal Kit Name: <%=mealkit.name %> </p>
               <p> Ingredients: <%=mealkit.ingredients %> </p>
               <p> Cooking Time: <%=mealkit.time %> </p>

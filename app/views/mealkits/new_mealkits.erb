@@ -1,0 +1,27 @@
+<<!DOCTYPE html>
+  <html>
+    <head>
+      <title> </title>
+    </head>
+        <body>
+          <form method="post" action="/mealkits/new">
+            <br> </br>
+            <p> <a href="/mealkits/main_menu"> Main Menu </a> </p>
+              <br> </br>
+              <label><h2> <p> Create a New Meal Kit </p> </h2></label>
+                <br> </br>
+                <p> <label> Meal Kit Name:   <%=newmealkit[name]%></label></p>
+                <br> </br>
+                <p><label> Ingredients :  <%=new_mealkit[ingredients]%></label></p>
+                <br> </br>
+                <p><label> Cooking Time: <%=new_mealkit[time]%></label></p>
+
+                <br> </br>
+                <p><label> Serving Size:   <%=new_mealkit[serving_size]%> </label></p>
+
+                <br> </br>
+              <a href="/mealkits/logout"> Logout </a> </p>
+              <br> </br>
+          </form>
+        </body>
+    </html>
