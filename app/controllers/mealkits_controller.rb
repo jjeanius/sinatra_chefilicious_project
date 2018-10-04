@@ -3,25 +3,25 @@ class MealkitsController < ApplicationController
   get '/mealkits/new' do     # get requst /new action to create mealkit
     if logged_in?
       current_customer = @customer
-    erb :'mealkits/new'
+      erb :'mealkits/new_mealkits'
     else
       redirect "/login"
     end
   end
 
-   post '/mealkits/new_mealkits' do       #  post request /create new action
-    # current_customer = @customer
-     @mealkit = Mealkit.create(params[:mealkit])
-    #   @mealkit = Mealkit.create(:name =>params[:name], :ingredients =>params[:ingredients], :time =>params[:time], :serving_size =>params[:serving_size])
-     if !params[:name][:ingredients][:serving_size][:time].empty?
-       @customer.mealkits << mealkit
+  post '/mealkits/new_mealkits' do
+   #   if !params[:name][:ingredients][:serving_size][:time].empty?
+       #  @mealkit = Mealkit.new(:name =>params[:name], :ingredients =>params[:ingredients], :time =>params[:time], :serving_size =>params[:serving_size])
+         @customer.mealkits << mealkit
+         @customer.save
+         redirect "/mealkits/#{@mealkits.id}"
+     #  else
+       #  redirect "/new"
+   #    end
      end
-       @customer.save
-       redirect "/mealkits/#{@mealkit.id}"
-  #  else
-  #      redirect "/mealkits/new"
-  #  end
+
   end
+
 
   get '/mealkits' do    #   get request, show action
     if logged_in?
