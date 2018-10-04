@@ -3,9 +3,14 @@
     <head>
       <title> </title>
     </head>
-        <body>
-          <form action"/mealkit/%=@mealkit.id%>" method="post">
-            <input id="hiddenn" type="hidden"
+          <form>
+            <br> </br>
+            <p> <a href="/mealkits/main_menu"> Main Menu </a> </p>
+              <br> </br>
+              <label><h2> <p> New Meal Kit </p> </h2></label>
+              <input id="hiddenn" type="hidden" name="_method" value="patch">
+            <input type="rext name="title">
+            </form>
 
 
           <h2> <p> Welcome, <%= @customer.name %> </p> </h2>
@@ -17,9 +22,8 @@
               <p> Cooking Time: <%=mealkit.time %> </p>
               <p> Serving Size: <%=mealkit.serving_size %> </p>
               <% end %>
-              <p>-----------------------------------------------------------------------------------------</p>
 
-              <p> Please make a selection: </p>
+              <input type="submit" value="delete">
 
               <p> <a href="/mealkits/main_menu"> Main Menu </a> </p>
               <p> <a href="/mealkits/logout"> Logout </a> </p>

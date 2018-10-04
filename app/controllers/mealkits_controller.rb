@@ -10,16 +10,15 @@ class MealkitsController < ApplicationController
   end
 
   post '/mealkits/new_mealkits' do
-   #   if !params[:name][:ingredients][:serving_size][:time].empty?
-       #  @mealkit = Mealkit.new(:name =>params[:name], :ingredients =>params[:ingredients], :time =>params[:time], :serving_size =>params[:serving_size])
-         @customer.mealkits << mealkit
-         @customer.save
-         redirect "/mealkits/#{@mealkits.id}"
+    if !params[:name][:ingredients][:serving_size][:time].empty?
+      @mealkit = Mealkit.new(:name =>params[:name], :ingredients =>params[:ingredients], :time =>params[:time], :serving_size =>params[:serving_size])
+      @customer.mealkits << mealkit
+      @customer.save
+       redirect "/mealkits/#{@mealkits.id}"
      #  else
        #  redirect "/new"
    #    end
      end
-
   end
 
 
@@ -48,11 +47,25 @@ class MealkitsController < ApplicationController
     redirect to "/mealkits/#{@mealkit.id}"
   end
 
+  delete '/mealkits/:id/delete' do
+    if logged_in?
+    @mealkit = Mealkit.find_by_id(params[:mealkit_id])
+      @mealkit && @mealkits.user == current_user
+          @mealkits.destroy
+             redirect "/mealkits"
+           else
+             redirect "/login"
+           end
+         end
+
+       redirect ":/mealkits"
+  end
 
   get '/mealkits/logout' do
-    logged_in?
+    if logged_in?
     session.destroy
     redirect '/login'
+    end
  end
 
 

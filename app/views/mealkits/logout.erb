@@ -1,16 +1,14 @@
 <!DOCTYPE html>
   <html>
     <head>
-      <title>Delete Meal Kit </title>
+      <title>Delete a Meal Kit </title>
     </head>
         <body>
-          <form method="post" action="/mealkits/<%=@mealkitmar_ide%>/delete">
+          <form method="post" action="/mealkits/<%=@mealkits_ide%>/delete">
               <input id="hidden" type="hidden" name="_method" value="delete">
               <label><h2> <p> Delete a Meal Kit </p> </h2></label>
-              <br> </br>
               <p> Meal Kit: <input id="hidden" type="hidden" name="_method" value="delete"></p>
-              <br> </br>
-              <input type="submit" vsalue="Delete Meal Kit">
+              <input type="submit" value="Delete Meal Kit">
               <br> </br>
               <p> <a href="/mealkits/logout"> Logout </a> </p>
               <br> </br>
