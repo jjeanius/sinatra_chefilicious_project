@@ -9,7 +9,7 @@ class MealkitsController < ApplicationController
     end
   end
 
-   post '/mealkits/new' do       #  post request /create new action
+   post '/mealkits/new_mealkits' do       #  post request /create new action
     # current_customer = @customer
      @mealkit = Mealkit.create(params[:mealkit])
     #   @mealkit = Mealkit.create(:name =>params[:name], :ingredients =>params[:ingredients], :time =>params[:time], :serving_size =>params[:serving_size])
@@ -23,10 +23,9 @@ class MealkitsController < ApplicationController
   #  end
   end
 
-
   get '/mealkits' do    #   get request, show action
     if logged_in?
-      @customer = Customer.find(session[:id])
+      current_customer = @customer
       @mealkits = Mealkit.all
       erb :'/mealkits/mealkits'
     else

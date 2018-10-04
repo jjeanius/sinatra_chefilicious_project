@@ -29,7 +29,7 @@ class CustomersController < ApplicationController
    post '/login' do     #    get request create action
      @customer = Customer.find_by(:username =>params[:username])
        if @customer && @customer.authenticate(params[:password])
-         @customer.id = session[:customer_id]
+         session[:customer_id] = @customer.id
          redirect "/main_menu"
        else
           redirect "/signup"
@@ -49,6 +49,4 @@ class CustomersController < ApplicationController
       end
    end
 
-
 end
-#
