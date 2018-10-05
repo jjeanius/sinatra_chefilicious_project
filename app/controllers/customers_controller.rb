@@ -36,7 +36,7 @@ class CustomersController < ApplicationController
        end
    end
 
-  get '/customers/main_menu' do      #  show/get request show action
+  get '/main_menu' do      #  show/get request show action
      erb :'/customers/main_menu'
    end
 

@@ -3,21 +3,18 @@
     <head>
       <title> </title>
     </head>
-    <form method="post" action="/edit">
-          <form>
-            <br> </br>
-            <p> <a href="/mealkits/main_menu"> Main Menu </a> </p>
-              <br> </br>
-              <label><h2> <p> New Meal Kit </p> </h2></label>
+    <form method="post" action="mealkits/<%= mealkit_id %>">
+      <input id="hidden" type="hidden" name="_method" value="patch">
+        <p> <a href="/mealkits/main_menu"> Main Menu </a> </p>
+        <br> </br>
+          <label><h2> <p> Edit Meal Kit </p> </h2></label>
             <p> Meal Kit: <input type ="text" name="mealkit.name" value="Meal Kit"</p>
-            <p> ingredients : <input type ="text" name="mealkit.ingredients" value="Meal Kit ingredients"</p>
+            <p> Ingredients : <input type ="text" name="mealkit.ingredients" value="Meal Kit ingredients"</p>
             <p> Time: <input type ="text" name="mealkits.time" value="Cooking Time"</p>
             <p> Serving Size: <input type ="text" name="mealkit.serving_size" value="Serving Size"</p>
             <input type="submit" name="submit" value="Submit">
-
-            <p> <a href="/mealkits/main_menu"> Main Menu </a> </p>
+            <br> </br>
             <p> <a href="/mealkits/logout"> Logout </a> </p>
-
-          </form>
-        </body>
-    </html>
+    </form>
+  </body>
+</html>
