@@ -1,4 +1,4 @@
-class MealKit < ActiveRecord::Base
+class Mealkit < ActiveRecord::Base
   belongs_to :customer
 
 end

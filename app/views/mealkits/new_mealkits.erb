@@ -1,4 +1,4 @@
-<<!DOCTYPE html>
+<!DOCTYPE html>
   <html>
     <head>
       <title> </title>
@@ -8,16 +8,16 @@
             <br> </br>
             <p> <a href="/mealkits/main_menu"> Main Menu </a> </p>
               <br> </br>
-              <label><h2> <p> Create a New Meal Kit </p> </h2></label>
+              <label> <h2> <p> Create a New Meal Kit </p> </h2></label>
                 <br> </br>
-                <p> <label> Meal Kit Name:   <%=newmealkit[name]%></label></p>
+                <p> <label> Meal Kit Name:   <%= @mealkit[:name] %> </label> </p>
                 <br> </br>
-                <p><label> Ingredients :  <%=new_mealkit[ingredients]%></label></p>
+                <p> <label> Ingredients :  <%= @mealkit[:ingredients] %> </label></p>
                 <br> </br>
-                <p><label> Cooking Time: <%=new_mealkit[time]%></label></p>
+                <p> <label> Cooking Time: <%= @mealkit[:time] %> minutes </label> </p>
 
                 <br> </br>
-                <p><label> Serving Size:   <%=new_mealkit[serving_size]%> </label></p>
+                <p> <label> Serving Size:   <%= @mealkit[:serving_size] %> people </label> </p>
 
                 <br> </br>
               <a href="/mealkits/logout"> Logout </a> </p>
