@@ -9,25 +9,21 @@
               <br> </br>
               <label><h2> <p> New Meal Kit </p> </h2></label>
               <input id="hiddenn" type="hidden" name="_method" value="patch">
-            <input type="rext name="title">
-            </form>
-
-
-          <h2> <p> Welcome, <%= @customer.name %> </p> </h2>
-            <p> Here are your Meal Kits: </p>
-            <p>-----------------------------------------------------------------------------------------</p>
-              <%customer.mealkits.each do |mealkit| %>
-              <p> Meal Kit Name: <%=mealkit.name %> </p>
-              <p> Ingredients: <%=mealkit.ingredients %> </p>
-              <p> Cooking Time: <%=mealkit.time %> </p>
-              <p> Serving Size: <%=mealkit.serving_size %> </p>
-              <% end %>
-
+              <input type="text" name="title">
+                <h2> <p> Welcome, <%= @customer.name %> </p> </h2>
+                <p> Here are your Meal Kits: </p>
+                <p>-----------------------------------------------------------------------------------------</p>
+                  <%@customer.mealkits.each do |mealkit| %>
+                    <p> Meal Kit Name: <%=mealkit.name %> </p>
+                    <p> Ingredients: <%=mealkit.ingredients %> </p>
+                    <p> Cooking Time: <%=mealkit.time %> </p>
+                    <p> Serving Size: <%=mealkit.serving_size %> </p>
+                  <% end %>
+                  <br> </br>
+                  <br> </br>
               <input type="submit" value="delete">
-
-              <p> <a href="/mealkits/main_menu"> Main Menu </a> </p>
-              <p> <a href="/mealkits/logout"> Logout </a> </p>
-
-          </form>
-        </body>
-    </html>
+            <br> </br>
+          <p> <a href="/mealkits/logout"> Logout </a> </p>
+        </form>
+      </body>
+  </html>
