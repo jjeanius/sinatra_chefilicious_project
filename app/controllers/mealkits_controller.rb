@@ -32,10 +32,13 @@ class MealkitsController < ApplicationController
   end
 
   get '/mealkits/:id' do    #   get request, show action
+
     if logged_in?
+      @mealkits =[]
       @customer = current_customer
-      @mealkit = Mealkit.find_by(params[:mealkit_id])
-      erb :'/mealkits'
+      mealkit = Mealkit.find_by(params[:mealkit_id])
+      @mealkits << mealkit
+      erb :'/mealkits/show'
     else
       redirect "/login"
     end
