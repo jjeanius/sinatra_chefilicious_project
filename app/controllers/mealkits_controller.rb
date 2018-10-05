@@ -25,7 +25,6 @@ class MealkitsController < ApplicationController
       @customer = current_customer
       @customer.mealkits << @mealkit
       @customer.save
-
       redirect "/mealkits/#{@mealkit.id}"    #  else
     else
       redirect "/new"
@@ -72,6 +71,12 @@ class MealkitsController < ApplicationController
       redirect "/login"
     end
   end
+
+  get '/mealkits/customers/main_menu' do
+    erb :'/customers/main_menu'
+  end
+
+
 
   get '/mealkits/logout' do
     if logged_in?
