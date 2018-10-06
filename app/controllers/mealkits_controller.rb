@@ -1,10 +1,10 @@
 class MealkitsController < ApplicationController
 
-  get '/mealkits' do
+  get '/mealkits/show' do
     if logged_in?
       @customer = Customer.find(session[:customer_id])
       @mealkits = Mealkit.all
-      erb :'/mealkits/mealkits'
+      erb :'/mealkits/show'
     else
       redirect "/login"
     end
@@ -23,7 +23,6 @@ class MealkitsController < ApplicationController
     if !params[:mealkit].empty?
       @mealkit = Mealkit.create(params[:mealkit])
       @customer = current_customer
-      @customer.mealkits << @mealkit
       @customer.save
       redirect "/mealkits/#{@mealkit.id}"    #  else
     else
@@ -32,13 +31,10 @@ class MealkitsController < ApplicationController
   end
 
   get '/mealkits/:id' do    #   get request, show action
-
     if logged_in?
-      @mealkits =[]
       @customer = current_customer
-      mealkit = Mealkit.find_by(params[:mealkit_id])
-      @mealkits << mealkit
-      erb :'/mealkits/show'
+      @mealkit = Mealkit.find_by(params[:mealkit_id])
+      erb :'/mealkits/new_mealkits'
     else
       redirect "/login"
     end
@@ -54,26 +50,25 @@ class MealkitsController < ApplicationController
   end
 
   patch '/mealkits/:id' do   #  patch request / edit action
-    @mealkit = Mealkit.find_by(params[:mealkit_id])
-    @mealkit.name = params[:name]
-    @mealkit.ingredients = params[:ingredients]
-    @mealkit.time = params[:time]
-    @mealkit.serving_size = params[:serving_size]
+    @mealkit = Mealkit.find_by(params["mealkit"])
+    if !params["mealkit"].empty?
+      @mealkit.update(params["mealkit"])
       @mealkit.save
       redirect "mealkits/#{params[mealkit]}"
-  end
-
-  post '/mealkits/:id/delete' do    # delete request / delete action
-    if logged_in?
-      @mealkit = Mealkit.find_by_id(params[:mealkit_id])
-      @mealkit && @mealkits.user == current_user
-      @mealkit.delete
-      redirect "/main_menu"
+    else
+      redirect "mealkits/#{params["mealkit"]}/edit"
     end
   end
 
-  get '/mealkits/customers/main_menu' do
-    erb :'/customers/main_menu'
+  delete '/mealkits/:id/delete' do
+    if logged_in?
+      @mealkit = Mealkit.find_by_id(params[:mealkit_id])
+      @mealkit && @mealkits.user == current_user
+      @mealkits.destroy
+      redirect "/mealkits"
+    else
+      redirect "/login"
+    end
   end
 
   get '/mealkits/logout' do

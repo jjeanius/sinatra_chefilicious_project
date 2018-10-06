@@ -12,7 +12,7 @@ class CustomersController < ApplicationController
     @customer = Customer.new(:name =>params[:name], :username =>params[:username], :email =>params[:email], :password =>params[:password])
     if @customer.save
       session[:customer_id] = @customer.id
-      redirect "/main_menu"
+      redirect "/customers/main_menu"
     else
       redirect "/signup"
     end
@@ -30,13 +30,13 @@ class CustomersController < ApplicationController
      @customer = Customer.find_by(:username =>params[:username])
        if @customer && @customer.authenticate(params[:password])
          session[:customer_id] = @customer.id
-         redirect "/main_menu"
+         redirect "/customers/main_menu"
        else
           redirect "/signup"
        end
    end
 
-  get '/main_menu' do      #  show/get request show action
+  get '/customers/main_menu' do      #  show/get request show action
      erb :'/customers/main_menu'
    end
 
@@ -45,7 +45,7 @@ class CustomersController < ApplicationController
         session.destroy
         redirect '/login'
       else
-        redirect '/main_menu'
+        redirect '/customers/main_menu'
       end
    end
 

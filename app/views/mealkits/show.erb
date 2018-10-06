@@ -5,16 +5,17 @@
     </head>
           <form>
             <br> </br>
-            <p> <a href="/mealkits/main_menu"> Main Menu </a> </p>
+            <p> <a href="/customers/main_menu"> Main Menu </a> </p>
               <br> </br>
                 <h2> <p> Welcome, <%= @customer.name %> </p> </h2>
-                <p>  Here are your Meal Kits:  </p>
-
+                <p>  Here are your Meal Kits: </p>
+                   <p>-----------------------------------------------------------------------------------------------</p>
                     <% @mealkits.each do |mealkit| %>
                     <p> Meal Kit Name: <%=mealkit.name %> </p>
                     <p> Ingredients: <%=mealkit.ingredients %> </p>
                     <p> Cooking Time: <%=mealkit.time %> </p>
                     <p> Serving Size: <%=mealkit.serving_size %> </p>
+                    <p>-----------------------------------------------------------------------------------------------</p>
                   <% end %>
                   <br> </br>
              <p> <a href="/mealkits/logout"> Logout </a> </p>

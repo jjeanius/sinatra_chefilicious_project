@@ -6,6 +6,8 @@
         <body>
           <form action="/mealkits/<%= @mealkit.id %>/delete" method="delete">
             <input id="hidden" type="hidden" name="_method" value="delete">
+            <p> <a href="/customers/main_menu"> Main Menu </a> </p>
+
             <label><h2> <p> Delete a Meal Kit </p> </h2></label>
             <br> </br>
             <%@customer.mealkits.each do|mealkit|%> </input>
