@@ -19,7 +19,7 @@ class MealkitsController < ApplicationController
     end
   end
 
-  post '/mealkits/new' do    # post request / new action to post the new mealkit
+  post '/mealkits/:id' do    # post request / new action to post the new mealkit
     if !params[:mealkit].empty?
       @mealkit = Mealkit.create(params[:mealkit])
       @customer = current_customer
@@ -38,9 +38,9 @@ class MealkitsController < ApplicationController
     else
       redirect "/login"
     end
-  end
+   end
 
-  get '/mealkits/:id/edit' do    # get request/ load edit action
+  get '/mealkits/edit' do    # get request/ load edit action
     @mealkits = Mealkit.find_by_id(params[:mealkit_id])
     if logged_in? && mealkit.customer == current_customer
       erb ":/mealkits/edit"

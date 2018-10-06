@@ -22,7 +22,7 @@ class CustomersController < ApplicationController
     if logged_in?
       redirect "/main_menu"
     else
-      erb :'/customers/login'
+      erb :'/login'
     end
   end
 
@@ -30,13 +30,13 @@ class CustomersController < ApplicationController
      @customer = Customer.find_by(:username =>params[:username])
        if @customer && @customer.authenticate(params[:password])
          session[:customer_id] = @customer.id
-         redirect "/customers/main_menu"
+         redirect "/main_menu"
        else
           redirect "/signup"
        end
    end
 
-  get '/customers/main_menu' do      #  show/get request show action
+  get '/main_menu' do      #  show/get request show action
      erb :'/customers/main_menu'
    end
 
