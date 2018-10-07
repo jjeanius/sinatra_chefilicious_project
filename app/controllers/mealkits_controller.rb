@@ -74,7 +74,7 @@ class MealkitsController < ApplicationController
   get '/mealkits/logout' do
     if logged_in?
       session.destroy
-      redirect '/login'
+      redirect "/login"
     end
   end
 

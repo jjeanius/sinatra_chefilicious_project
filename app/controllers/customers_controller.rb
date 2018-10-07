@@ -22,7 +22,7 @@ class CustomersController < ApplicationController
     if logged_in?
       redirect "/main_menu"
     else
-      erb :'/login'
+      erb :'/customers/login'
     end
   end
 
