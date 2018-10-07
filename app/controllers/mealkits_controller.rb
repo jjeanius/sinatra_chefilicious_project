@@ -24,21 +24,12 @@ class MealkitsController < ApplicationController
       @mealkit = Mealkit.create(params[:mealkit])
       @customer = current_customer
       @customer.save
-      redirect "/mealkits/#{@mealkit.id}"    #  else
+      redirect "/mealkits/new_mealkits"    #  else
     else
       redirect "/new"
     end
   end
 
-  get '/mealkits/:id' do    #   get request, show action
-    if logged_in?
-      @customer = current_customer
-      @mealkit = Mealkit.find_by(params[:mealkit_id])
-      erb :'/mealkits/new_mealkits'
-    else
-      redirect "/login"
-    end
-   end
 
   get '/mealkits/edit' do    # get request/ load edit action
     @mealkits = Mealkit.find_by_id(params[:mealkit_id])
@@ -60,16 +51,13 @@ class MealkitsController < ApplicationController
     end
   end
 
-  delete '/mealkits/:id/delete' do
+  get '/delete' do
     if logged_in?
-      @mealkit = Mealkit.find_by_id(params[:mealkit_id])
-      @mealkit && @mealkits.user == current_user
-      @mealkits.destroy
-      redirect "/mealkits"
-    else
-      redirect "/login"
+      session.destroy
+      redirect "/mealkits/show"
     end
   end
+
 
   get '/mealkits/logout' do
     if logged_in?
