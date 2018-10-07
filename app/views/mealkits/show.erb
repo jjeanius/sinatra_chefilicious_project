@@ -10,13 +10,14 @@
                 <h2> <p> Welcome, <%= @customer.name %> </p> </h2>
                 <p>  Here are your Meal Kits: </p>
                    <p>-----------------------------------------------------------------------------------------------</p>
-                    <% @mealkits.each do |mealkit| %>
-                    <p> Meal Kit Name: <%=mealkit.name %> </p>
-                    <p> Ingredients: <%=mealkit.ingredients %> </p>
-                    <p> Cooking Time: <%=mealkit.time %> </p>
-                    <p> Serving Size: <%=mealkit.serving_size %> </p>
+                    <% @mealkits.each do | mealkit | %>
+                    <p> Mealkit Number: <%= mealkit.id %> </p>
+                    <p> Meal Kit Name: <%= mealkit.name %> </p>
+                    <p> Ingredients: <%= mealkit.ingredients %> </p>
+                    <p> Cooking Time: <%= mealkit.time %> </p>
+                    <p> Serving Size: <%= mealkit.serving_size %> </p>
                     <br> </br>
-                    <p> <a href="/delete"> Delete a Meal Kit </a> </p>
+                    <p> <a href="/mealkits/<%=mealkit.id%>/delete"> Delete Meal Kit Number: <%= mealkit.id %></a> </p>
                     <p>-----------------------------------------------------------------------------------------------</p>
                   <% end %>
                   <br> </br>

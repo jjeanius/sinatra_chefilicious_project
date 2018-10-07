@@ -51,13 +51,11 @@ class MealkitsController < ApplicationController
     end
   end
 
-  get '/delete' do
-    if logged_in?
-      session.destroy
-      redirect "/mealkits/show"
-    end
+  get '/mealkits/:id/delete' do
+    @mealkit = Mealkit.find_by(params[:mealkit_id])
+    @mealkit.destroy
+    redirect to '/mealkits/show'
   end
-
 
   get '/mealkits/logout' do
     if logged_in?
