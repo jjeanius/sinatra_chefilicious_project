@@ -10,11 +10,11 @@
               <br> </br>
               <label> <h2> <p> New Meal Kit </p> </h2></label>
                 <br> </br>
-                <p> Meal Kit Number: <%= @mealkit_id %> </p>
-                <p> <label> Meal Kit Name: <%=@mealkit[:name] %> </label> </p>
-                <p> <label> Ingredients :  <%=@mealkit[:ingredients] %> </label></p>
-                <p> <label> Cooking Time: <%=@mealkit[:time] %> minutes </label> </p>
-                <p> <label> Serving Size:   <%=@mealkit[:serving_size] %> people </label> </p>
+                <p> <label> Meal Kit Number: <%=@mealkit.id%> <label> </p>
+                <p> <label> Meal Kit Name: <%=@mealkit.name %> </label> </p>
+                <p> <label> Ingredients :  <%=@mealkit.ingredients %> </label></p>
+                <p> <label> Cooking Time: <%=@mealkit.time %> minutes </label> </p>
+                <p> <label> Serving Size:   <%=@mealkit.serving_size %> people </label> </p>
                 <br> </br>
               <a href="/mealkits/logout"> Logout </a> </p>
               <br> </br>

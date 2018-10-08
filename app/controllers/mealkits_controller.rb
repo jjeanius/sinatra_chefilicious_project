@@ -1,14 +1,5 @@
 class MealkitsController < ApplicationController
 
-  get '/mealkits/show' do
-    if logged_in?
-      @customer = Customer.find(session[:customer_id])
-      @mealkits = Mealkit.all
-      erb :'/mealkits/show'
-    else
-      redirect "/login"
-    end
-  end
 
   get '/mealkits/new' do     # get requst /new action to create mealkit
     if logged_in?
@@ -20,13 +11,13 @@ class MealkitsController < ApplicationController
   end
 
   post '/mealkits/:id' do    # post request / new action to post the new mealkit
-    if !params[:mealkit].empty?
+    if !params[:mealkit].empty?    # true
       @mealkit = Mealkit.create(:name => params[:name], :ingredients => params[:ingredients], :time =>params[:time], :serving_size =>params[:serving_size])
       @customer = current_customer
       @customer.save
       redirect "/mealkits/new_mealkits"
     else
-      redirect "/new"
+      redirect "/mealkits/new"
     end
   end
 
@@ -39,6 +30,15 @@ class MealkitsController < ApplicationController
     erb :'/mealkits/new_mealkits'
   end
 
+  get '/mealkits/show' do
+    if logged_in?
+      @customer = Customer.find(session[:customer_id])
+      @mealkits = Mealkit.all
+      erb :'/mealkits/show'
+    else
+      redirect "/login"
+    end
+  end
 
   get '/mealkits/edit' do    # get request/ load edit action
     @mealkits = Mealkit.find_by_id(params[:mealkit_id])
