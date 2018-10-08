@@ -21,13 +21,22 @@ class MealkitsController < ApplicationController
 
   post '/mealkits/:id' do    # post request / new action to post the new mealkit
     if !params[:mealkit].empty?
-      @mealkit = Mealkit.create(params[:mealkit])
+      @mealkit = Mealkit.create(:name => params[:name], :ingredients => params[:ingredients], :time =>params[:time], :serving_size =>params[:serving_size])
       @customer = current_customer
       @customer.save
-      redirect "/mealkits/new_mealkits"    #  else
+      redirect "/mealkits/new_mealkits"
     else
       redirect "/new"
     end
+  end
+
+  get '/mealkits/new_mealkits' do   # get request / show new mealkit action
+    @mealkit = Mealkit.find_by(params[:mealkit_id])
+  #  @mealkit.name = params[:name]
+  #  @mealkit.ingredients = params[:ingredients]
+  #  @mealkit.time= params[:time]
+  #  @mealkit.serving_size = params[:serving_size]
+    erb :'/mealkits/new_mealkits'
   end
 
 
