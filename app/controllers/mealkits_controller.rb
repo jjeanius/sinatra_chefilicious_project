@@ -1,6 +1,5 @@
 class MealkitsController < ApplicationController
 
-
   get '/mealkits/new' do     # get requst /new action to create mealkit
     if logged_in?
       current_customer = @customer
@@ -12,9 +11,9 @@ class MealkitsController < ApplicationController
 
   post '/mealkits/:id' do    # post request / new action to post the new mealkit
     if !params[:mealkit].empty?    # true
-      @mealkit = Mealkit.create(:name => params[:name], :ingredients => params[:ingredients], :time =>params[:time], :serving_size =>params[:serving_size])
-      @customer = current_customer
-      @customer.save
+      @mealkit = Mealkit.create(params[:mealkit])
+      current_customer = @customer
+      @mealkit.save
       redirect "/mealkits/new_mealkits"
     else
       redirect "/mealkits/new"
@@ -52,7 +51,7 @@ class MealkitsController < ApplicationController
   patch '/mealkits/:id' do   #  patch request / edit action
     @mealkit = Mealkit.find_by(params["mealkit"])
     if !params["mealkit"].empty?
-      @mealkit.update(params["mealkit"])
+      @mealkit.update(params[:mealkit])
       @mealkit.save
       redirect "mealkits/#{params[mealkit]}"
     else

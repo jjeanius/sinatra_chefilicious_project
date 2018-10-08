@@ -2,9 +2,9 @@ class CustomersController < ApplicationController
 
   get '/signup' do      #  signup/get request/create action
     if logged_in? && @customer = current_customer
-      redirect "/main_menu"
+      redirect "main_menu"
     else
-      erb :'/customers/signup'
+      erb :'customers/signup'
     end
   end
 
