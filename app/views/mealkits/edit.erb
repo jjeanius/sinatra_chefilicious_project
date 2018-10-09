@@ -3,7 +3,7 @@
     <head>
       <title> </title>
     </head>
-    <form method="patch" action="/mealkits/edit">
+    <form method="post" action="/mealkits/<%=@mealkit.id%>">
       <input id="hidden" type="hidden" name="_method" value="patch">
         <p> <a href="/main_menu"> Main Menu </a> </p>
         <br> </br>
