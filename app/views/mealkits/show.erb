@@ -11,17 +11,17 @@
                 <p>  Here are your Meal Kits: </p>
                    <p>-----------------------------------------------------------------------------------------------</p>
                     <% @mealkits.each do | mealkit | %>
+                    <p> Meal Kit Number: <%= mealkit.id %> <label> </p>
                     <p> Meal Kit Name: <%= mealkit.name %> </p>
                     <p> Ingredients: <%= mealkit.ingredients %> </p>
                     <p> Cooking Time: <%= mealkit.time %> </p>
                     <p> Serving Size: <%= mealkit.serving_size %> </p>
                     <br> </br>
-                    <p> <a href="/mealkits/<%=mealkit.id%>/delete"> Delete Meal Kit Number: <%= mealkit.id %></a> </p>
+                    <p> <a href="/mealkits/<%=mealkit.id%>/delete"> Delete Meal Kit </a> </p>
+                    <p> <a href="/mealkits/<%=mealkit.id%>/edit"> Edit Meal Kit </a> </p>
                     <p>-----------------------------------------------------------------------------------------------</p>
-                  <% end %>
-
-                  <br> </br>
-             <p> <a href="/mealkits/logout"> Logout </a> </p>
+                    <% end %>
+                <p> <a href="/mealkits/logout"> Logout </a> </p>
         </form>
       </body>
   </html>

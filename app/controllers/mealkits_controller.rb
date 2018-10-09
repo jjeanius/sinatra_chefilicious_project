@@ -1,5 +1,15 @@
 class MealkitsController < ApplicationController
 
+  get '/mealkits/show' do     #     get request / show all mealkit action
+    if logged_in?
+      @customer = Customer.find(session[:customer_id])
+      @mealkits = Mealkit.all
+      erb :'/mealkits/show'
+    else
+      redirect "/login"
+    end
+  end
+
   get '/mealkits/new' do     # get requst /new action to create mealkit
     if logged_in?
       current_customer = @customer
@@ -20,42 +30,30 @@ class MealkitsController < ApplicationController
     end
   end
 
-  get '/mealkits/new_mealkits' do   # get request / show new mealkit action
+  get '/mealkits/new_mealkits' do   # get request / new show mealkit action
     @mealkit = Mealkit.find_by(params[:mealkit_id])
-  #  @mealkit.name = params[:name]
-  #  @mealkit.ingredients = params[:ingredients]
-  #  @mealkit.time= params[:time]
-  #  @mealkit.serving_size = params[:serving_size]
     erb :'/mealkits/new_mealkits'
   end
 
-  get '/mealkits/show' do
+  get '/mealkits/:id/edit' do    # get request/ load edit action
+    @mealkit = Mealkit.find_by_id(params[:mealkit_id])
     if logged_in?
-      @customer = Customer.find(session[:customer_id])
-      @mealkits = Mealkit.all
-      erb :'/mealkits/show'
-    else
-      redirect "/login"
-    end
-  end
-
-  get '/mealkits/edit' do    # get request/ load edit action
-    @mealkits = Mealkit.find_by_id(params[:mealkit_id])
-    if logged_in? && mealkit.customer == current_customer
-      erb ":/mealkits/edit"
+      @mealkit = current_customer
+      redirect "mealkits/:id/edit"
+      #erb :'/mealkits/edit'
     else
       redirect '/login'
     end
   end
 
   patch '/mealkits/:id' do   #  patch request / edit action
-    @mealkit = Mealkit.find_by(params["mealkit"])
+    @mealkit = Mealkit.find_by(params["mealkit.id"])
     if !params["mealkit"].empty?
       @mealkit.update(params[:mealkit])
       @mealkit.save
-      redirect "mealkits/#{params[mealkit]}"
+      redirect "mealkits/#{@mealkit.id}/edit"
     else
-      redirect "mealkits/#{params["mealkit"]}/edit"
+      redirect "mealkits/main_menu"
     end
   end
 

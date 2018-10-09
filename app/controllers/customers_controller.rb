@@ -2,7 +2,7 @@ class CustomersController < ApplicationController
 
   get '/signup' do      #  signup/get request/create action
     if logged_in? && @customer = current_customer
-      redirect "main_menu"
+      redirect "/main_menu"
     else
       erb :'customers/signup'
     end
@@ -12,7 +12,7 @@ class CustomersController < ApplicationController
     @customer = Customer.new(:name =>params[:name], :username =>params[:username], :email =>params[:email], :password =>params[:password])
     if @customer.save
       session[:customer_id] = @customer.id
-      redirect "/customers/main_menu"
+      redirect "/main_menu"
     else
       redirect "/signup"
     end
@@ -45,7 +45,7 @@ class CustomersController < ApplicationController
         session.destroy
         redirect '/login'
       else
-        redirect '/customers/main_menu'
+        redirect '/main_menu'
       end
    end
 

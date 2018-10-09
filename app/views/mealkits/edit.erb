@@ -3,18 +3,29 @@
     <head>
       <title> </title>
     </head>
-    <form method="post" action="mealkits/<%= mealkit_id %>">
+    <form method="post" action="mealkits/:id/edit/">
       <input id="hidden" type="hidden" name="_method" value="patch">
-      <p> <a href="/main_menu"> Main Menu </a> </p>
+        <p> <a href="/main_menu"> Main Menu </a> </p>
         <br> </br>
-          <label><h2> <p> Edit Meal Kit </p> </h2></label>
-            <p> Meal Kit: <input type ="text" name="mealkit.name" value="Meal Kit"</p>
-            <p> Ingredients : <input type ="text" name="mealkit.ingredients" value="Meal Kit ingredients"</p>
-            <p> Time: <input type ="text" name="mealkits.time" value="Cooking Time"</p>
-            <p> Serving Size: <input type ="text" name="mealkit.serving_size" value="Serving Size"</p>
-            <input type="submit" name="submit" value="Submit">
-            <br> </br>
-            <p> <a href="/mealkits/logout"> Logout </a> </p>
+        <label><h2> <p> Edit Meal Kit </p> </h2></label>
+        <p>-----------------------------------------------------------------------------------------------</p>
+        <% @mealkits.each do | mealkit | %>
+        <p> Meal Kit Number: <%= mealkit.id %>
+        <p> Meal Kit Name: <%= mealkit.name %> <input type ="text" name="mealkit.name">  </p>
+        <p> Ingredients: <%= mealkit.ingredients %> <input type ="text" name="mealkit.ingredients"</p>
+        <p> Cooking Time: <%= mealkit.time %> <input type ="text" name="mealkits.time"></p>
+        <p> Serving Size: <%= mealkit.serving_size %> <input type ="text" name="mealkit.serving_size"</p>
+        <br> </br>
+
+        <input type="submit" name="submit" value="Submit">
+
+        <p> <a href="/mealkits/<%=mealkit.id%>/delete"> Delete Meal Kit </a> </p>
+        <p> <a href="/mealkits/<%=mealkit.id%>/edit"> Edit Meal Kit </a> </p>
+
+        <p>-----------------------------------------------------------------------------------------------</p>
+        <% end %>
+        <br> </br>
+        <p> <a href="/mealkits/logout"> Logout </a> </p>
     </form>
   </body>
 </html>
