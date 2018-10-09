@@ -35,15 +35,15 @@ class MealkitsController < ApplicationController
     erb :'/mealkits/new_mealkits'
   end
 
-  get '/mealkits/:id/edit' do    # get request/ load edit action
+  get '/mealkits/edit' do    # get request/ load edit action
+    @mealkits = Mealkit.all
     @mealkit = Mealkit.find_by_id(params[:mealkit_id])
     if logged_in?
       @mealkit = current_customer
-      redirect "mealkits/:id/edit"
-      #erb :'/mealkits/edit'
+      erb :'mealkits/edit'
     else
       redirect '/login'
-    end
+   end
   end
 
   patch '/mealkits/:id' do   #  patch request / edit action
@@ -51,6 +51,7 @@ class MealkitsController < ApplicationController
     if !params["mealkit"].empty?
       @mealkit.update(params[:mealkit])
       @mealkit.save
+      red
       redirect "mealkits/#{@mealkit.id}/edit"
     else
       redirect "mealkits/main_menu"
@@ -71,3 +72,4 @@ class MealkitsController < ApplicationController
   end
 
 end
+#
