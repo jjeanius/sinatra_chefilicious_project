@@ -48,14 +48,13 @@ class MealkitsController < ApplicationController
 
   patch '/mealkits/:id' do   #  patch request / edit action
     @mealkit = Mealkit.find_by(params["mealkit.id"])
-    if !params["mealkit"].empty?
-      @mealkit.update(params[:mealkit])
-      @mealkit.save
-      red
+  #  if !params["mealkit"].empty?
+    @mealkit.name = params[:name]
+    @mealkit.ingredients = params[:ingredients]
+    @mealkit.time = params[:time]
+    @mealkit.serving_size = params[:serving_size]
+    @mealkit.save
       redirect "mealkits/#{@mealkit.id}/edit"
-    else
-      redirect "mealkits/main_menu"
-    end
   end
 
   get '/mealkits/:id/delete' do
