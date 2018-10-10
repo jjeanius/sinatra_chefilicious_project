@@ -1,13 +1,19 @@
 class MealkitsController < ApplicationController
 
-  get '/mealkits/show' do     #     get request / show all mealkit action
+  get '/mealkits' do     #     get request / show all mealkit action
     if logged_in?
       @customer = Customer.find(session[:customer_id])
       @mealkits = Mealkit.all
-      erb :'/mealkits/show'
+      erb :'/mealkits/index'
     else
       redirect "/login"
     end
+  end
+
+  get '/customers/:id/mealkits' do
+    @customer = Customer.find(params[:id])
+    @mealkits = @customer.mealkits
+    erb :'/mealkits/index'
   end
 
   get '/mealkits/new' do     # get requst /new action to create mealkit
@@ -31,7 +37,7 @@ class MealkitsController < ApplicationController
   end
 
   get '/mealkits/new_mealkits' do   # get request / new show mealkit action
-    @mealkit = Mealkit.find_by(params[:mealkit_id])
+    @mealkit = Mealkit.last
     erb :'/mealkits/new_mealkits'
   end
 
