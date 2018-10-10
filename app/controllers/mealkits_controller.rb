@@ -11,9 +11,10 @@ class MealkitsController < ApplicationController
   end
 
   get '/customers/:id/mealkits' do
-    @customer = Customer.find(params[:id])
-    @mealkits = @customer.mealkits
-    erb :'/mealkits/index'
+    @customer = Customer.find_by(params[:custmer_id])
+    @mealkits = Mealkit.all
+    @mealkits = @customer
+    erb :'/mealkits/by_customer'
   end
 
   get '/mealkits/new' do     # get requst /new action to create mealkit
@@ -41,6 +42,7 @@ class MealkitsController < ApplicationController
     erb :'/mealkits/new_mealkits'
   end
 
+
   get '/mealkits/edit' do    # get request/ load edit action
     @mealkits = Mealkit.all
     @mealkit = Mealkit.find_by_id(params[:mealkit_id])
@@ -65,8 +67,8 @@ class MealkitsController < ApplicationController
 
   get '/mealkits/:id/delete' do
     @mealkit = Mealkit.find_by(params[:mealkit_id])
-    @mealkit.destroy
-    redirect to '/mealkits/show'
+    @mealkit.delete
+    redirect to '/mealkits'
   end
 
   get '/mealkits/logout' do
