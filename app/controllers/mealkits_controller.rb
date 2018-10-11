@@ -1,6 +1,6 @@
 class MealkitsController < ApplicationController
 
-  get '/mealkits' do     #     get request / show all mealkit action
+  get '/mealkits' do     #  get request / show all mealkit action
     if logged_in?
       @customer = Customer.find(session[:customer_id])
       @mealkits = Mealkit.all
@@ -10,11 +10,14 @@ class MealkitsController < ApplicationController
     end
   end
 
-  get '/customers/:id/mealkits' do
-    @customer = Customer.find_by(params[:custmer_id])
-    @mealkits = Mealkit.all
-    @mealkits = @customer
-    erb :'/mealkits/by_customer'
+  get '/customers/:id/mealkits' do   # get request / show one cusotmer mealkits
+    if logged_in?
+      @customer = Customer.find(session[:customer_id])
+      @customer.mealkits << Mealkit.all
+      erb :'/mealkits/by_customer'
+    else
+      erb :'/mealkits/index'
+    end
   end
 
   get '/mealkits/new' do     # get requst /new action to create mealkit
@@ -38,30 +41,28 @@ class MealkitsController < ApplicationController
   end
 
   get '/mealkits/new_mealkits' do   # get request / new show mealkit action
-    @mealkit = Mealkit.last
-    erb :'/mealkits/new_mealkits'
+    mealkit = Mealkit.last
+    rb :'/mealkits/new_mealkits'
   end
-
 
   get '/mealkits/edit' do    # get request/ load edit action
     @mealkits = Mealkit.all
     @mealkit = Mealkit.find_by_id(params[:mealkit_id])
-    if logged_in?
-      @mealkit = current_customer
-      erb :'mealkits/edit'
-    else
-      redirect '/login'
-   end
+      if logged_in?
+        @mealkit = current_customer
+        erb :'mealkits/edit'
+      else
+        redirect '/login'
+      end
   end
 
   patch '/mealkits/:id' do   #  patch request / edit action
     @mealkit = Mealkit.find_by(params["mealkit.id"])
-  #  if !params["mealkit"].empty?
-    @mealkit.name = params[:name]
-    @mealkit.ingredients = params[:ingredients]
-    @mealkit.time = params[:time]
-    @mealkit.serving_size = params[:serving_size]
-    @mealkit.save
+      @mealkit.name = params[:name]
+      @mealkit.ingredients = params[:ingredients]
+      @mealkit.time = params[:time]
+      @mealkit.serving_size = params[:serving_size]
+      @mealkit.save
       redirect "mealkits/#{@mealkit.id}/edit"
   end
 
@@ -79,4 +80,3 @@ class MealkitsController < ApplicationController
   end
 
 end
-#
