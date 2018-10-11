@@ -41,8 +41,8 @@ class MealkitsController < ApplicationController
   end
 
   get '/mealkits/new_mealkits' do   # get request / new show mealkit action
-    mealkit = Mealkit.last
-    rb :'/mealkits/new_mealkits'
+    @mealkit = Mealkit.last
+    erb :'/mealkits/new_mealkits'
   end
 
   get '/mealkits/edit' do    # get request/ load edit action
@@ -64,6 +64,16 @@ class MealkitsController < ApplicationController
       @mealkit.serving_size = params[:serving_size]
       @mealkit.save
       redirect "mealkits/#{@mealkit.id}/edit"
+  end
+
+  get '/mealkits/:id/mealkits' do   # get request / show one cusotmer mealkits
+    if logged_in?
+      @customer = Customer.find(session[:customer_id])
+      @customer.mealkits << Mealkit.all
+      erb :'/mealkits/by_customer'
+    else
+      erb :'/mealkits/index'
+    end
   end
 
   get '/mealkits/:id/delete' do
