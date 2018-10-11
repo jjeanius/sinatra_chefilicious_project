@@ -56,14 +56,11 @@ class MealkitsController < ApplicationController
       end
   end
 
-  patch '/mealkits/:id' do   #  patch request / edit action
-    @mealkit = Mealkit.find_by(params["mealkit.id"])
-      @mealkit.name = params[:name]
-      @mealkit.ingredients = params[:ingredients]
-      @mealkit.time = params[:time]
-      @mealkit.serving_size = params[:serving_size]
-      @mealkit.save
-      redirect "mealkits/#{@mealkit.id}/edit"
+  patch '/mealkits/:id/edit' do   #  patch request / edit action
+    @mealkit = Mealkit.find_by(params[:mealkit_id])
+    @mealkit.update(:name =>params[:name], :ingredients =>params[:ingredients], :time =>[:time], :serving_size=> params[:serving_size])
+    @mealkit.save
+    redirect "mealkits"
   end
 
   get '/mealkits/:id/mealkits' do   # get request / show one cusotmer mealkits
