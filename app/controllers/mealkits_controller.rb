@@ -47,7 +47,7 @@ class MealkitsController < ApplicationController
 
   get '/mealkits/edit' do    # get request/ load edit action
     @mealkits = Mealkit.all
-    @mealkit = Mealkit.find_by_id(params[:mealkit_id])
+    @mealkit = Mealkit.find_by_id(params["mealkit.id"])
       if logged_in?
         @mealkit = current_customer
         erb :'mealkits/edit'
@@ -57,15 +57,16 @@ class MealkitsController < ApplicationController
   end
 
   patch '/mealkits/:id/edit' do   #  patch request / edit action
-    @mealkit = Mealkit.find_by(params[:mealkit_id])
-    @mealkit.update(:name =>params[:name], :ingredients =>params[:ingredients], :time =>[:time], :serving_size=> params[:serving_size])
+    @mealkit = Mealkit.find_by(params[:id])
+    @mealkit.update(params[:mealkit])
+  #  binding.pry
     @mealkit.save
     redirect "mealkits"
   end
 
   get '/mealkits/:id/mealkits' do   # get request / show one cusotmer mealkits
     if logged_in?
-      @customer = Customer.find(session[:customer_id])
+      @customer = Customer.find(session[customer_id])
       @customer.mealkits << Mealkit.all
       erb :'/mealkits/by_customer'
     else
@@ -74,7 +75,7 @@ class MealkitsController < ApplicationController
   end
 
   get '/mealkits/:id/delete' do
-    @mealkit = Mealkit.find_by(params[:mealkit_id])
+    @mealkit = Mealkit.find_by(params["mealkit.id"])
     @mealkit.delete
     redirect to '/mealkits'
   end
