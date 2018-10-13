@@ -1,4 +1,10 @@
+require 'rack-flash'
+require "rack/flash/test"
+
 class MealkitsController < ApplicationController
+
+  use Rack::Flash
+
 
   get '/mealkits' do     #  get request / show all mealkit action
     if logged_in?
@@ -34,7 +40,8 @@ class MealkitsController < ApplicationController
       @mealkit = Mealkit.create(params[:mealkit])
       current_customer = @customer
       @mealkit.save
-      redirect "/mealkits/new_mealkits"
+      flash[:message] = "Successfully created Meal Kit"
+        redirect to ("/mealkits/new_mealkits")
     else
       redirect "/mealkits/new"
     end
@@ -61,7 +68,8 @@ class MealkitsController < ApplicationController
     @mealkit.update(params[:mealkit])
   #  binding.pry
     @mealkit.save
-    redirect "mealkits"
+    flash[:message] = "Successfully updated Meal Kit!"
+    redirect to ("mealkits")
   end
 
   get '/mealkits/:id/mealkits' do   # get request / show one cusotmer mealkits

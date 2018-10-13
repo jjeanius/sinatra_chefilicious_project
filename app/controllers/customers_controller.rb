@@ -1,4 +1,9 @@
+# require 'rack-flash'
+# require "rack/flash/test"
+
 class CustomersController < ApplicationController
+  require 'rack-flash'
+  use Rack::Flash
 
   get '/signup' do      #  signup/get request/create action
     if logged_in? && @customer = current_customer
@@ -12,9 +17,11 @@ class CustomersController < ApplicationController
     @customer = Customer.new(:name =>params[:name], :username =>params[:username], :email =>params[:email], :password =>params[:password])
     if @customer.save
       session[:customer_id] = @customer.id
-      redirect "/main_menu"
+      flash[:message] = "Thanks for signing up!"
+      redirect to ("/main_menu")
     else
-      redirect "/signup"
+      flash[:message] = "Please sign up!"
+      redirect to ("/signup")
     end
   end
 
@@ -32,7 +39,8 @@ class CustomersController < ApplicationController
          session[:customer_id] = @customer.id
          redirect "/main_menu"
        else
-          redirect "/signup"
+         flash[:message] = "Please Login"
+           redirect "/signup"
        end
    end
 

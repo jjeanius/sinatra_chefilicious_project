@@ -6,29 +6,32 @@
     <form method="post" action="/mealkits/<%=@mealkit.id%>/edit">
       <input id="hidden" type="hidden" name="_method" value="patch">
       <br> </br>
-        <p> <a href="/main_menu"> Main Menu </a> </p>
-        <br> </br>
-        <p> <a href="/mealkits/logout"> Logout </a> </p>
-        <br> </br>
-        <label><h2> <p> Edit Meal Kit </p> </h2></label>
-          <p>-----------------------------------------------------------------------------------------------</p>
-          <input id="@mealkit.id" type="hidden" name="<%=@mealkit.id%>" value="patch"> </input>
 
-            <% @mealkits.each do | mealkit | %>
-            <p> Meal Kit Name:  <%= mealkit.name %> <input type ="text" name= mealkit[name]  value = <%= mealkit.name %>>
-            <p> Ingredients: <%= mealkit.ingredients %><input type ="text" name= mealkit[ingredients] value= <%= mealkit.ingredients %> >
-            <p> Cooking Time:  <input type ="text" name= mealkit[time] value= <%= mealkit.time %> >
-            <p> Serving Size: <%= mealkit.serving_size %> <input type ="text" name= mealkit[serving_size] value= <%= mealkit.serving_size %>></input></p>
-            <p> Meal Kit Number: <%= mealkit.id %></p>
-
-        <input type="submit" name="submit" value="   SUBMIT   "> </input>
-        <br> </br>
-        <br> </br>
-        <p> <a href="/mealkits/<%=mealkit.id%>/delete"> Delete Meal Kit </a> </p>
-        <br> </br>
-        <p>-----------------------------------------------------------------------------------------------</p>
-        <br> </br>
+        <% if flash.has?(:message) %>
+          <%= flash[:message] %>
         <% end %>
+
+            <p> <a href="/main_menu"> Main Menu </a> </p>
+            <br> </br>
+            <p> <a href="/mealkits/logout"> Logout </a> </p>
+            <br> </br>
+            <label><h2> <p> Edit Meal Kit </p> </h2></label>
+              <p>-----------------------------------------------------------------------------------------------</p>
+              <input id="@mealkit.id" type="hidden" name="<%=@mealkit.id%>" value="patch"> </input>
+              <% @mealkits.each do | mealkit | %>
+                <p> Meal Kit Name:  <%= mealkit.name %> <input type ="text" name= mealkit[name]  value = <%= mealkit.name %>>
+                <p> Ingredients: <%= mealkit.ingredients %><input type ="text" name= mealkit[ingredients] value= <%= mealkit.ingredients %> >
+                <p> Cooking Time:  <input type ="text" name= mealkit[time] value= <%= mealkit.time %> >
+                <p> Serving Size: <%= mealkit.serving_size %> <input type ="text" name= mealkit[serving_size] value= <%= mealkit.serving_size %>></input></p>
+                <p> Meal Kit Number: <%= mealkit.id %></p>
+                <input type="submit" name="submit" value="   SUBMIT   "> </input>
+                <br> </br>
+                <br> </br>
+              <p> <a href="/mealkits/<%=mealkit.id%>/delete"> Delete Meal Kit </a> </p>
+              <br> </br>
+              <p>-----------------------------------------------------------------------------------------------</p>
+              <br> </br>
+              <% end %>
     </form>
   </body>
 </html>
