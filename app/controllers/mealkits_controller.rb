@@ -1,5 +1,4 @@
 require 'rack-flash'
-require "rack/flash/test"
 
 class MealkitsController < ApplicationController
 
@@ -18,9 +17,9 @@ class MealkitsController < ApplicationController
 
   get '/customers/:id/mealkits' do   # get request / show one cusotmer mealkits
     if logged_in?
-
       @customer = Customer.find(session[:customer_id])
-      @customer.mealkits << Mealkit.new
+      mealkit = Mealkit.create(:name =>params[:name], :ingredients =>params[:ingredients], :time =>params[:time], :serving_size =>params[:serving_size])
+      @customer.mealkits << mealkit.new
       @customer.mealkits.save
       erb :'/mealkits/by_customer'
     else
@@ -31,6 +30,7 @@ class MealkitsController < ApplicationController
   get '/mealkits/new' do     # get requst /new action to create mealkit
     if logged_in?
       @customer = current_customer
+      mealkit = Mealkit.create(:name =>params[:name], :ingredients =>params[:ingredients], :time =>params[:time], :serving_size =>params[:serving_size])
       erb :'mealkits/new'
     else
       redirect "/login"
@@ -42,7 +42,7 @@ class MealkitsController < ApplicationController
       @mealkit = Mealkit.create(params[:mealkit])
       @customer = current_customer
       @mealkit.save
-      flash[:message] = "Successfully created Meal Kit"
+      flash[:message] = "Successfully created a Meal Kit!"
         redirect to ("/mealkits/new_mealkits")
     else
       redirect "/mealkits/new"
@@ -54,48 +54,53 @@ class MealkitsController < ApplicationController
     erb :'/mealkits/new_mealkits'
   end
 
+
   get '/mealkits/edit' do    # get request/ load edit action
-    @mealkits = Mealkit.all
-    @mealkit = Mealkit.find_by_id(params["mealkit.id"])
+    if logged_in?
+      @current = current_customer
+      @mealkits = Mealkit.all
+      @mealkit = Mealkit.find_by(params["mealkit.id"])
+          erb :'mealkits/edit'
+        else
+          redirect '/login'
+        end
+    end
+
+    patch '/mealkits/:id/edit' do   #  patch request / edit action
       if logged_in?
-        @mealkit = current_customer
-        erb :'mealkits/edit'
-      else
-        redirect '/login'
+        @customer = session[:customer_id]
+        @mealkits = Mealkit.all
+        @mealkit = Mealkit.find_by(params[:mealkit_id])
+        @mealkit.update(:name =>params[:name], :ingredients =>params[:ingredients], :time =>params[:time], :serving_size =>params[:serving_size])
+        @mealkit.save
+
+        flash[:message] = "Successfully updated!"
+        redirect to ("/mealkits")
       end
-  end
-
-  patch '/mealkits/:id/edit' do   #  patch request / edit action
-    @mealkit = Mealkit.find_by(params[:id])
-    @mealkit.update(params[:mealkit])
-    @mealkit.customer.id = params[:customer_id]
-    @mealkit.save
-
-    flash[:message] = "Successfully updated!"
-    redirect to ("/mealkits")
-  end
-
-  get '/mealkits/:id/mealkits' do   # get request / show one cusotmer mealkits
-    if logged_in?
-      @customer = Customer.find(session[customer_id])
-      @customer.mealkits << Mealkit.all
-      erb :'/mealkits/by_customer'
-    else
-      erb :'/mealkits/index'
     end
-  end
 
-  get '/mealkits/:id/delete' do
-    @mealkit = Mealkit.find_by(params["mealkit.id"])
-    @mealkit.delete
-    redirect to '/mealkits'
-  end
-
-  get '/mealkits/logout' do
-    if logged_in?
-      session.destroy
-      redirect "/login"
+    get '/mealkits/:id/mealkits' do   # get request / show one cusotmer mealkits
+      if logged_in?
+        @customer = Customer.find(session[customer_id])
+        @customer.mealkits << Mealkit.all
+        erb :'/mealkits/by_customer'
+      else
+        erb :'/mealkits/index'
+      end
     end
-  end
+
+    get '/mealkits/delete' do
+      @mealkit = Mealkit.find_by(params[:id])
+      @mealkit.delete
+      flash[:message] = "Meal Kit #{@mealkit.id} is deleted!"
+      redirect to '/mealkits'
+    end
+
+    get '/mealkits/logout' do
+      if logged_in?
+        session.destroy
+        redirect "/login"
+      end
+    end
 
 end

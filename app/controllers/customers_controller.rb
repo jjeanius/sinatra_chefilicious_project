@@ -1,8 +1,7 @@
-# require 'rack-flash'
-# require "rack/flash/test"
+require 'rack-flash'
 
 class CustomersController < ApplicationController
-  require 'rack-flash'
+
   use Rack::Flash
 
   get '/signup' do      #  signup/get request/create action

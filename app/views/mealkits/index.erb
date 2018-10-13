@@ -3,22 +3,24 @@
             <p> <a href="/main_menu"> Main Menu </a> </p>
               <br> </br>
                 <h2> <p> Welcome, <%= @customer.name %> </p> </h2>
-                <p>  Here are all the Meal Kits: </p>
+                  <p>  Here are all the Meal Kits: </p>
+                  <br> </br>
+                   <h3> <% if flash.has?(:message) %>
+                     <%= flash[:message] %>
+                    <% end %> </h3>
 
-                <% if flash.has?(:message) %>
-                  <%= flash[:message] %>
-                <% end %>
-                   <p>-----------------------------------------------------------------------------------------------</p>
-                    <% @mealkits.each do | mealkit | %>
-                    <p> Meal Kit Number: <%= mealkit.id %> <label> </p>
-                    <p> Meal Kit Name: <%= mealkit.name %> </p>
-                    <p> Ingredients: <%= mealkit.ingredients %> </p>
-                    <p> Cooking Time: <%= mealkit.time %> </p>
-                    <p> Serving Size: <%= mealkit.serving_size %> </p>
-                    <br> </br>
-                    <p> <a href="/mealkits/<%=mealkit.id%>/delete"> Delete Meal Kit </a> </p>
-                    <p>-----------------------------------------------------------------------------------------------</p>
-                    <% end %>
-                    <br> </br>
+                     <p>-----------------------------------------------------------------------------------------------</p>
+                     <p> <a href="/mealkits/<%=@mealkit_id%>/delete"> Delete Meal Kit </a> </p>
+                     <br> </br>
+                      <% @mealkits.each do | mealkit | %>
+                      <p> Meal Kit Number: <%= mealkit.id %> <label> </p>
+                      <p> Meal Kit Name: <%= mealkit.name %> </p>
+                      <p> Ingredients: <%= mealkit.ingredients %> </p>
+                      <p> Cooking Time: <%= mealkit.time %> </p>
+                      <p> Serving Size: <%= mealkit.serving_size %> </p>
+                      <br> </br>
+                      <p>-----------------------------------------------------------------------------------------------</p>
+                      <br> </br>
+                      <% end %>
                 <p> <a href="/mealkits/logout"> Logout </a> </p>
       </body>
