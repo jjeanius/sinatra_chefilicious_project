@@ -1,26 +1,21 @@
-<!DOCTYPE html>
-  <html>
-    <head>
-      <title> </title>
-    </head>
         <body>
           <form method="post" action="/mealkits/new_mealkits">
-
-            <% if flash.has?(:message) %>
-              <%= flash[:message] %>
-            <% end %>
-
               <br> </br>
               <p> <a href="/main_menu"> Main Menu </a> </p>
               <br> </br>
                 <label> <h2> <p> New Meal Kit </p> </h2></label>
                 <br> </br>
-                  <p> <label> Meal Kit Name: <%=@mealkit.name %> </label> </p>
-                  <p> <label> Ingredients :  <%=@mealkit.ingredients %> </label></p>
-                  <p> <label> Cooking Time: <%=@mealkit.time %> minutes </label> </p>
-                  <p> <label> Serving Size:   <%=@mealkit.serving_size %> people </label> </p>
+
+                  <p> <label> Meal Kit Name: <%=@mealki[name] %> </label> </p>
+                  <p> <label> Ingredients :  <%=@mealki[ingredients] %> </label></p>
+                  <p> <label> Cooking Time: <%=@mealki[time] %> minutes </label> </p>
+                  <p> <label> Serving Size:   <%=@mealki[serving_size] %> people </label> </p>
                   <br> </br>
                   <p> <a href = "/mealkits/new"> Create Meal Kit</a> </p>
+                  <br> </br>
+                  <h3> <% if flash.has?(:message) %>
+                    <%= flash[:message] %>
+                  <% end %> </h3>
                   <br> </br>
                   <p><a href="/mealkits/logout"> Logout </a> </p>
               <br> </br>

@@ -1,12 +1,13 @@
 class ApplicationController < Sinatra::Base
 
   register Sinatra::ActiveRecordExtension
+  enable :sessions
 
   configure do
     set :public_folder, 'public'
     set :views, 'app/views'
     set :session_secret, "mealkits"
-    enable :sessions
+
     require 'sinatra/flash'
     enable :sessions
 

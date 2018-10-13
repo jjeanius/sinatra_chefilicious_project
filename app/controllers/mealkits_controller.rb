@@ -18,8 +18,10 @@ class MealkitsController < ApplicationController
 
   get '/customers/:id/mealkits' do   # get request / show one cusotmer mealkits
     if logged_in?
+
       @customer = Customer.find(session[:customer_id])
-      @customer.mealkits << Mealkit.all
+      @customer.mealkits << Mealkit.new
+      @customer.mealkits.save
       erb :'/mealkits/by_customer'
     else
       erb :'/mealkits/index'
@@ -28,7 +30,7 @@ class MealkitsController < ApplicationController
 
   get '/mealkits/new' do     # get requst /new action to create mealkit
     if logged_in?
-      current_customer = @customer
+      @customer = current_customer
       erb :'mealkits/new'
     else
       redirect "/login"
@@ -38,7 +40,7 @@ class MealkitsController < ApplicationController
   post '/mealkits/:id' do    # post request / new action to post the new mealkit
     if !params[:mealkit].empty?    # true
       @mealkit = Mealkit.create(params[:mealkit])
-      current_customer = @customer
+      @customer = current_customer
       @mealkit.save
       flash[:message] = "Successfully created Meal Kit"
         redirect to ("/mealkits/new_mealkits")
@@ -66,10 +68,11 @@ class MealkitsController < ApplicationController
   patch '/mealkits/:id/edit' do   #  patch request / edit action
     @mealkit = Mealkit.find_by(params[:id])
     @mealkit.update(params[:mealkit])
-  #  binding.pry
+    @mealkit.customer.id = params[:customer_id]
     @mealkit.save
-    flash[:message] = "Successfully updated Meal Kit!"
-    redirect to ("mealkits")
+
+    flash[:message] = "Successfully updated!"
+    redirect to ("/mealkits")
   end
 
   get '/mealkits/:id/mealkits' do   # get request / show one cusotmer mealkits
