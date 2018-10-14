@@ -66,7 +66,7 @@ class MealkitsController < ApplicationController
         end
     end
 
-    patch '/mealkits/:id/edit' do   #  patch request / edit action
+    patch '/mealkits/:id' do   #  patch request / edit action
       if logged_in?
         @customer = session[:customer_id]
         @mealkits = Mealkit.all
