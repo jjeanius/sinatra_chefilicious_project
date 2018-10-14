@@ -18,9 +18,7 @@ class MealkitsController < ApplicationController
   get '/customers/:id/mealkits' do   # get request / show one cusotmer mealkits
     if logged_in?
       @customer = Customer.find(session[:customer_id])
-      mealkit = Mealkit.create(:name =>params[:name], :ingredients =>params[:ingredients], :time =>params[:time], :serving_size =>params[:serving_size])
-      @customer.mealkits << mealkit.new
-      @customer.mealkits.save
+      @customer.mealkits
       erb :'/mealkits/by_customer'
     else
       erb :'/mealkits/index'
