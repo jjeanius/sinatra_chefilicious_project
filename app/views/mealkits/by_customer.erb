@@ -1,34 +1,26 @@
-<!DOCTYPE html>
-  <html>
-    <head>
-      <title> </title>
-    </head>
-          <form>
+<form>
+            <p> <h2> Welcome!  <%= current_customer.name %> </h2> </p>
+            <p> <h5> Username: <%= current_customer.username %> </p>
+            <p> Email: <%= current_customer.email %> </h5> </p>
             <br> </br>
             <p> <a href="/main_menu"> Main Menu </a> </p>
-              <br> </br> <h2> <p> Welcome, <%= @customer.name %> </p> </h2>
-                <p>  Here are   <%= @customer.name %>'s   Meal Kits: </p>
-                  <br> </br>
+            <p> <a href="/mealkits/logout"> Logout </a> </p>
+            <p>-------------------------------------------------------------------------------------------------------------------------------</p>
+              <h2> <p>  Here are   <%= @customer.name %>'s   Meal Kits: </p> </h2>
+              <br> </br>
 
-                  <h3> <% if flash.has?(:message) %>
-                    <%= flash[:message] %>
-                   <% end %> </h3>
+                <h3> <% if flash.has?(:message) %>
+                  <%= flash[:message] %>
+                <% end %> </h3>
 
-                   <input id="@mealkit_id" type="hidden" name="<%=@mealkit_id%>" > </input>
-             <p>-----------------------------------------------------------------------------------------------</p>
-                    <% @customer.mealkits.each do | mealkit | %>
+                  <% @customer.mealkits.each do | mealkit | %>
                     <p> Meal Kit Number: <%= mealkit.id %> <label> </p>
                     <p> Meal Kit Name: <%= mealkit.name %> </p>
                     <p> Ingredients: <%= mealkit.ingredients %> </p>
                     <p> Cooking Time: <%= mealkit.time %> </p>
                     <p> Serving Size: <%= mealkit.serving_size %> </p>
                     <br> </br>
-                    <form action="/customers/delete" method="delete">
-                    <input id="hidden" type="hidden" name="_method" value="delete">
-                    <p> <a href="/mealkits//delete"> Delete Meal Kit </a> </p>
-                    <p>-----------------------------------------------------------------------------------------------</p>
-                    <% end %>
-                <p> <a href="/mealkits/logout"> Logout </a> </p>
+                  <p> <a href="/mealkits/<%=@mealkits.id%>/delete"> Delete Meal Kit </a> </p>
+            <p>-----------------------------------------------------------------------------------------------</p>
+                <% end %>
         </form>
-      </body>
-  </html>

@@ -48,12 +48,12 @@ class CustomersController < ApplicationController
    end
 
    get '/logout' do
-      if logged_in?
+    #  if logged_in?
         session.destroy
         redirect '/login'
-      else
-        redirect '/main_menu'
-      end
+    #  else
+    #    redirect '/main_menu'
+    #  end
    end
 
 end

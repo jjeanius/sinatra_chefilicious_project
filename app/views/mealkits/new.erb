@@ -1,14 +1,11 @@
-<!DOCTYPE html>
-  <html>
-    <head>
-      <title> </title>
-    </head>
         <body>
           <form method="post" action="/mealkits/new">
             <br> </br>
-            <p> <a href="/main_menu"> Main Menu </a> </p>
+            <p> <h2> Welcome!  <%= current_customer.name %> </h2> </p>
+            <p> <h5> Username: <%= current_customer.username %> </p>
+            <p> Email: <%= current_customer.email %> </h5> </p>
               <br> </br>
-              <label><h2> <p> New Meal Kit </p> </h2></label>
+                <label><h2> <p> New Meal Kit </p> </h2></label>
                 <br> </br>
                 <p> <label> Meal Kit Name: <input type ="text" name="mealkit[name]"></label></p>
                 <br> </br>
@@ -21,8 +18,9 @@
                 <input type="submit"  value="   SUBMIT   ">
                 <br> </br>
                 <br> </br>
+                <p> <a href="/main_menu"> Main Menu </a> </p>
+                <br> </br>
               <a href="/mealkits/logout"> Logout </a> </p>
               <br> </br>
           </form>
         </body>
-    </html>
