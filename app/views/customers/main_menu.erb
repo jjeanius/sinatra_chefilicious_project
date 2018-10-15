@@ -1,20 +1,20 @@
-        <body>
-            <p> <h2> Welcome!  <%= current_customer.name %> </h2> </p>
-            <p> <h5> Username: <%= current_customer.username %> </p>
-            <p> Email: <%= current_customer.email %> </h5> </p>
-            <br> </br>
-              <h3> <% if flash.has?(:message) %>
-                <%= flash[:message] %> </h3>
-              <% end %>
+<body>
+          <p> <h2> Welcome!  <%= current_customer.name %> </h2> </p>
+          <p> <h5> Username: <%= current_customer.username %> </p>
+          <p> Email: <%= current_customer.email %> </h5> </p>
+          <br> </br>
+            <h3> <% if flash.has?(:message) %>
+              <%= flash[:message] %> </h3>
+            <% end %>
 
-              <p> <h2> Please make your selection: </h2>
-                <br> </br>
-                <p> <a href="/mealkits"> Delete a Meal Kit </a> </p>
-                <p> <a href="/mealkits/edit"> Edit a Meal Kit </a> </p>
-                <p> <a href="/mealkits/new"> Create a Meal Kit </a> </p>
-                <p> <a href="/mealkits"> All Meal Kits </a> </p>
-                <p> <a href="/customers/:id/mealkits"> Meal Kits by Customer </a> </p>
-                <p> <a href="/logout">Log Out</a> </p>
-                <br> </br>
-          </form>
-        </body>
+            <p> <h2> Please make your selection: </h2>
+              <br> </br>
+              <p> <a href="/mealkits/delete"> Delete a Meal Kit </a> </p>
+              <p> <a href="/mealkits/edit"> Edit a Meal Kit </a> </p>
+              <p> <a href="/mealkits/new"> Create a Meal Kit </a> </p>
+              <p> <a href="/mealkits"> All Meal Kits </a> </p>
+              <p> <a href="/mealkits/by_customer"> Meal Kits by Customer </a> </p>
+              <p> <a href="/logout">Log Out</a> </p>
+              <br> </br>
+        </form>
+      </body>

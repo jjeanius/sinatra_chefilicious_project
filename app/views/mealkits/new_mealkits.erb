@@ -5,7 +5,7 @@
               <p> <h5> Username: <%= current_customer.username %> </p>
               <p> Email: <%= current_customer.email %> </h5> </p>
               <br> </br>
-
+              <p> <a href="/main_menu"> Main Menu </a> </p>
                 <br> </br>
                   <label> <h2> <p> New Meal Kit </p> </h2></label>
 
@@ -20,10 +20,6 @@
                     <p> <label> Ingredients :  <%=@mealkit.ingredients %> </label></p>
                     <p> <label> Cooking Time: <%=@mealkit.time %> minutes </label> </p>
                     <p> <label> Serving Size:  <%=@mealkit.serving_size %> people </label> </p>
-                    <br> </br>
-
-
-                    <p> <a href="/main_menu"> Main Menu </a> </p>
                     <br> </br>
                     <p> <a href = "/mealkits/new"> Create Meal Kit</a> </p>
                     <br> </br>
