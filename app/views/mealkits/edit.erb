@@ -10,10 +10,8 @@
         <p> <a href="/mealkits/logout"> Logout </a> </p>
 
         <p>-----------------------------------------------------------------------------------------------</p>
-        <p> <h2> Edit Meal Kid </h2> </p>
+        <p> <h2> Edit Meal Kit </h2> </p>
 
-
-      <p>-----------------------------------------------------------------------------------------------</p>
           <% @mealkits.each do | mealkit | %>
             <p> Meal Kit Number:   <%= mealkit.id %></p>
             <p> Meal Kit Name:   <input type ="text" name= "mealkit.name"  value = "<%= mealkit.name %>">

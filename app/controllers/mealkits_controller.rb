@@ -56,12 +56,13 @@ class MealkitsController < ApplicationController
     end
   end
 
-  patch '/mealkits/:id/by_customer' do   #  patch request / edit action 2/2
+  patch '/mealkits/' do   #  patch request / edit action 2/2
     @mealkit = Mealkit.find_by(params[:id])
-    @mealkit.update(params[:mealkit])
+  #  @mealkit.update(:mealkit =>params[:mealkit])
+     @mealkit.update(:name =>params[:name], :ingredients =>params[:ingredients], :time =>params[:time], :serving_size =>params[:serving_size])
       @mealkit.save
 
-    redirect to ("/mealkits/:id/by_customer")
+    redirect to ("/mealkits/by_customer")
     flash[:message] = "Successfully updated!"
   end
 
