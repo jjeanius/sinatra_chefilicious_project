@@ -62,9 +62,25 @@ class MealkitsController < ApplicationController
      @mealkit.update(:name =>params[:name], :ingredients =>params[:ingredients], :time =>params[:time], :serving_size =>params[:serving_size])
       @mealkit.save
 
-    redirect to ("/mealkits/by_customer")
+    redirect to ("/mealkits/update")
     flash[:message] = "Successfully updated!"
   end
+
+  get '/mealkits/update' do    #   get requst/ update action
+    if logged_in?
+      @customer = current_customer
+      @mealkit = Mealkit.find_by(params[:id], params[:name])
+      erb :'mealkits/update'
+    else
+      redirect to '/mealkits/edit'
+    end
+  end
+
+
+
+
+
+
 
   get '/mealkits/delete' do
     @mealkit = Mealkit.find_by(params[:id])
