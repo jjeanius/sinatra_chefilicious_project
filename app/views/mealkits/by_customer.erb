@@ -1,21 +1,21 @@
 <form>
-<p> <h2> Welcome!  <%= current_customer.name %> </h2> </p>
-<p> <h5> Username: <%= current_customer.username %> </p>
-<p> Email: <%= current_customer.email %> </h5> </p>
-<br> </br>
-<p> <a href="/main_menu"> Main Menu </a> </p>
-<p> <a href="/mealkits/logout"> Logout </a> </p>
-<p>-------------------------------------------------------------------------------------------------------------------------------</p>
-<h2> <p>  Here are   <%= @customer.name %>'s   Meal Kits: </p> </h2>
-<br> </br>
-<% @customer.mealkits.each do | mealkit | %>
-<p> Meal Kit Number: <%= mealkit.id %> <label> </p>
-<p> Meal Kit Name: <%= mealkit.name %> </p>
-<p> Ingredients: <%= mealkit.ingredients %> </p>
-<p> Cooking Time: <%= mealkit.time %>    Minutes </p>
-<p> Serving Size: <%= mealkit.serving_size %>    People</p>
-<br> </br>
-<p> <a href="/mealkits/delete"> Delete Meal Kit </a> </p>
-<p>-----------------------------------------------------------------------------------------------</p>
-<% end %>
+  <p> <h2> Welcome!  <%= current_customer.name %> </h2> </p>
+  <p> <h5> Username: <%= current_customer.username %> </p>
+  <p> Email: <%= current_customer.email %> </h5> </p>
+    <br> </br>
+    <p> <a href="/main_menu"> Main Menu </a> </p>
+    <p> <a href="/mealkits/logout"> Logout </a> </p>
+    <p>-------------------------------------------------------------------------------------------------------------------------------</p>
+      <h2> <p>  Here are   <%= @customer.name %>'s   Meal Kits: </p> </h2>
+        <br> </br>
+          <% @customer.mealkits.each do | mealkit | %>
+            <p> Meal Kit Number: <%= mealkit.id %> <label> </p>
+            <p> Meal Kit Name: <%= mealkit.name %> </p>
+            <p> Ingredients: <%= mealkit.ingredients %> </p>
+            <p> Cooking Time: <%= mealkit.time %>    Minutes </p>
+            <p> Serving Size: <%= mealkit.serving_size %>    People</p>
+        <br> </br>
+      <p> <a href="/mealkits/delete"> Delete Meal Kit </a> </p>
+    <p>-----------------------------------------------------------------------------------------------</p>
+        <% end %>
 </form>
