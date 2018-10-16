@@ -1,4 +1,4 @@
-<form>
+
 Here are the functionalities of my application:
 
 A)	Folder:  view/customers/
@@ -45,5 +45,3 @@ c)	   edit.rb and update.erb  (Edit a Meal Kit)
 d)	   delete.erb  (Delete a Meal Kit)
 •	It allows a customer to delete his/her’s meal kit
 •	It allows a customer the following options: Main Menu, Logout and Delete a Meal Kit
-
-</form>

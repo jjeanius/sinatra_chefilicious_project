@@ -55,10 +55,4 @@ class CustomersController < ApplicationController
     #    redirect '/main_menu'
     #  end
    end
-
-   get '/wireframe' do
-     erb :'/wireframe'
-
-     end
-
 end
