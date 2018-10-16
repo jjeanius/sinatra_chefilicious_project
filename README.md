@@ -7,9 +7,15 @@ And then execute:
 $ bundle
 Or install it yourself as:
 $ gem install sinatra_chefilicious_project
-Usage
-TODO: Write usage instructions here
 
+OR
+
+GitHub website - https://github.com/jjeanius/sinatra_chefilicious_project
+Use an SSH key and passphrase from account to clone this project
+In your terminal, please type in:  git clone git@github.com:jjeanius/sinatra_chefilicious_project.git  <ENTER>
+CD to the project root directory - example:  cd_sinatra_chefilicious_project  <ENTER>
+Type 'bundle install'
+Type 'shotgun' to see this project in the browser
 
 Development -
 After checking out the repo, run bin/setup to install dependencies. You can also run bin/console for an interactive prompt that will allow you to experiment.
@@ -19,7 +25,8 @@ Contributing -
 Bug reports and pull requests are welcome on GitHub at https://github.com/'jjeanius'/sinatra_chefilicious_project. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the Contributor Covenant code of conduct.
 
 License -
-The gem is available as open source under the terms of the MIT License.  Please visit <a href="license.md">License</a> for more information.
+The gem is available as open source under the terms of the MIT License.  Please visit
+<a href="license.md">License</a> for more information.
 
 Code of Conduct -
 Everyone interacting in the sinatra_chefilicious_project's codebases, issue trackers, chat rooms and mailing lists is expected to follow the code of conduct.  Please visit <a href="code_of_conduct.md">Code of Conduct</a> for more information.
