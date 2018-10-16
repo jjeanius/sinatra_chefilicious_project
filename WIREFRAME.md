@@ -1,48 +1,49 @@
-Here are the functionalities of the application:
-
+<form>
 Here are the functionalities of my application:
 
-View/Customers:
-a)	Signup.rb
-•	It renders a signup form and it allows a customer to input, name, username, email address and password
-•	The customer should be a new user; there should not be any repeat username and email address
-•	After customer complete the signup page, it will direct the customer to the ‘
-•	customers/show.rb’
-•	It does not allow customer to signup again
+A)	Folder:  view/customers/
+a)	signup.rb  (Signup)
+•	It allows a customer to signup by inputting, name, username, email address and password
+•	After customer complete the signup page, it will direct the customer to the customers/main_menu
+•	It provide a Login link to the Login form
+•	After signup, it provides a flash message such as "Thanks for signing up!" or “Please sign up!”
 
-b)	Login.rb
-•	It renders a login view that allows a customer to login by inputting username and password
-•	The username (or email address) and password cannot be blank or incorrect
-•	After verification, it will direct the customer to the ‘customers/show.rb’
-•	It does not allow a customer to login or signup again
+b)	login.rb  (Login)
+•	It renders a login view that allows a customer to login by inputting username  and password
+•	The username and password cannot be blank or incorrect
+•	After verification, it will direct the customer to the ‘customers/main_menu.erb’
+•	It provide a Sign Up link to the Signup form
+•	After login, it provides a flash message such as "Successfully Login!"
 
-c)	Main_Menu.rb
-•	It renders a show view that allows a customer to choose the following options: Delete; Edit; New; Show or logout
+c)	main_menu.rb  (Main Menu)
+•	It renders a main menu view that allows a customer to choose the following options:
+1)	Create a Meal Kit
+2)	Report – All Meal Kits
+3)	Report – Meal Kits by Customer
+4)	Edit a Meal Kit
+5)	Delete a Meal Kit
+6)	Logout
 
+B)	Folder:  view/mealkits/
+a)	  new.rb and new_mealkit.erb  (Create a Meal Kit)
+•	It renders a create a new meal kit form that allows a customer to create a new mealkit
+•	It provides a customer the following options: Main Menu and Logout
+•	It provides a flash message: "Successfully created a Meal Kit!"
 
-d)	 Update.rb
-•	It renders a customer information, that allows a customer to update the information
-•	It provides a flash message such as “You are about to change the information” and request for confirmation
-•	After update, it renders a revised Show.rb
+b)	   Index.erb and by_customer.erb (Reports)
+•	index.erb - It renders  a view that allows a customer to see all the meal kits.  It also provides a customer the following options: Main Menu and Logout
+•	by_customer.erb – It renders a view that allows a customer to see only his/her meal kits.  It provides a customer the following options: Main Menu, Delete and Logout
 
-Views/Mealkits:
-a)	Delete.rb
-•	It renders a delete view
-•	It allows a customer to find a mealkit and delete a mealkit
-•	It directs a customer to show mealkits.rb
-•	It allows a customer the following options: logout; edit; new; show_mealkit; customers/show; customers/update
+c)	   edit.rb and update.erb  (Edit a Meal Kit)
+•	It allows a customer to edit only his or her meal kit
+•	A customer can edit the following information in edit.erb: ingredients, cooking and serving size.
+•	edit.erb provides a customer the following options: Main Menu, Logout and Delete a Meal Kit
+•	It provides a flash message: "Successfully updated!"
+•	After update, it renders and update.erb view
+•	update.erb provides a customer the following option: Main Menu, Logout and Edit a Meal Kit
 
-b)	Edit.rb
-•	It renders an edit view with all the mealkits
-•	It allows a customer to edit a mealkit
-•	The edit mealkit has the following options: name, ingredients, and serving size
-•	It directs a customer to show_mealkit.rb
-•	It provides a customer the following options: logout; delete; new; show_mealkit; customers/show; customers/update
+d)	   delete.erb  (Delete a Meal Kit)
+•	It allows a customer to delete his/her’s meal kit
+•	It allows a customer the following options: Main Menu, Logout and Delete a Meal Kit
 
-c)	  New.rb
-•	It renders a new view that allows a customer to make a new mealkit
-•	It provides a customer the following options: logout; delete; edit; show_mealkit; customers/show; customers/update
-
-d)	   Show_Mealkits.rb
-•	It renders a show_mealkits view that allows a customer to see all the orders
-•	It provides a customer the following options: logout; delete; edit; new; customers/show; customers/update
+</form>

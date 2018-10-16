@@ -38,7 +38,7 @@ class CustomersController < ApplicationController
          session[:customer_id] = @customer.id
          redirect "/main_menu"
        else
-         flash[:message] = "Please Login"
+         flash[:message] = "Successfully Login!"
            redirect "/signup"
        end
    end
@@ -55,5 +55,10 @@ class CustomersController < ApplicationController
     #    redirect '/main_menu'
     #  end
    end
+
+   get '/wireframe' do
+     erb :'/wireframe'
+
+     end
 
 end

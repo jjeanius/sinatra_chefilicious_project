@@ -1,0 +1,58 @@
+<form>
+  <br> </br>
+  <p> <a href="/main_menu"> Main Menu </a> </p>
+  <br> </br>
+  <p> <a href="/logout">Log Out</a> </p>
+  <br> </br>
+<p> <h2>   Here are the functionalities of Sinatra Cheficilious Application: </h2> </p>
+<p> <h3>   I)	Folder:  view/customers/ </h3> </p>
+<p>  <h3>  a)	signup.rb  (Signup) </h3> </p>
+<p>    •	It allows a customer to signup by inputting, name, username, email address and password  </p>
+<p>    •	After customer complete the signup page, it will direct the customer to the customers/main_menu  </p>
+<p>    •	It provide a Login link to the Login form  </p>
+<p>    •	After signup, it provides a flash message such as "Thanks for signing up!" or “Please sign up!”  </p>
+<br> </br>
+<p> <h3>   b)	login.rb  (Login)  </h3> </p>
+<p>    •	It renders a login view that allows a customer to login by inputting username and word  </p>
+<p>    •	The username and password cannot be blank or incorrect  </p>
+<p>    •	After verification, it will direct the customer to the ‘customers/main_menu.erb’  </p>
+<p>    •	It provide a Sign Up link to the Signup form  </p>
+<p>    •	After login, it provides a flash message such as "Successfully Login!"  </p>
+<br> </br>
+<p>  <h3>  c)	main_menu.rb  (Main Menu) </h3> </p>
+<p>    •	It renders a main menu view that allows a customer to choose the following options: </h3> </p>
+<p>    1)	Create a Meal Kit  </p>
+<p>    2)	Report – All Meal Kits  </p>
+<p>    3)	Report – Meal Kits by Customer> </p>
+<p>    4)	Edit a Meal Kit  </p>
+<p>    5)	Delete a Meal Kit  </p>
+<p>    6)	Logout </h3>
+<p>    B)	Folder:  view/mealkits/  </p>
+<p>    a) new.rb and new_mealkit.erb  (Create a Meal Kit)  </p>
+<p>    •	It renders a create a new meal kit form that allows a customer to create a new mealkit> </p>
+<p>    •	It provides a customer the following options: Main Menu and Logout  </p>
+<p>    •	It provides a flash message: "Successfully created a Meal Kit!"  </p>
+<br> </br>
+<p> <h3> II)	Folder:  view/mealkits/ </h3>
+<p>  <h3>  a)	  new.rb and new_mealkit.erb  (Create a Meal Kit) </h3>
+<p>    •	It renders a create a new meal kit form that allows a customer to create a new mealkit
+<p>    •	It provides a customer the following options: Main Menu and Logout
+<p>    •	It provides a flash message: "Successfully created a Meal Kit!"
+  <br> </br>
+<p> <h3>    b)	Index.erb and by_customer.erb (Reports) </h3>  </p>
+<p>    •	index.erb - It renders  a view that allows a customer to see all the meal kits.  It also provides a customer the following options: Main Menu and Logout  </p>
+<p>    •	by_customer.erb – It renders a view that allows a customer to see only his/her meal kits.  It provides a customer the following options: Main Menu, Delete and Logout  </p>
+<br> </br>
+<p> <h3>    c)	   edit.rb and update.erb  (Edit a Meal Kit) </h3>  </p>
+<p>    •	It allows a customer to edit only his or her meal kit  </p>
+<p>    •	A customer can edit the following information in edit.erb: ingredients, cooking and serving size.  </p>
+<p>    •	edit.erb provides a customer the following options: Main Menu, Logout and Delete a Meal Kit  </p>
+<p>    •	It provides a flash message: "Successfully updated!"  </p>
+       •	update.erb provides a customer the following option: Main Menu, Logout and Edit a Meal Kit  </p>
+       <br> </br>
+<p> <h3>    d)	   delete.erb  (Delete a Meal Kit)  </h3> </p>
+<p>    •	It allows a customer to delete his/her’s meal kit  </p>
+<p>    •	It allows a customer the following options: Main Menu, Logout and Delete a Meal Kit  </p>
+<br> </br>
+<br> </br>
+</form>
