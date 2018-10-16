@@ -8,7 +8,7 @@
 <p>-------------------------------------------------------------------------------------------------------------------------------</p>
 <h2> <p>  Here are   <%= @customer.name %>'s   Meal Kits: </p> </h2>
 <br> </br>
-% @customer.mealkits.each do | mealkit | %>
+<% @customer.mealkits.each do | mealkit | %>
 <p> Meal Kit Number: <%= mealkit.id %> <label> </p>
 <p> Meal Kit Name: <%= mealkit.name %> </p>
 <p> Ingredients: <%= mealkit.ingredients %> </p>
