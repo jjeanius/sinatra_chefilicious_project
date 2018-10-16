@@ -76,12 +76,6 @@ class MealkitsController < ApplicationController
     end
   end
 
-
-
-
-
-
-
   get '/mealkits/delete' do
     @mealkit = Mealkit.find_by(params[:id])
     @mealkit.delete

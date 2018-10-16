@@ -14,15 +14,14 @@
 
           <% @mealkits.each do | mealkit | %>
             <p> Meal Kit Number:   <%= mealkit.id %></p>
-            <p> Meal Kit Name:   <input type ="text" name= "new_mealkitsmealkit[name]"  value = "<%= mealkit.name %>">
-            <p> Ingredients:  <input type ="text" name= "new_mealkitsmealkit[ingredients]" value= "<%= mealkit.ingredients %>" >
-            <p> Cooking Time:  <input type ="text" name= "new_mealkitsmealkit[time]" value= "<%= mealkit.time %>" >
-            <p> Serving Size:  <input type ="text" name= "new_mealkit[serving_size]" value= "<%= mealkit.serving_size %>"></input></p>
+            <p> Meal Kit Name:   <%= mealkit.name %>
+            <p> Ingredients:  <input type ="text" name= "mealkit[ingredients]" value= "<%= mealkit.ingredients %>" >
+            <p> Cooking Time:  <input type ="text" name= "mealkit[time]" value= "<%= mealkit.time %>" >
+            <p> Serving Size:  <input type ="text" name= "mealkit[size]" value= "<%= mealkit.serving_size %>"></input></p>
             <br> </br>
             <input type="submit" name="submit" value="   SUBMIT   "> </input>
             <br> </br>
       <p>-----------------------------------------------------------------------------------------------</p>
             <br> </br>
-            <p> <a href="/mealkits/<%=@mealkit_id%>/delete"> Delete Meal Kit </a> </p>
           <% end %>
 </body>
