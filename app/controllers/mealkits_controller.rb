@@ -56,14 +56,15 @@ class MealkitsController < ApplicationController
     end
   end
 
-  patch '/mealkits/' do   #  patch request / edit action 2/2
-    @mealkit = Mealkit.find_by(params[:id])
+  patch '/mealkits/:id' do   #  needs to match action of form submitted for get mealkits/edit
+    #binding.pry
+    @mealkit = Mealkit.find_by(id: params[:id]) # now id is no longer nil because it is part of line 59
   #  @mealkit.update(:mealkit =>params[:mealkit])
-     @mealkit.update(:name =>params[:name], :ingredients =>params[:ingredients], :time =>params[:time], :serving_size =>params[:serving_size])
-      @mealkit.save
-
-    redirect to ("/mealkits/update")
+     @mealkit.update(ingredients: params[:mealkit][:ingredients], time: params[:mealkit][:time], serving_size: params[:mealkit][:size])
+     @mealkit.save
     flash[:message] = "Successfully updated!"
+    redirect to ("/mealkits/update")
+
   end
 
   get '/mealkits/update' do    #   get requst/ update action

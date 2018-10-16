@@ -1,28 +1,31 @@
-<body>
-  <form method="post" action="/mealkits/<%=@mealkit_id%>">
+ <h2> Welcome!  <%= current_customer.name %> </h2>
+ <h5> Username: <%= current_customer.username %> </h5>
+ <h5> Email: <%= current_customer.email %> </h5>
+
+ <p> <a href="/main_menu"> Main Menu </a> </p>
+ <p> <a href="/mealkits/logout"> Logout </a> </p>
+
+<% @mealkits.each do |mealkit| %>
+  <h2> Edit Meal Kit </h2>
+  <form method="post" action="/mealkits/<%=mealkit.id%>">
     <input id="hidden" type="hidden" name="_method" value="patch">
     <br> </br>
-      <p> <h2> Welcome!  <%= current_customer.name %> </h2> </p>
-      <p> <h5> Username: <%= current_customer.username %> </p>
-      <p> Email: <%= current_customer.email %> </h5> </p>
+    <p> Meal Kit Number:   <%= mealkit.id %></p>
+    <p> Meal Kit Name:   <%= mealkit.name %>
+    <p> Ingredients:  <input type ="text" name= "mealkit[ingredients]" value= "<%= mealkit.ingredients %>" >
+    <p> Cooking Time:  <input type ="text" name= "mealkit[time]" value= "<%= mealkit.time %>" >
+    <p> Serving Size:  <input type ="text" name= "mealkit[size]" value= "<%= mealkit.serving_size %>"></input></p>
+
+    <br> </br>
+    <input type="submit" name="submit" value="   SUBMIT   "> </input>
+      </form>
+    <br> </br>
+    <br> </br>
+    <p> <a href="/mealkits/delete"> Delete Meal Kit </a> </p>
       <br> </br>
-      <p> <a href="/main_menu"> Main Menu </a> </p>
-        <p> <a href="/mealkits/logout"> Logout </a> </p>
-          <p>-----------------------------------------------------------------------------------------------</p>
-            <p> <h2> Edit Meal Kit </h2> </p>
-              <% @mealkits.each do | mealkit | %>
-                <p> Meal Kit Number:   <%= mealkit.id %></p>
-                <p> Meal Kit Name:   <%= mealkit.name %>
-                <p> Ingredients:  <input type ="text" name= "mealkit[ingredients]" value= "<%= mealkit.ingredients %>" >
-                <p> Cooking Time:  <input type ="text" name= "mealkit[time]" value= "<%= mealkit.time %>" >
-                <p> Serving Size:  <input type ="text" name= "mealkit[size]" value= "<%= mealkit.serving_size %>"></input></p>
-                <br> </br>
-              <input type="submit" name="submit" value="   SUBMIT   "> </input>
-              <br> </br>
-           <br> </br>
-          <p> <a href="/mealkits/delete"> Delete Meal Kit </a> </p>
-        <p>-----------------------------------------------------------------------------------------------</p>
-      <br> </br>
-          <% end %>
-  </form>
-</body>
+
+    <% end %>
+
+<p>-----------------------------------------------------------------------------------------------</p>
+    <p> <a href="/main_menu"> Main Menu </a> </p>
+      <p> <a href="/mealkits/logout"> Logout </a> </p>
