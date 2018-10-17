@@ -34,13 +34,12 @@ b)	   Index.erb and by_customer.erb (Reports)
 •	index.erb - It renders  a view that allows a customer to see all the meal kits.  It also provides a customer the following options: Main Menu and Logout
 •	by_customer.erb – It renders a view that allows a customer to see only his/her meal kits.  It provides a customer the following options: Main Menu, Delete and Logout
 
-c)	   edit.rb and update.erb  (Edit a Meal Kit)
+c)	   edit.rb and by_customer.erb  (Edit a Meal Kit)
 •	It allows a customer to edit only his or her meal kit
 •	A customer can edit the following information in edit.erb: ingredients, cooking and serving size.
 •	edit.erb provides a customer the following options: Main Menu, Logout and Delete a Meal Kit
 •	It provides a flash message: "Successfully updated!"
-•	After update, it renders and update.erb view
-•	update.erb provides a customer the following option: Main Menu, Logout and Edit a Meal Kit
+•	After update, it renders by_customer.erb view
 
 d)	   delete.erb  (Delete a Meal Kit)
 •	It allows a customer to delete his/her’s meal kit

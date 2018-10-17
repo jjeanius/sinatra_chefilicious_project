@@ -7,7 +7,7 @@
  <p> <a href="/mealkits/logout"> Logout </a> </p>
  <br> </br>
 
-<% @mealkits.each do |mealkit| %>
+<% @customer.mealkits.each do |mealkit| %>
   <h2> Edit Meal Kit </h2>
   <form method="post" action="/mealkits/<%=mealkit.id%>">
     <input id="hidden" type="hidden" name="_method" value="patch">

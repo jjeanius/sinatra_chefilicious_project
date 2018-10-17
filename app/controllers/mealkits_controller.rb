@@ -4,11 +4,6 @@ class MealkitsController < ApplicationController
 
   use Rack::Flash
 
-  get '/mealkits' do   #  get request / show all mealkit action
-    @customer = Customer.find(session[:customer_id])
-    @mealkits = Mealkit.all
-    erb :'/mealkits/index'
-  end
 
   get '/mealkits/new' do     # get requst /new action to create mealkit  1/3
     if logged_in?
@@ -37,18 +32,12 @@ class MealkitsController < ApplicationController
     erb :'/mealkits/new_mealkits'
   end
 
-  get '/mealkits/by_customer' do   # get request / show one cusotmer mealkits
-    if logged_in?
-      @customer = Customer.find(session[:customer_id])
-      @customer.mealkits
-      erb :'/mealkits/by_customer'
-    end
-  end
+ #  new mealkit params = params  => {"mealkit"=> {"name"=>"Pasta & Meatballs", "ingredients"=>"Pasta, Meatballs, Sauce", "time"=>"25", "serving_size"=>"4"}, "id"=>"new"}
 
   get '/mealkits/edit' do    # get request/ load edit action   1/2
     if logged_in?
-      @current = current_customer
-      @mealkits = Mealkit.all
+      @customer = current_customer
+      mealkits = Mealkit.all
       @mealkit = Mealkit.find_by(params[:id])  # @mealkit = Mealkit.find_by_id(params["mealkit.id"])
       erb :'mealkits/edit'
     else
@@ -57,24 +46,27 @@ class MealkitsController < ApplicationController
   end
 
   patch '/mealkits/:id' do   #  patch request / edit action 2/2 it needs to match action of form submitted for get mealkit/edit
+    binding.pry
     @mealkit = Mealkit.find_by(id: params[:id])   #now id is no longer nil because it is part of line 59
     #@mealkit.update(mealkit: params[:mealkit])
     @mealkit.update(name: params[:mealkit][:name], ingredients: params[:mealkit][:ingredients], time: params[:mealkit][:time], serving_size: params[:mealkit][:serving_size])
     @mealkit.save
 
     flash[:message] = "Successfully updated!"
-    redirect to ("/mealkits/update")
+    redirect to ("/mealkits/by_customer")
   end
 
-  get '/mealkits/update' do    #   get requst/ update action
-    if logged_in?
-      @customer = current_customer
-      @mealkit = Mealkit.find_by(params[:id], params[:name])
-      erb :'mealkits/update'
-    else
-      redirect to '/mealkits/edit'
-    end
-  end
+#  params = {"_method"=>"patch", "mealkit"=> {"name"=>"BBQ Ribs with Sweet & Smokey Sauce", "ingredients"=>"BBQ, Ribs, Sweet & Smokey Sauce", "time"=>"60", "serving_size"=>"10"}, "submit"=>"   SUBMIT   "  "id"=>"341"}
+
+#  get '/mealkits/update' do    #   get requst/ update action
+#    if logged_in?
+#      @customer = current_customer
+#      @mealkit = Mealkit.find_by(params[:id], params[:name])
+#      erb :'/mealkits/update'
+#    else
+#      redirect to '/mealkits/edit'
+#    end
+#  end
 
   get '/mealkits/delete' do
     @mealkit = Mealkit.find_by(params[:id])
@@ -82,7 +74,21 @@ class MealkitsController < ApplicationController
     redirect to '/mealkits/by_customer'
   end
 
-  get '/mealkits/logout' do
+  get '/mealkits' do   #  get request / show all mealkit action
+    @customer = Customer.find(session[:customer_id])
+    @mealkits = Mealkit.all
+    erb :'/mealkits/index'
+  end
+
+  get '/mealkits/by_customer' do   # get request / show one cusotmer mealkits
+    if logged_in?
+      @customer = Customer.find(session[:customer_id])
+      @customer.mealkits
+      erb :'/mealkits/by_customer'
+    end
+  end
+
+ get '/mealkits/logout' do
     if logged_in?
       session.destroy
       redirect "/login"
