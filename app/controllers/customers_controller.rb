@@ -5,11 +5,7 @@ class CustomersController < ApplicationController
   use Rack::Flash
 
   get '/signup' do      #  signup/get request/create action
-    if logged_in? && @customer = current_customer
-      redirect "/main_menu"
-    else
       erb :'customers/signup'
-    end
   end
 
   post '/signup' do     #    signup/get request create action
@@ -48,11 +44,7 @@ class CustomersController < ApplicationController
    end
 
    get '/logout' do
-    #  if logged_in?
         session.destroy
         redirect '/login'
-    #  else
-    #    redirect '/main_menu'
-    #  end
    end
 end
