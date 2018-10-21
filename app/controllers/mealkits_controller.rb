@@ -69,22 +69,20 @@ class MealkitsController < ApplicationController
 
 
   delete '/mealkits/:id/delete' do      #post '/mealkits/:id/delete' do     #  post request / delete a mealkit action
-#    if logged_in?
+    if logged_in?
       @mealkit = Mealkit.find_by(id: params[:id])
-  #    if @mealkit && @mealkit.cusotmer == current_customer
         @mealkit.destroy
-        redirect '/mealkits/:id/delete'
-#      else
-#        redirect "/customers/login"
-#      end
-#    end
+        redirect '/mealkits/:id'
+    else
+        redirect "/customers/login"
+    end
   end
 
  get '/mealkits/logout' do
-    if logged_in?
+   if logged_in?
       session.destroy
       redirect "/login"
-    end
   end
+end
 
 end

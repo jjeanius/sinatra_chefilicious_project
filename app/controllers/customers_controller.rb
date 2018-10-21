@@ -5,7 +5,7 @@ class CustomersController < ApplicationController
   use Rack::Flash
 
   get '/signup' do      #  signup/get request/create action
-      erb :'customers/signup'
+    erb :'customers/signup'
   end
 
   post '/signup' do     #    signup/get request create action
@@ -43,8 +43,9 @@ class CustomersController < ApplicationController
      erb :'/customers/main_menu'
    end
 
-   get '/logout' do
-        session.destroy
-        redirect '/login'
-   end
+  get '/logout' do
+    session.destroy
+    redirect '/login'
+  end
+
 end
