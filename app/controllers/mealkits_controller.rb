@@ -32,8 +32,6 @@ class MealkitsController < ApplicationController
     erb :'/mealkits/new_mealkits'
   end
 
- #  new mealkit params = params  => {"mealkit"=> {"name"=>"Pasta & Meatballs", "ingredients"=>"Pasta, Meatballs, Sauce", "time"=>"25", "serving_size"=>"4"}, "id"=>"new"}
-
   get '/mealkits/edit' do    # get request/ load edit action   1/2
     if logged_in?
       @customer = current_customer
@@ -54,32 +52,32 @@ class MealkitsController < ApplicationController
     redirect to ("/mealkits/by_customer")
   end
 
-  post '/mealkits/:id/delete' do      #post '/mealkits/:id/delete' do     #  post request / delete a mealkit action
-binding.pry
-    if logged_in?
-      @mealkit = Mealkit.find_by(id: params[:id])
-      if @mealkit && @mealkit.cusotmer == current_customer
-        @mealkit.destroy
-        redirect '/mealkitsr/:id/delete'
-      else
-        redirect "/customers/login"
-      end
-    end
-"put"
-  end
-
   get '/mealkits' do   #  get request / show all mealkit action
     @customer = Customer.find(session[:customer_id])
     @mealkits = Mealkit.all
     erb :'/mealkits/index'
   end
 
-  get '/mealkits/by_customer' do   # get request / show one cusotmer mealkits
+  get '/mealkits/:id' do   # get request / show one cusotmer mealkits
     if logged_in?
       @customer = Customer.find(session[:customer_id])
+      mealkit = Mealkit.find_by(id: params[:id])
       @customer.mealkits
       erb :'/mealkits/by_customer'
     end
+  end
+
+
+  delete '/mealkits/:id/delete' do      #post '/mealkits/:id/delete' do     #  post request / delete a mealkit action
+#    if logged_in?
+      @mealkit = Mealkit.find_by(id: params[:id])
+  #    if @mealkit && @mealkit.cusotmer == current_customer
+        @mealkit.destroy
+        redirect '/mealkits/:id/delete'
+#      else
+#        redirect "/customers/login"
+#      end
+#    end
   end
 
  get '/mealkits/logout' do

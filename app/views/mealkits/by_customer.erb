@@ -9,13 +9,18 @@
       <h2> <p>  Here are   <%= @customer.name %>'s   Meal Kits: </p> </h2>
         <br> </br>
           <% @customer.mealkits.each do | mealkit | %>
+          <form action="/mealkits/<%=mealkit.id%>/delete" method="post">
             <p> Meal Kit Number: <%= mealkit.id %> <label> </p>
             <p> Meal Kit Name: <%= mealkit.name %> </p>
             <p> Ingredients: <%= mealkit.ingredients %> </p>
             <p> Cooking Time: <%= mealkit.time %>    Minutes </p>
             <p> Serving Size: <%= mealkit.serving_size %>    People</p>
-        <br> </br>
-      <p> <a href="/mealkits/:id/delete"> Delete Meal Kit </a> </p>
+          <br> </br>
+        <input id="delete" type="hidden" name="_method" value="delete">
+      <input type="submit" value="     DELETE     ">
+      <br> </br>
+    <br> </br>
+</form>
     <p>-----------------------------------------------------------------------------------------------</p>
         <% end %>
 </form>
