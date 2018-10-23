@@ -43,7 +43,7 @@ class CustomersController < ApplicationController
      erb :'/customers/main_menu'
    end
 
-  get '/logout' do
+  get '/customers/logout' do
     session.destroy
     redirect '/login'
   end

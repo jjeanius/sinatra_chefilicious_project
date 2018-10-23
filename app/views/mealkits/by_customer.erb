@@ -1,26 +1,32 @@
-<form>
   <p> <h2> Welcome!  <%= current_customer.name %> </h2> </p>
   <p> <h5> Username: <%= current_customer.username %> </p>
   <p> Email: <%= current_customer.email %> </h5> </p>
     <br> </br>
     <p> <a href="/main_menu"> Main Menu </a> </p>
     <p> <a href="/mealkits/logout"> Logout </a> </p>
+    <br> </br>
+    <br> </br>
+      <h3> <% if flash.has?(:message) %>
+         <%= flash[:message] %>
+      <% end %> </h3>
     <p>-------------------------------------------------------------------------------------------------------------------------------</p>
       <h2> <p>  Here are   <%= @customer.name %>'s   Meal Kits: </p> </h2>
         <br> </br>
           <% @customer.mealkits.each do | mealkit | %>
-          <form action="/mealkits/<%=mealkit.id%>/delete" method="post">
-            <p> Meal Kit Number: <%= mealkit.id %> <label> </p>
-            <p> Meal Kit Name: <%= mealkit.name %> </p>
-            <p> Ingredients: <%= mealkit.ingredients %> </p>
-            <p> Cooking Time: <%= mealkit.time %>    Minutes </p>
-            <p> Serving Size: <%= mealkit.serving_size %>    People</p>
-          <br> </br>
-        <input id="delete" type="hidden" name="_method" value="delete">
-      <input type="submit" value="     DELETE     ">
-      <br> </br>
-    <br> </br>
-</form>
+            <form action="/mealkits/<%=mealkit.id%>/delete" method="post">
+            <input id="delete" type="hidden" name="_method" value="delete">
+              <p> Meal Kit Number: <%= mealkit.id %> <label> </p>
+              <p> Meal Kit Name: <%= mealkit.name %> </p>
+              <p> Ingredients: <%= mealkit.ingredients %> </p>
+              <p> Cooking Time: <%= mealkit.time %>    Minutes </p>
+              <p> Serving Size: <%= mealkit.serving_size %>    People</p>
+              <br> </br>
+            <br> </br>
     <p>-----------------------------------------------------------------------------------------------</p>
         <% end %>
+      <input type="submit" value="     DELETE     ">  </input>
+      <br> </br>
+      <br> </br>
+    <p> <a href="/main_menu"> Main Menu </a> </p>
+  <p> <a href="/mealkits/logout"> Logout </a> </p>
 </form>
