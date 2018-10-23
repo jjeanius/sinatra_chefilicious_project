@@ -76,6 +76,7 @@ class MealkitsController < ApplicationController
     delete '/mealkits/:id/delete' do      #post '/mealkits/:id/delete' do     #  post request / delete a mealkit action
       mealkit = Mealkit.find_by(id: params[:id])
         mealkit.delete
+
         flash[:message] = "Meal Kit #{mealkit.id} is deleted!"
         redirect to '/mealkits/by_customer'
     end
