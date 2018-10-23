@@ -16,9 +16,9 @@ class MealkitsController < ApplicationController
   post '/mealkits/:id' do    # post request / new action to post the new mealkit   2/3
     if !params[:mealkit].empty?    # true
       @mealkit = Mealkit.create(params[:mealkit])
-      @customer = current_customer
-      @customer.mealkits << @mealkit
-      @mealkit.save
+        @customer = current_customer
+          @customer.mealkits << @mealkit
+            @mealkit.save
 
       flash[:message] = "Successfully created a Meal Kit!"
       redirect to ("/mealkits/new_mealkits")
@@ -36,7 +36,7 @@ class MealkitsController < ApplicationController
     if logged_in?
       @customer = current_customer
         mealkits = Mealkit.all
-        @mealkit = Mealkit.find_by(params[:id])  # @mealkit = Mealkit.find_by_id(params["mealkit.id"])
+          @mealkit = Mealkit.find_by(params[:id])  # @mealkit = Mealkit.find_by_id(params["mealkit.id"])
       erb :'mealkits/edit'
     else
       redirect '/login'
@@ -57,8 +57,8 @@ class MealkitsController < ApplicationController
         @customer = current_customer
           @customer = Customer.find(session[:customer_id])
           @mealkits = Mealkit.all
-      erb :'/mealkits/index'
-    end
+        erb :'/mealkits/index'
+      end
     end
 
     get '/mealkits/:id' do   # get request / show one cusotmer mealkits
