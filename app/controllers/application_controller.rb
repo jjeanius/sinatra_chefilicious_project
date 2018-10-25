@@ -18,7 +18,6 @@ class ApplicationController < Sinatra::Base
   end
 
   helpers do
-
      def logged_in?
        !!session[:customer_id]
      end
@@ -26,7 +25,6 @@ class ApplicationController < Sinatra::Base
      def current_customer
        Customer.find(session[:customer_id])
      end
-
    end
 
 end

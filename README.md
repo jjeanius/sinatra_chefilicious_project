@@ -1,6 +1,14 @@
 sinatra_chefilicious_project
 
-Installation -
+I enjoyed working on this Sinatra project.   This project is a continuation of my first CLI project for many reasons; I like the meal kits concept and I really believe you can create, modify a comprehensive app that target this growing industry.
+
+Over all, I think this project allowed me to put my learning and my knowledge into practice.  As for my app, I can envision this app helping a company keeping track of customers, orders, inventory and even sales.  One of the advantages of this application is its flexibility and there is still room for improvement; and I’m really looking forward to all of the good improvement that I will make as my study continue.
+
+For Funtionality -
+Please read Wireframe.md
+* Delete Key - I am still working on perfecting the Delete key for this app.  As of now, it will only delete the first record of your Meal Kit.
+
+For Installation -
 Please add the line below to your application's Gemfile:
 gem 'sinatra_chefilicious_project'
 And then execute:
