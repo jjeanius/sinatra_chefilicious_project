@@ -64,7 +64,9 @@ class MealkitsController < ApplicationController
       end
     end
 
-    get '/mealkits/:id' do   # get request / show one cusotmer mealkits
+    get '/mealkits/:id' do   # by convention, this route should show just one mealkit matching the id of the mealkit.
+      # showing all of the mealkits of one customer is the responsibiity of the customers controller and routes (it would be
+      # the show action /customers/:id of the customers controller and the show.erb view for customers)
       if logged_in?
         @customer = current_customer
           @customer = Customer.find(session[:customer_id])
