@@ -4,7 +4,7 @@ class MealkitsController < ApplicationController
 
   use Rack::Flash
 
-  get '/mealkits/new' do     # get requst /new action to create mealkit  1/3
+  get '/mealkits/new' do     # get requst - '/mealkit/new route' - new action 1/3
     if logged_in?
       @customer = current_customer
       erb :'mealkits/new'
@@ -36,8 +36,7 @@ class MealkitsController < ApplicationController
     if logged_in?
       @customer = current_customer
         mealkits = Mealkit.all
-          @mealkit = Mealkit.find_by(params[:id])  # @mealkit = Mealkit.find_by_id(params["mealkit.id"])
-      erb :'mealkits/edit'
+          @mealkit = Mealkit.find_by(params[:id])
     else
       redirect '/login'
     end
@@ -56,16 +55,16 @@ class MealkitsController < ApplicationController
       if logged_in?
         @customer = current_customer
           @customer = Customer.find(session[:customer_id])
-          @mealkits = Mealkit.all
+          @mealkits = Mealkit.all   # access all mealkit through instance variable
         erb :'/mealkits/index'
       end
     end
 
-    get '/mealkits/:id' do   # get request / show one cusotmer mealkits
+    get '/mealkits/:id' do   # get request / show one cusotmer mealkits / dynamic URL
       if logged_in?
         @customer = current_customer
-          @customer = Customer.find(session[:customer_id])
-          mealkit = Mealkit.find_by(id: params[:id])
+          @customer = Customer.find(session[:customer_id])  #  access session customer_id through instance variable customer
+          mealkit = Mealkit.find_by(id: params[:id])  # access params id of mealkit through params hash
           @customer.mealkits
         erb :'/mealkits/by_customer'
       else
@@ -73,15 +72,15 @@ class MealkitsController < ApplicationController
       end
     end
 
-    delete '/mealkits/:id/delete' do      #post '/mealkits/:id/delete' do     #  post request / delete a mealkit action
-      mealkit = Mealkit.find_by(id: params[:id])
+    delete '/mealkits/:id/delete' do      #  post '/mealkits/:id/delete' do     #  post request / delete a mealkit action
+      mealkit = Mealkit.find_by(id: params[:id])   #  find the mealkit by access params id of mealkit
         mealkit.delete
 
         flash[:message] = "Meal Kit #{mealkit.id} is deleted!"
         redirect to '/mealkits/by_customer'
     end
 
-    get '/logout' do
+    get '/logout' do   #  get request - '/logout' route
       if logged_in?
         session.destroy
         redirect "/login"

@@ -1,3 +1,4 @@
+#  holds all the gems to run the application
 source 'http://rubygems.org'
 
 gem 'sinatra'

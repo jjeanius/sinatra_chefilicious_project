@@ -4,7 +4,7 @@ class CreateCustomers < ActiveRecord::Migration
       t.text :name
       t.text :username
       t.string :email
-      t.string :password_digest
+      t.string :password_digest  # implement bcrypt
     end
   end
 end

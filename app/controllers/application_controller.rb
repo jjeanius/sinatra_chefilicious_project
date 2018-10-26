@@ -13,17 +13,17 @@ class ApplicationController < Sinatra::Base
 
   end
 
-  get "/" do
+  get "/" do    # Get request load the welcome form - rendering the erb of welcome view
     erb :'/welcome'
   end
 
   helpers do
-     def logged_in?
+     def logged_in?     #  return true or false
        !!session[:customer_id]
      end
 
      def current_customer
-       Customer.find(session[:customer_id])
+       Customer.find(session[:customer_id])   # return instance of user
      end
    end
 
