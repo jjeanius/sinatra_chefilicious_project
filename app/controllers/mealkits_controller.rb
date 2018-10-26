@@ -78,15 +78,14 @@ class MealkitsController < ApplicationController
       end
     end
 
-    delete '/mealkits/:id/delete' do      #post '/mealkits/:id/delete' do     #  post request / delete a mealkit action
+    delete '/mealkits/:id' do # matches route set in delete button in view for customer/:id so they can delete one of their own mealkits
       mealkit = Mealkit.find_by(id: params[:id])
-        mealkit.delete
-
-        flash[:message] = "Meal Kit #{mealkit.id} is deleted!"
-        redirect to '/mealkits/by_customer'
+      mealkit.destroy
+      flash[:message] = "Meal Kit #{mealkit.id} is deleted!"
+      redirect to "/customers/#{mealkit.customer.id}" #redirect to the customers show page
     end
 
-    get '/logout' do
+    get '/logout' do #think about where this should go. Is this the responsibility of the mealkits controller?
       if logged_in?
         session.destroy
         redirect "/login"

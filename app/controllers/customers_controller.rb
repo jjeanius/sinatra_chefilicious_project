@@ -49,4 +49,9 @@ class CustomersController < ApplicationController
     redirect '/login'
   end
 
+  get '/customers/:id' do
+    @customer = Customer.find(params[:id])
+    erb :'customers/show'
+  end
+
 end
