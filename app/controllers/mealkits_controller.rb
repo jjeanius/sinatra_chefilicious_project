@@ -80,11 +80,5 @@ class MealkitsController < ApplicationController
         redirect to '/mealkits/by_customer'
     end
 
-    get '/logout' do   #  get request - '/logout' route
-      if logged_in?
-        session.destroy
-        redirect "/login"
-      end
-    end
 
 end

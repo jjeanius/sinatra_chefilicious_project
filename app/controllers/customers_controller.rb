@@ -34,8 +34,9 @@ class CustomersController < ApplicationController
      @customer = Customer.find_by(:username =>params[:username])
        if @customer && @customer.authenticate(params[:password])
          session[:customer_id] = @customer.id  # if customer authenticate / we set the customer id
-         Flash[:message] = " Successfully Login!"
-        redirect "/main_menu"   # and redirect to main_menu
+
+         flash[:message] = " Successfully Login!"
+         redirect "/main_menu"   # and redirect to main_menu
        else
          flash[:message] = "No Record, Please signup!"
          redirect "/signup"
@@ -46,9 +47,19 @@ class CustomersController < ApplicationController
     erb :'/customers/main_menu'    # rendering " main_menu"
   end
 
-  get '/customers/logout' do    #  Get request - logout action
-    session.destroy
-    redirect '/login'
+  get '/logout' do   #  get request - '/logout' route
+    if logged_in?
+      session.destroy
+      redirect "/login"
+    end
+  end
+
+#  get '/customer' do
+#    erb
+
+  get '/customers/:id' do
+    @customer = Customer.find(params[:id])
+    erb: 'customers/show'
   end
 
 end

@@ -1,0 +1,23 @@
+<body>
+  <br> </br>
+  <p> <h2> Welcome!  <%= current_customer.name %> </h2> </p>
+  <p> <h5> Username: <%= current_customer.username %> </p>
+  <p> Email: <%= current_customer.email %> </h5> </p>
+    <br> </br>
+     <% @customer.mealkits.each do |mealkit|   # loop over the mealkits associated with customer %>
+     <h3> <%=mealkit.name %> </h3>
+     <br> </br>
+     <ul>
+       <% mealkit.ingredients.split(", ").each do |ingredient|  # display list item for each ingredient %>
+         <li> <%=ingredient %> <li>
+          <% end %>
+        </ul>
+        <% if session[:customer_id] == @customer.id %>
+        <form> method="post" action"/mealkits/<%=mealkit.id%>">
+          <input id="hidden" type="hidden" name="_method" value="delete"> </input>
+          <input type="submit" value="   DELETE   "> </input>
+        </form>
+        <% end %>
+      <% end %>
+
+      <a href="/main_menu"> Return to Main Menu</a>
