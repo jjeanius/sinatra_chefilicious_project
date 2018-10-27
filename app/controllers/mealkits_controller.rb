@@ -21,15 +21,15 @@ class MealkitsController < ApplicationController
             @mealkit.save
 
       flash[:message] = "Successfully created a Meal Kit!"
-      redirect to ("/mealkits/new_mealkits")
+      redirect to ("/mealkits/create")
     else
       redirect "/mealkits/new"
     end
   end
 
-  get '/mealkits/new_mealkits' do   # get request / new show mealkit action   3/3
+  get '/mealkits/create' do   # get request / new show mealkit action   3/3
     @mealkit = Mealkit.last
-    erb :'/mealkits/new_mealkits'
+    erb :'/mealkits/create'
   end
 
   get '/mealkits/edit' do    # get request/ load edit action   1/2
