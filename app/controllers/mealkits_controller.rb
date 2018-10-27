@@ -13,7 +13,7 @@ class MealkitsController < ApplicationController
     end
   end
 
-  post '/mealkits/:id' do    # post request / new action to post the new mealkit   2/3
+  post '/mealkits' do    # post request / new action to post the new mealkit   2/3
     if !params[:mealkit].empty?    # true
       @mealkit = Mealkit.create(params[:mealkit])
         @customer = current_customer
