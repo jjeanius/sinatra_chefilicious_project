@@ -59,7 +59,7 @@ class CustomersController < ApplicationController
 
   get '/customers/:id' do
     @customer = Customer.find(params[:id])
-    erb: 'customers/show'
+    erb :'customers/show'
   end
 
 end
