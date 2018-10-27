@@ -54,11 +54,8 @@ class CustomersController < ApplicationController
     end
   end
 
-#  get '/customer' do
-#    erb
-
-  get '/customers/:id' do
-    @customer = Customer.find(params[:id])
+  get '/customers/:id' do   # get request, show action - individual page
+    @customer = Customer.find_by_id(params[:id])
     erb :'customers/show'
   end
 
