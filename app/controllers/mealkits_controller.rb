@@ -9,7 +9,7 @@ class MealkitsController < ApplicationController
       @customer = current_customer
       erb :'mealkits/new'
     else
-      redirect "/login"
+      redirect "authenticate/login"
     end
   end
 
@@ -39,7 +39,7 @@ class MealkitsController < ApplicationController
           @mealkit = Mealkit.find_by(params[:id])
           erb :'/mealkits/edit'
     else
-      redirect '/login'
+      redirect "authenticate/login"
     end
   end
 
@@ -69,7 +69,7 @@ class MealkitsController < ApplicationController
           @customer.mealkits
         erb :'/mealkits/by_customer'
       else
-        redirect "customers/login"
+        redirect "authenticate/login"
       end
     end
 
