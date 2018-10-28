@@ -17,7 +17,7 @@ class AuthenticateController < ApplicationController
       flash[:message] = "Thanks for signing up!"  #  provide a msg to the customer
       redirect to ("/main_menu")    #   action redirect to the "main_menu".erb view
     else
-      flash[:message] = "Please sign up!"
+      flash[:message] = "Please Try Again!"
       redirect to ("/signup")
    end
  end
@@ -38,8 +38,8 @@ class AuthenticateController < ApplicationController
          flash[:message] = " Successfully Login!"
          redirect "/main_menu"   # and redirect to main_menu
        else
-         flash[:message] = "No Record, Please signup!"
-         redirect "/signup"
+         flash[:message] = "Please Try Again!"
+         redirect "/login"
        end
    end
 

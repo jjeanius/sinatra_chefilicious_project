@@ -7,6 +7,10 @@
         <form method="post" action="/login">
           <p> <h2>Please Login </h2> </p>
           <br> </br>
+          <h3> <% if flash.has?(:message) %>
+            <%= flash[:message] %> </h3>
+            <% end %>
+            <br> </br>
             <p> Username: <input type ="text" name="username" </p>
             <br> </br>
             <p> Password: <input type ="password" name="password" </p>
