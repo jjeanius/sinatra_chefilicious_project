@@ -10,8 +10,8 @@ class AuthenticateController < ApplicationController
 
   post '/signup' do     # Post request '/signup' route -load the signup form  - crete new signup action
     @customer = Customer.new(:name =>params[:name], :username =>params[:username], :email =>params[:email], :password =>params[:password])
-    # responds to a post request, create a new customer based on params from the form
-    if @customer.save    # save the new customer
+    # responds to post request, create a new customer based on params from the form
+    if @customer.save && @customer.username !=""   # save the new customer
       session[:customer_id] = @customer.id
 
       flash[:message] = "Thanks for signing up!"  #  provide a msg to the customer
