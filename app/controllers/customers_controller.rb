@@ -8,11 +8,25 @@ class CustomersController < ApplicationController
     erb :'/customers/main_menu'    # rendering " main_menu"
   end
 
+  get '/customers' do
+    if logged_in?
+      @customer = Customer.find_by(params[:customer_id])
+      session[:customer_id] = @customer.id
+      @customers = Customer.all
+      erb :'/customers/index'
+    end
+  end
 
-
-  get '/customers/:id' do   # get request, show action - individual page
-    @customer = Customer.find_by_id(params[:id])
-    erb :'customers/show'
+  get '/customers/:id' do
+    if logged_in?
+      @customer = Customer.find_by(params[:customer_id])
+      session[:customer_id] = @customer.id
+      mealkits = Mealkit.all
+      @customer.mealkits.each do|mealkit|
+        mealkit
+      end
+      erb :'/customers/show'
+    end
   end
 
 end
