@@ -5,9 +5,9 @@
   <br> </br>
     <br> </br>
     <p>-------------------------------------------------------------------------------------------------------------------------------</p>
-      <h2> <p>  Here are   <%= @customer.name %>'s   Meal Kits: </p> </h2>
+      <h2> <p>  Here are   <%= current_customer.name %>'s   Meal Kits: </p> </h2>
         <br> </br>
-          <% @customer.mealkits.each do | mealkit | %>
+          <% current_customer.mealkits.each do | mealkit | %>
             <form action="/mealkits/<%=mealkit.id%>/delete" method="post">
             <input id="delete" type="hidden" name="_method" value="delete">
               <p> Meal Kit Number: <%= mealkit.id %> <label> </p>
