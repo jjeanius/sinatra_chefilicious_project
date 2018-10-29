@@ -1,0 +1,22 @@
+<body>
+  <form action="/customers/<%=@customer_id %>" method="post">
+    <input id="update"
+  <h2> Welcome!  <%= current_customer.name %> </h2>
+    <br> </br>
+      <p> <a href="/main_menu"> Main Menu </a> </p>
+      <p> <a href="/logout"> Logout </a> </p>
+        <br> </br>
+          <p> <h2> <center> Account Update </center> </h2> <p>
+            <p> <h5> Customer Name: <%= customer.username %> </h5> </p>
+            <p> <h5> Username: <%= customer.username %> </h5> </p>
+            <p> <h5> Email: <%= customer.email %> </h5> </p>
+            <p> <h5> Shipping Address: </h5> </p>
+            <br> </br>
+            <p> <a href="/main_menu"> Main Menu </a> </p>
+            <p> <a href="/logout"> Logout </a> </p>
+        <br> </br>
+      <form method="post" action="/customers/<%=customer.id%>">
+      <input id="delete" type="hidden" name="_method" value="patch">
+      <input type="submit" value="     DELETE       ">
+  </form>
+</body>
