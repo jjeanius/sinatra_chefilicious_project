@@ -4,10 +4,11 @@
     <br> </br>
       <p> <a href="/main_menu"> Main Menu </a> </p>
       <p> <a href="/logout"> Logout </a> </p>
-        <br> </br>
+      <br> </br>
         <p> <h2> Account Update  </h2> <p>
           <form action="/customers/<%=@customer_id %>" method="post">
           <input id="hidden" type="hidden" name="_method" value="patch">
+          <p> <h5> Customer Number:     <%= current_customer.id %> </h5> </p>
             <p> <h5> Customer Name: <input type ="text" name ="current_customer.name" value ="<%= current_customer.name %>"> </h5> </p>
             <p> <h5> Email: <input type ="text" name ="current_customer.email" value ="<%= current_customer.email %>"> </h5> </p>
             <p> <h5> Shipping Address </p> </h5>

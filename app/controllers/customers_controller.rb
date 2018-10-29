@@ -23,21 +23,21 @@ class CustomersController < ApplicationController
     erb :'/customers/edit'
   end
 
-  patch '/customers/:id' do
-    @customers = Customer.all
-    @customer = Customer.find(id: params[:id])
+  patch '/customers/' do
+    binding.pry
+    @customer = Customer.find(params[:customer_id])
     @customer.update(name: params[:name], email: params[:email])
     @customer.save
     flash[:message] = "Successfully updated!"
     redirect to "/customers/#{@customer_id}"
   end
 
-  get '/customers/:id' do     #get request, "customer dynamic route" show 1 action
-    @customer = Customer.find(session[:customer_id])
-    mealkits = Mealkit.all
-    @customer.mealkits
-    erb :'/customers/show'
-  end
+#  get '/customers/:id' do     #get request, "customer dynamic route" show 1 action
+#    @customer = Customer.find(session[:customer_id])
+#    mealkits = Mealkit.all
+#    @customer.mealkits
+#    erb :'/customers/show'
+#  end
 
 
 
