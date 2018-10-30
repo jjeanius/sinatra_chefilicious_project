@@ -8,18 +8,19 @@
       <h2> <p>  Here are   <%= current_customer.name %>'s   Meal Kits: </p> </h2>
         <br> </br>
           <% current_customer.mealkits.each do | mealkit | %>
-            <form action="/mealkits/<%=mealkit.id%>/delete" method="post">
-            <input id="delete" type="hidden" name="_method" value="delete">
               <p> Meal Kit Number: <%= mealkit.id %> <label> </p>
               <p> Meal Kit Name: <%= mealkit.name %> </p>
               <p> Ingredients: <%= mealkit.ingredients %> </p>
               <p> Cooking Time: <%= mealkit.time %>    Minutes </p>
               <p> Serving Size: <%= mealkit.serving_size %>    People</p>
               <br> </br>
+              <form action="/mealkits/<%=mealkit.id%>/delete" method="post">
+              <input id="delete" type="hidden" name="_method" value="delete">
+              <input type="submit" value="     DELETE     ">  </input>
+
             <br> </br>
     <p>-----------------------------------------------------------------------------------------------</p>
         <% end %>
-      <input type="submit" value="     DELETE     ">  </input>
       <br> </br>
     <br> </br>
   <p> <a href="/main_menu"> Main Menu </a> </p>
