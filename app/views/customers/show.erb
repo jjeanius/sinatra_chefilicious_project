@@ -1,5 +1,6 @@
 <br> </br>
   <p> <h2> Welcome!  <%= current_customer.name %> </h2> </p>
+  <p> <h5> Name: <%= current_customer.name %> </p>
   <p> <h5> Username: <%= current_customer.username %> </p>
   <p> Email: <%= current_customer.email %> </h5> </p>
   <br> </br>
@@ -14,10 +15,11 @@
               <p> Cooking Time: <%= mealkit.time %>    Minutes </p>
               <p> Serving Size: <%= mealkit.serving_size %>    People</p>
               <br> </br>
+              <%if current_customer.id == @customer.id %>
               <form action="/mealkits/<%=mealkit.id%>/delete" method="post">
               <input id="delete" type="hidden" name="_method" value="delete">
               <input type="submit" value="     DELETE     ">  </input>
-
+              <% end %>
             <br> </br>
     <p>-----------------------------------------------------------------------------------------------</p>
         <% end %>

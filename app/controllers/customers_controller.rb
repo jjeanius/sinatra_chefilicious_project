@@ -15,26 +15,28 @@ class CustomersController < ApplicationController
       erb :'/customers/index'
     end
   get '/customers/:id/edit' do   # get request, "/customers/:id/edit" route, edit action
-    @customer = Customer.find(session[:customer_id])
+    @customer = Customer.find_by(params[:id])
       @customers = Customer.all
     erb :'/customers/edit'
   end
 
-  patch '/customers/:id' do
-    @customer = Customer.find_by(params[:id])
-    @customer.update(name: params[:name], email: params[:email])
-    @customer.save
-    flash[:message] = "Successfully updated!"
-    redirect to "/customers/#{@customer_id}"
+  patch '/customers/' do
+    binding.pry
+    if logged_in? && current_customer
+      @customer = Customer.find_by(params[:id])
+      @customer.update(name: params[:name], email: params[:email])
+      @customer.save
+      flash[:message] = "Successfully updated!"
+      redirect to "/customers/#{@customer_id}"
+    end
   end
 
-
-  get '/customers/:id' do     #get request, "customer dynamic route" show 1 action
-    @customer = Customer.find(session[:customer_id])
-    mealkits = Mealkit.all
-    @customer.mealkits
-    erb :'/customers/show'
-  end
+#  get '/customers/:id' do     #get request, "customer dynamic route" show 1 action
+#    @customer = Customer.find_by(params[:id])
+#    mealkits = Mealkit.all
+#    @customer.mealkits
+#    erb :'/customers/show'
+#  end
 
   delete '/customers/:id/delete' do
     @customer = Customer.find_by_id(params[:id])
