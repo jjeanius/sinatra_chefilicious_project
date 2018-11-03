@@ -1,5 +1,5 @@
+index.erb
 <body>
-  <form method="post" action="/authenticate/signup">
     <br> </br>
     <p> <a href="/main_menu"> Main Menu </a> </p>
     <p> <a href="/logout">Log Out</a> </p>
@@ -12,6 +12,11 @@
     <p>  Username:  <%= customer.username %> </p>
     <p>  Email:   <%= customer.email %> </p>
     <br> </br>
+    <form method="delete" action="/customers/<%=customer.id%>/delete">
+      <input id="delete" type="hidden" name="_method" value="delete">
+      <input type="submit" value="    DELETE    ">
+      <br> </br>
+    </form>
     <p>-----------------------------------------------------------------------
     <% end %>
     <br> </br>
