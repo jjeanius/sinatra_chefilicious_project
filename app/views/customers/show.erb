@@ -16,7 +16,7 @@
               <p> Serving Size: <%= mealkit.serving_size %>    People</p>
               <br> </br>
               <%if current_customer.id == @customer.id %>
-              <form action="/mealkits/<%=mealkit.id%>/delete" method="post">
+              <form action="/customers/<%=customer.id%>/delete" method="post">
               <input id="delete" type="hidden" name="_method" value="delete">
               <input type="submit" value="     DELETE     ">  </input>
               <% end %>
