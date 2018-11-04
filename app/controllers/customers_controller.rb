@@ -30,9 +30,8 @@ end
 
  patch '/customers/' do    # patch request / edit action / :id not working?
   #  binding.pry
-  @customer = Customer.find_by_id(params[:customer_id])
-  @customer.name = params["customer.name"]
-  @customer.email = params["customer.email"]
+  @customer = Customer.find_by(params[:id])
+  @customer.update(name: params["customer.name"] , email: params["customer.email"])
   @customer.save
   redirect to "/customers/#{@customer.id}"
 end
