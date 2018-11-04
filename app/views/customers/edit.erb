@@ -6,15 +6,18 @@
       <p> <a href="/logout"> Logout </a> </p>
       <br> </br>
         <p> <h2> Account Update  </h2> <p>
+
           <form action="/customers/<%=@customer_id %>" method="post">
           <input id="hidden" type="hidden" name="_method" value="patch">
+
           <p> <h5> Customer ID:     <%= current_customer.id %> </h5> </p>
-            <p> <h5> Customer Name: <input type ="text" name ="current_customer.name" value ="<%= current_customer.name %>"> </h5> </p>
-            <p> <h5> Email: <input type ="text" name ="current_customer.email" value ="<%= current_customer.email %>"> </h5> </p>
+            <p> <h5> Customer Name: <input type ="text" name ="customer.name" value ="<%= @customer.name %>"> </h5> </p>
+            <p> <h5> Email: <input type ="text" name ="customer.email" value ="<%= @customer.email %>"> </h5> </p>
             <p> <h5> Shipping Address </p> </h5>
               <p> <h5> <input type ="text" name = "street_address" value = "Street Address"> </h5> </p>
               <p> <h5> <input type ="text" name = "state_city_address" value = "State / City / Zip Code"> </h5> </p>
               <br> </br>
+
             <input type ="submit" value ="    UPDATE    ">
           </form>
           <br> </br>

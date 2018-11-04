@@ -1,9 +1,4 @@
 <br> </br>
-  <p> <h2> Welcome!  <%= current_customer.name %> </h2> </p>
-  <p> <h5> Name: <%= current_customer.name %> </p>
-  <p> <h5> Username: <%= current_customer.username %> </p>
-  <p> Email: <%= current_customer.email %> </h5> </p>
-  <br> </br>
         <p> <a href="/main_menu"> Main Menu </a> </p>
         <p> <a href="/logout"> Logout </a> </p>
             <p> <h2> <center> Account Information </center> </h2> <p>
@@ -20,7 +15,7 @@
     </form>
     <br> </br>
     <p>-------------------------------------------------------------------------------------------------------------------------------</p>
-      <h3> <p>  Here are   <%= current_customer.name %>'s   Meal Kits: </p> </h3>
+      <h3> <p>  Here are   <%= @customer.name %>'s   Meal Kits: </p> </h3>
         <br> </br>
           <% current_customer.mealkits.each do | mealkit | %>
               <p> Meal Kit Number: <%= mealkit.id %> <label> </p>
