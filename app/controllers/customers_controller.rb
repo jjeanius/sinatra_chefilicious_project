@@ -24,12 +24,12 @@ class CustomersController < ApplicationController
   end
 
 get '/customers/:id/edit' do   # get request, "/customers/:id/edit" route, load the edit form
-  @customer = Customer.find_by(params[:customert_id])  # params = {"id"=>":id"} /
-  erb :'/customers/edit'
+  @customer = Customer.find_by(params[:customer_id])  # params = {"id"=>":id"} /
+  erb :'/customers/update'
 end
 
 patch '/customers/:id' do    # patch request / edit action
-  @customer = Customer.find_by(params[:customert_id])
+  @customer = Customer.find_by_id(params[:customer_id])
   @customer.name = params[:name]
   @customer.email = params[:email]
   @customer.save
