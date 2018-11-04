@@ -13,5 +13,31 @@ class CustomersController < ApplicationController
     erb :'/customers/index'
   end
 
+  get '/customers/:id' do     #get request, "customer dynamic route" show 1 action
+  @customer = Customer.find_by(params[:id])
+  mealkits = Mealkit.all
+#  @customer.mealkits
+  erb :'/customers/show'
+end
+
+get '/customers/:id/edit' do   # get request, "/customers/:id/edit" route, edit action
+  @customer = Customer.find_by(params[:id])
+    @customers = Customer.all
+  erb :'/customers/edit'
+end
+
+patch '/customers/:id' do
+
+
+end
+
+delete '/customers/:id/delete' do
+  @customer = Customer.find_by_id(params[:id])
+    @customer.delete
+  redirect to '/customers'
+end
+
+
+
 
 end
