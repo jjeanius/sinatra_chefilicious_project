@@ -33,23 +33,22 @@ class CustomersController < ApplicationController
 
 get '/customers/:id/edit' do   # get request, "/customers/:id/edit" route, load the edit form
   if logged_in?
-      @customer = Customer.find_by_id(session[:customer_id])
-      erb :'/customers/edit'
+    @customers = Customer.all
+    @customer = Customer.find_by_id(session[:customer_id])
+    erb :'/customers/edit'
   end
 end
 
  patch '/customers/:id' do    # patch request / edit action / :id not working?
     @customer = Customer.find_by(id: params[:id])
-    # @customer.update(name: session[:customer_name] ,email: session[:customer_email])
-    @customer.id = params[:id]
-    @customer.name = params[:name]
-    @customer.email = params[:email]
+  #  binding.pry
+    @customer.update(name: params["customer"]["name"],email: params["customer"]["email"])
     @customer.save
     redirect to "/customers/#{@customer.id}"
   end
 
   delete '/customers/:id/delete' do
-    #binding.pry
+  #  binding.pry
     @customer = Customer.find_by(id: params[:id])
       @customer.delete
     redirect to '/customers'
