@@ -1,17 +1,24 @@
 require 'rack-flash'
 
-class CustomersController < AuthenticateController
+class CustomersController < ApplicationController
 
   use Rack::Flash
 
 
   get '/main_menu' do      # Get request  - show action
+   if logged_in?
+     #binding.pry
+    # current_customer = @customer
+  @customer = Customer.find_by(id: session[:customer_id])
+  @customer = current_customer
+
     erb :'/customers/main_menu'    # rendering " main_menu"
+  end
   end
 
   get '/customers' do   #  get request "/customers" route - showing all customers action
     if logged_in?
-  #    binding.pry
+      binding.pry
     #  session[:customer_id] = params[:customer.id]
       @customer = Customer.find_by(id: params[:id])
       @customers = Customer.all  # allow the view to access all the customer names in the db through the instance variable @customers
@@ -21,7 +28,7 @@ class CustomersController < AuthenticateController
   end
 
   get '/customers/:id' do     #get request, "customer dynamic route" show 1 action
-    if logged_in? && current_customer
+    if logged_in?
         @customer = Customer.find(session[:customer_id])
           mealkits = Mealkit.all
         @customer.mealkits
@@ -30,7 +37,7 @@ class CustomersController < AuthenticateController
   end
 
 get '/customers/:id/edit' do   # get request, "/customers/:id/edit" route, load the edit form
-  if logged_in? && current_customer
+  if logged_in?
       @customer = Customer.find_by_id(session[:customer_id])
       erb :'/customers/edit'
   end

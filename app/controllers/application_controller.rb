@@ -23,7 +23,7 @@ class ApplicationController < Sinatra::Base
      end
 
      def current_customer
-       Customer.find(session[:customer_id])   # return instance of user
+       @customer = Customer.find(session[:customer_id])
      end
    end
 
