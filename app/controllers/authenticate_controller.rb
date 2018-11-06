@@ -31,9 +31,9 @@ class AuthenticateController < ApplicationController
   end
 
    post '/login' do     #    post request - '/login' route
-     customer = Customer.find_by(:username =>params[:username])
-       if customer && customer.authenticate(params[:password])
-         session[:customer_id] = customer.id  # if customer authenticate / we set the customer id
+     @customer = Customer.find_by(:username =>params[:username])
+       if @customer && @customer.authenticate(params[:password])
+         session[:customer_id] = @customer.id  # if customer authenticate / we set the customer id
 
          flash[:message] = " Successfully Login!"
          redirect "/main_menu"   # and redirect to main_menu
@@ -44,11 +44,10 @@ class AuthenticateController < ApplicationController
    end
 
    get '/logout' do   #  get request - '/logout' route
-  if logged_in?
-    session.destroy
-    redirect "/login"
-  end
-end
-
+     if logged_in?
+       session.destroy
+       redirect "/login"
+     end
+   end
 
 end
