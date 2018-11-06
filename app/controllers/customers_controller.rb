@@ -9,13 +9,15 @@ class CustomersController < ApplicationController
   end
 
   get '/customers' do   #  get request "/customers" route - showing all customers action
-    @customers = Customer.all  # allow the view to access all the customer names in the db through the instance variable @customers
-    erb :'/customers/index'
+    if logged_in? && current_customer
+      @customer = Customer.find(session[:customer_id])
+      @customers = Customer.all  # allow the view to access all the customer names in the db through the instance variable @customers
+      erb :'/customers/index'
+    end
   end
 
   get '/customers/:id' do     #get request, "customer dynamic route" show 1 action
-    if logged_in?
-      current_customer == @customer
+    if logged_in? && current_customer
         @customer = Customer.find(session[:customer_id])
           mealkits = Mealkit.all
         @customer.mealkits
@@ -24,15 +26,17 @@ class CustomersController < ApplicationController
   end
 
 get '/customers/:id/edit' do   # get request, "/customers/:id/edit" route, load the edit form
-  @customer = Customer.find_by(params[:customer_id])  # params = {"id"=>":id"} /
-  erb :'/customers/edit'
+  if logged_in? && current_customer
+      @customer = Customer.find(session[:customer_id])
+      erb :'/customers/edit'
+  end
 end
 
  patch '/customers/' do    # patch request / edit action / :id not working?
-  #  binding.pry
-  @customer = Customer.find_by(params[:id])
-  @customer.update(name: params["customer.name"] , email: params["customer.email"])
-  @customer.save
+binding.pry
+    @customer = Customer.find_by(id: params[:id])
+    @customer.update(name: session[:customer_name] ,email: session[:customer_email])
+    @customer.save
   redirect to "/customers/#{@customer.id}"
 end
 
