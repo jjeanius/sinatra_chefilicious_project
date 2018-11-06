@@ -19,11 +19,10 @@ class MealkitsController < ApplicationController
         @customer = current_customer
           @customer.mealkits << @mealkit
             @mealkit.save
-
-      flash[:message] = "Successfully created a Meal Kit!"
-      redirect to ("/mealkits/create")
-    else
-      redirect "/mealkits/new"
+            flash[:message] = "Successfully created a Meal Kit!"
+            redirect to ("/mealkits/create")
+          else
+         redirect "/mealkits/new"
     end
   end
 
