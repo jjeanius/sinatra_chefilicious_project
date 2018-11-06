@@ -1,7 +1,7 @@
 <body>
-  <form method="post" action="/customers/<%= customer_id %>">
+  <form method="post" action="/customers/<%= @customer.id %>">
   <input id="hidden" type="hidden" name="_method" value="patch">
-  <h2> Welcome!  <%= current_customer.name %> </h2>
+  <h2> Welcome!  <%= @customer.name %> </h2>
     <br> </br>
       <p> <a href="/main_menu"> Main Menu </a> </p>
       <p> <a href="/logout"> Logout </a> </p>

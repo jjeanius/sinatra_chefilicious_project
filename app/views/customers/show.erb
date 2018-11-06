@@ -16,13 +16,12 @@
     <br> </br>
     <p>-------------------------------------------------------------------------------------------------------------------------------</p>
       <h3> <p>  Here are   <%= @customer.name %>'s   Meal Kits: </p> </h3>
-        <br> </br>
           <% current_customer.mealkits.each do | mealkit | %>
-              <p> Meal Kit Number: <%= mealkit.id %> <label> </p>
-              <p> Meal Kit Name: <%= mealkit.name %> </p>
-              <p> Ingredients: <%= mealkit.ingredients %> </p>
-              <p> Cooking Time: <%= mealkit.time %>    Minutes </p>
-              <p> Serving Size: <%= mealkit.serving_size %>    People</p>
+              <p> <h5> Meal Kit Number: <%= mealkit.id %>  </h5></p>
+              <p> <h5> Meal Kit Name: <%= mealkit.name %> </h5> </p>
+              <p> <h5> Ingredients: <%= mealkit.ingredients %> </h5> </p>
+              <p> <h5> Cooking Time: <%= mealkit.time %>    Minutes  </h5></p>
+              <p> <h5> Serving Size: <%= mealkit.serving_size %>    People </h5></p>
               <br> </br>
               <form action="/mealkits/<%=mealkit.id%>/delete" method="post">
               <input id="delete" type="hidden" name="_method" value="delete">

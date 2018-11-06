@@ -77,7 +77,7 @@ class MealkitsController < ApplicationController
         mealkit.delete
 
         flash[:message] = "Meal Kit #{mealkit.id} is deleted!"
-        redirect to '/mealkits/by_customer'
+        redirect to '/customers/update'
     end
 
 
