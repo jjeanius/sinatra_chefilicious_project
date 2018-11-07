@@ -2,16 +2,15 @@
         <p> <a href="/logout"> Logout </a> </p>
             <p> <h2> <center> Account Information </center> </h2> <p>
               <p> <h5> Customer ID: <%= @customer.id %> </h5> </p>
-              <p> <h5> Username: <%= @customer.username %> </h5> </p>
-              <p> <h5> Customer Name: <%= @customer.name %> </h5> </p>
-              <p> <h5> Email: <%= @customer.email %> </h5> </p>
-              <p> <h5> Shipping Address: </h5> </p>
+                <p> <h5> Username: <%= @customer.username %> </h5> </p>
+                <p> <h5> Customer Name: <%= @customer.name %> </h5> </p>
+                <p> <h5> Email: <%= @customer.email %> </h5> </p>
               <br> </br>
             <form method="post" action="/customers/<%= @customer.id %>/delete">
-            <input id="delete" type="hidden" name="_method" value="delete">
-            <input type="submit" value="     DELETE       ">
-          <br> </br>
-        </form>
+              <input id="delete" type="hidden" name="_method" value="delete">
+              <input type="submit" value="     DELETE       ">
+              <br> </br>
+            </form>
         <br> </br>
 <p>-------------------------------------------------------------------------------------------------------------------------------</p>
   <h3> <p>  Here are   <%= @customer.name %>'s   Meal Kits: </p> </h3>

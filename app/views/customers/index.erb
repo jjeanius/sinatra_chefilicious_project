@@ -1,24 +1,24 @@
 <body>
     <br> </br>
-    <p> <a href="/main_menu"> Main Menu </a> </p>
-    <p> <a href="/logout">Log Out</a> </p>
+      <p> <a href="/main_menu"> Main Menu </a> </p>
+      <p> <a href="/logout">Log Out</a> </p>
     <br> </br>
   <p> <h2> Here are the customers:  </h2> </p>
     <br> </br>
-    <% @customers.each do |customer| %>
-    <p>  Customer ID:  <%= customer.id%> </p>
-    <p>  Customer Names:  <%= customer.name %> </p>
-    <p>  Username:  <%= customer.username %> </p>
-    <p>  Email:   <%= customer.email %> </p>
-    <br> </br>
-    <form method="delete" action="/customers/<%=customer.id%>/delete">
-      <input id="delete" type="hidden" name="_method" value="delete">
-      <input type="submit" value="    DELETE    ">
+      <% @customers.each do |customer| %>
+        <p>  Customer ID:  <%= customer.id%> </p>
+        <p>  Customer Names:  <%= customer.name %> </p>
+        <p>  Username:  <%= customer.username %> </p>
+        <p>  Email:   <%= customer.email %> </p>
+          <br> </br>
+          <form method="delete" action="/customers/<%=customer.id%>/delete">
+            <input id="delete" type="hidden" name="_method" value="delete">
+            <input type="submit" value="    DELETE    ">
+            <br> </br>
+          </form>
+      <p>-----------------------------------------------------------------------
+      <% end %>
       <br> </br>
-    </form>
-    <p>-----------------------------------------------------------------------
-    <% end %>
-    <br> </br>
     <p> <a href="/main_menu"> Main Menu </a> </p>
     <p> <a href="/logout">Log Out</a> </p>
   </body>

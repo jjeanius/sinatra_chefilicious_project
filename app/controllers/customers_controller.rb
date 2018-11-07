@@ -14,8 +14,8 @@ class CustomersController < ApplicationController
   get '/customers/:id' do     #get request, "customer dynamic route" show 1 action
     if logged_in?
       @customer = current_customer
-      params[:id] = session[:customer_id]
-      @customer = Customer.find_by(id: params[:id])
+        params[:id] = session[:customer_id]
+          @customer = Customer.find_by(id: params[:id])
           mealkits = Mealkit.all
         @customer.mealkits
       erb :'/customers/show'
@@ -30,21 +30,20 @@ class CustomersController < ApplicationController
     end
   end
 
-
-get '/customers/:id/edit' do   # get request, "/customers/:id/edit" route, load the edit form
-  if logged_in?
-    @customer = current_customer
-      params[:id] = session[:customer_id]
-        @customer = Customer.find_by(id: params[:id])
+  get '/customers/:id/edit' do   # get request, "/customers/:id/edit" route, load the edit form
+    if logged_in?
+      @customer = current_customer
+        params[:id] = session[:customer_id]
+          @customer = Customer.find_by(id: params[:id])
       erb :'/customers/edit'
+    end
   end
-end
 
  patch '/customers/:id' do    # patch request / updating action /display the form
     @customer = Customer.find_by(id: params[:id])
-    @customer.name = params["customer"]["name"]
-    @customer.email = params["customer"]["email"]
-    @customer.save
+      @customer.name = params["customer"]["name"]
+      @customer.email = params["customer"]["email"]
+        @customer.save
     redirect to "/customers/#{@customer.id}"
   end
 

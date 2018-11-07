@@ -18,6 +18,7 @@ class ApplicationController < Sinatra::Base
   end
 
   helpers do
+
      def logged_in?     #  return true or false
        !!session[:customer_id]
      end
@@ -25,6 +26,7 @@ class ApplicationController < Sinatra::Base
      def current_customer
        @customer = Customer.find(session[:customer_id])
      end
+
    end
 
 end

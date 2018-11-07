@@ -36,7 +36,7 @@ class MealkitsController < ApplicationController
       @customer = current_customer
         mealkits = Mealkit.all
           @mealkit = Mealkit.find_by(params[:id])
-          erb :'/mealkits/edit'
+        erb :'/mealkits/edit'
     else
       redirect "authenticate/login"
     end
@@ -45,7 +45,7 @@ class MealkitsController < ApplicationController
   patch '/mealkits/:id' do   #  patch request / edit action 2/2 it needs to match action of form submitted for get mealkit/edit
     @mealkit = Mealkit.find_by(id: params[:id])   #now id is no longer nil because it is part of line 59
       @mealkit.update(name: params[:mealkit][:name], ingredients: params[:mealkit][:ingredients], time: params[:mealkit][:time], serving_size: params[:mealkit][:serving_size])
-        @mealkit.save
+      @mealkit.save
 
     flash[:message] = "Successfully updated!"
     redirect to ("/mealkits/by_customer")
@@ -64,7 +64,7 @@ class MealkitsController < ApplicationController
       if logged_in?
         @customer = current_customer
           @customer = Customer.find(session[:customer_id])  #  access session customer_id through instance variable customer
-          mealkit = Mealkit.find_by(id: params[:id])  # access params id of mealkit through params hash
+            mealkit = Mealkit.find_by(id: params[:id])  # access params id of mealkit through params hash
           @customer.mealkits
         erb :'/mealkits/by_customer'
       else
@@ -72,13 +72,12 @@ class MealkitsController < ApplicationController
       end
     end
 
-    delete '/mealkits/:id/delete' do      #  post '/mealkits/:id/delete' do     #  post request / delete a mealkit action
+    delete '/mealkits/:id/delete' do      #  post request / delete a mealkit action
       mealkit = Mealkit.find_by(id: params[:id])   #  find the mealkit by access params id of mealkit
         mealkit.delete
 
         flash[:message] = "Meal Kit #{mealkit.id} is deleted!"
         redirect to '/customers/update'
     end
-
 
 end

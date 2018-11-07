@@ -6,15 +6,15 @@
     <br> </br>
       <p> <h2> Account Update  </h2> <p>
         <form method="post" action="/customers/<%=current_customer.id %>">
-        <input id="hidden" type="hidden" name="_method" value="patch">
-          <p> <h5> Customer Name: <input type ="text" name ="customer[name]" value ="<%= @customer.name %>"> </h5> </p>
-          <p> <h5> Email: <input type ="text" name ="customer[email]" value ="<%= @customer.email %>"> </h5> </p>
-          <br> </br>
-        <input type ="submit" value ="    UPDATE    ">
+          <input id="hidden" type="hidden" name="_method" value="patch">
+            <p> <h5> Customer Name: <input type ="text" name ="customer[name]" value ="<%= @customer.name %>"> </h5> </p>
+            <p> <h5> Email: <input type ="text" name ="customer[email]" value ="<%= @customer.email %>"> </h5> </p>
+            <br> </br>
+          <input type ="submit" value ="    UPDATE    ">
         </form>
         <br> </br>
       <form method="delete" action="/customers/<%=@customer_id%>">
-      <input id="delete" type="hidden" name="_method" value="patch">
-      <input type="submit" value="     DELETE       ">
+        <input id="delete" type="hidden" name="_method" value="patch">
+        <input type="submit" value="     DELETE       ">
       </form>
 </body>
