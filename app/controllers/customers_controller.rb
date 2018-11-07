@@ -4,7 +4,6 @@ class CustomersController < ApplicationController
 
   use Rack::Flash
 
-
   get '/main_menu' do      # Get request  - show action
     if logged_in?
       @customer = Customer.find_by(id: session[:customer_id])
@@ -41,8 +40,7 @@ get '/customers/:id/edit' do   # get request, "/customers/:id/edit" route, load 
   end
 end
 
- patch '/customers/:id' do    # patch request / edit action /
-   #binding.pry
+ patch '/customers/:id' do    # patch request / updating action /display the form
     @customer = Customer.find_by(id: params[:id])
     @customer.name = params["customer"]["name"]
     @customer.email = params["customer"]["email"]
@@ -50,9 +48,7 @@ end
     redirect to "/customers/#{@customer.id}"
   end
 
-
   delete '/customers/:id/delete' do
-  #  binding.pry
     @customer = Customer.find_by(id: params[:id])
       @customer.delete
     redirect to '/customers'
