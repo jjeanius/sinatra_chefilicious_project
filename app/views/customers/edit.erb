@@ -5,7 +5,7 @@
     <p> <a href="/logout"> Logout </a> </p>
     <br> </br>
       <p> <h2> Account Update  </h2> <p>
-        <form method="post" action="/customers/<%=@customer.id %>">
+        <form method="post" action="/customers/<%=current_customer.id %>">
         <input id="hidden" type="hidden" name="_method" value="patch">
           <p> <h5> Customer Name: <input type ="text" name ="customer[name]" value ="<%= @customer.name %>"> </h5> </p>
           <p> <h5> Email: <input type ="text" name ="customer[email]" value ="<%= @customer.email %>"> </h5> </p>
