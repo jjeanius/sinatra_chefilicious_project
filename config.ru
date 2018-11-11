@@ -10,4 +10,3 @@ run ApplicationController
 use AuthenticateController
 use CustomersController
 use MealkitsController
-use AuthenticateController
