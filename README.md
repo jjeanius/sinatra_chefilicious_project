@@ -6,7 +6,6 @@ Over all, I think this project allowed me to put my learning and my knowledge in
 
 For Funtionality -
 Please read Wireframe.md
-* Delete Key - I am still working on perfecting the Delete key for this app.  As of now, it will only delete the first record of your Meal Kit.
 
 For Installation -
 Please add the line below to your application's Gemfile:
