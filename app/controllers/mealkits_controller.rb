@@ -4,7 +4,7 @@ class MealkitsController < ApplicationController
 
   use Rack::Flash
 
-  get '/mealkits/new' do     # get requst - '/mealkit/new route' - new action 1/3
+  get '/mealkits/new' do     # get requst - '/request to load the form for new mealkit
     if logged_in?
       @customer = current_customer
       erb :'mealkits/new'
@@ -13,9 +13,9 @@ class MealkitsController < ApplicationController
     end
   end
 
-  post '/mealkits' do    # post request / new action to post the new mealkit   2/3
+  post '/mealkits' do    # post request / it responds to the post request
     if !params[:mealkit].empty?    # true
-      @mealkit = Mealkit.create(params[:mealkit])
+      @mealkit = Mealkit.create(params[:mealkit])  # create a mealkit based from the params from the form
         @customer = current_customer
           @customer.mealkits << @mealkit
             @mealkit.save
@@ -55,17 +55,17 @@ class MealkitsController < ApplicationController
       if logged_in?
         @customer = current_customer
           @customer = Customer.find(session[:customer_id])
-          @mealkits = Mealkit.all   # access all mealkit through instance variable
+          @mealkits = Mealkit.all   # collect all mealkits
         erb :'/mealkits/index'
       end
     end
 
-    get '/mealkits/:id' do   # get request / show one cusotmer mealkits / dynamic URL
+    get '/mealkits/:id' do   # get request / show/ dynamic routing - accessing view through the params hash
       if logged_in?
         @customer = current_customer
           @customer = Customer.find(session[:customer_id])  #  access session customer_id through instance variable customer
             mealkit = Mealkit.find_by(id: params[:id])  # access params id of mealkit through params hash
-          @customer.mealkits
+          @customer.mealkits       #  set it into customer
         erb :'/mealkits/by_customer'
       else
         redirect "authenticate/login"
