@@ -1,25 +1,26 @@
 <body>
-  <h2> <p> Welcome, <%= @customer.name %> </p> </h2>
-    <p> <a href="/main_menu"> Main Menu </a> </p>
-    <p> <a href="/mealkits/logout"> Logout </a> </p>
+  </form>
+    <p> <h5> Username: <%= current_customer.username %> </p>
+    <p> Email: <%= current_customer.email %> </h5> </p>
       <br> </br>
-        <p>  Here are all the Meal Kits: </p>
+      <p> <a href="/main_menu"> Main Menu </a> </p>
+      <p> <a href="/mealkits/logout"> Logout </a> </p>
+        <br> </br>
+        <br> </br>
           <h3> <% if flash.has?(:message) %>
              <%= flash[:message] %>
           <% end %> </h3>
-        <p>-----------------------------------------------------------------------------------------------</p>
-          <% @mealkits.each do | mealkit | %>
-            <p> Meal Kit Number: <%= mealkit.id %> <label> </p>
-            <p> Meal Kit Name: <%= mealkit.name %> </p>
-            <p> Ingredients: <%= mealkit.ingredients %> </p>
-            <p> Cooking Time: <%= mealkit.time %>    Minutes</p>
-            <p> Serving Size: <%= mealkit.serving_size %>      People</p>
-          <br> </br>
-        <p>-----------------------------------------------------------------------------------------------</p>
-        <br> </br>
-        <% end %>
+          <p> Here are all the Meal Kits: </p>
+      <p>-------------------------------------------------------------------------------------------------------------------------------</p>
+      <% @mealkits.each do | mealkit | %>
+      <p> <h5> Meal Kit Number: <%= mealkit.id %>  </h5></p>
+      <p> <h5> Meal Kit Name: <%= mealkit.name %> </h5> </p>
+      <p> <h5> Ingredients: <%= mealkit.ingredients %> </h5> </p>
+      <p> <h5> Cooking Time: <%= mealkit.time %>    Minutes  </h5></p>
+      <p> <h5> Serving Size: <%= mealkit.serving_size %>    People </h5></p>
+      <br> </br>
+      <p>-------------------------------------------------------------------------------------------------------------------------------</p>
+      <% end %>
       <p> <a href="/main_menu"> Main Menu </a> </p>
-      <p> <a href="/logout">Log Out</a> </p>
-    <br> </br>
-  <br> </br>
-</body>
+      <p> <a href="/mealkits/logout"> Logout </a> </p>
+        <br> </br>
