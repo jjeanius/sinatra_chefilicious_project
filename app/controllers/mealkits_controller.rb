@@ -5,25 +5,15 @@ class MealkitsController < ApplicationController
   use Rack::Flash
 
   get '/mealkits/new' do     # get requst - '/request to load the form for new mealkit
-    if logged_in?
-      @customer = current_customer
-      erb :'mealkits/new'
-    else
-      redirect "authenticate/login"
-    end
+    erb :'mealkits/new'
   end
 
   post '/mealkits' do    # post request / it responds to the post request
-    if !params[:mealkit].empty?    # true
-      @mealkit = Mealkit.create(params[:mealkit])  # create a mealkit based from the params from the form
-        @customer = current_customer
-          @customer.mealkits << @mealkit
-            @mealkit.save
-            flash[:message] = "Successfully created a Meal Kit!"
-            redirect to ("/mealkits/create")
-          else
-         redirect "/mealkits/new"
-    end
+    @mealkits = Mealkit.all
+      @mealkits.save
+
+      flash[:message] = "Successfully created a Meal Kit!"
+      redirect to ("/mealkits/create")
   end
 
   get '/mealkits/create' do   # get request / new show mealkit action   3/3
@@ -66,7 +56,7 @@ class MealkitsController < ApplicationController
           @customer = Customer.find(session[:customer_id])  #  access session customer_id through instance variable customer
             mealkit = Mealkit.find_by(id: params[:id])  # access params id of mealkit through params hash
           @customer.mealkits       #  set it into customer
-        erb :'/mealkits/by_customer'
+        erb :'/mealkits/show'
       else
         redirect "authenticate/login"
       end
