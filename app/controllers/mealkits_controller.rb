@@ -5,20 +5,36 @@ class MealkitsController < ApplicationController
   use Rack::Flash
 
   get '/mealkits/new' do     # get requst - '/request to load the form for new mealkit
-    erb :'mealkits/new'
+    if logged_in?
+      current_customer
+      erb :'mealkits/new'
+    else
+      redirect to "authenticate/login"
+    end
   end
 
   post '/mealkits' do    # post request / it responds to the post request
-    @mealkits = Mealkit.all
-      @mealkits.save
+    if logged_in?
+      current_customer
+      @mealkits = Mealkit.all
+    #  @mealkits.save
 
       flash[:message] = "Successfully created a Meal Kit!"
       redirect to ("/mealkits/create")
+    else
+      flash[:message] = "Please login!"
+      redirect to "authenticate/login"
+    end
   end
 
   get '/mealkits/create' do   # get request / new show mealkit action   3/3
-    @mealkit = Mealkit.last
-    erb :'/mealkits/create'
+    if logged_in?
+      current_customer
+      @mealkit = Mealkit.last
+      erb :'/mealkits/create'
+    else
+      redirect to "authenticate/login"
+    end
   end
 
   get '/mealkits/:id/edit' do    # get request/ load edit action   1/2
@@ -33,12 +49,18 @@ class MealkitsController < ApplicationController
   end
 
   patch '/mealkits/:id' do   #  patch request / edit action 2/2 it needs to match action of form submitted for get mealkit/edit
-    @mealkit = Mealkit.find_by(id: params[:id])   #now id is no longer nil because it is part of line 59
-      @mealkit.update(name: params[:mealkit][:name], ingredients: params[:mealkit][:ingredients], time: params[:mealkit][:time], serving_size: params[:mealkit][:serving_size])
-      @mealkit.save
+    if logged_in?
+      current_customer
+        @mealkit = Mealkit.find_by(id: params[:id])   #now id is no longer nil because it is part of line 59
+        @mealkit.update(name: params[:mealkit][:name], ingredients: params[:mealkit][:ingredients], time: params[:mealkit][:time], serving_size: params[:mealkit][:serving_size])
+        @mealkit.save
 
-    flash[:message] = "Successfully updated!"
-    redirect to ("/mealkits/by_customer")
+        flash[:message] = "Successfully updated!"
+        redirect to ("/mealkits/by_customer")
+    else
+        flash[:message] = "Please login!"
+        redirect to "authenticate/login"
+    end
   end
 
     get '/mealkits' do   #  get request / show all mealkit action
@@ -47,6 +69,8 @@ class MealkitsController < ApplicationController
           @customer = Customer.find(session[:customer_id])
           @mealkits = Mealkit.all   # collect all mealkits
         erb :'/mealkits/index'
+      else
+        redirect "//login"
       end
     end
 
@@ -62,12 +86,12 @@ class MealkitsController < ApplicationController
       end
     end
 
-    delete '/mealkits/:id/delete' do      #  post request / delete a mealkit action
-      mealkit = Mealkit.find_by(id: params[:id])   #  find the mealkit by access params id of mealkit
-        mealkit.delete
+    #delete '/mealkits/:id/delete' do      #  post request / delete a mealkit action
+    #  mealkit = Mealkit.find_by(id: params[:id])   #  find the mealkit by access params id of mealkit
+    #    mealkit.delete
 
-        flash[:message] = "Meal Kit #{mealkit.id} is deleted!"
-        redirect to '/customers/update'
-    end
+  #      flash[:message] = "Meal Kit #{mealkit.id} is deleted!"
+  #      redirect to '/customers/update'
+  #  end
 
 end

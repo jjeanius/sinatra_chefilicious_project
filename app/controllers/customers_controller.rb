@@ -8,6 +8,8 @@ class CustomersController < ApplicationController
     if logged_in?
       @customer = Customer.find_by(id: session[:customer_id])
       erb :'/customers/main_menu'    # rendering " main_menu"
+    else
+      redirect "authenticate/login"
     end
   end
 
@@ -49,8 +51,10 @@ class CustomersController < ApplicationController
 
   delete '/customers/:id/delete' do
     @customer = Customer.find_by(id: params[:id])
-      @customer.delete
-    redirect to '/customers'
+      mealkit = Mealkit.find_by(id: params[:id])
+      @customer.mealkit.delete
+
+      redirect to '/customers'
   end
 
 end

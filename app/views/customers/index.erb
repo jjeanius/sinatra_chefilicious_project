@@ -11,11 +11,6 @@
         <p>  Username:  <%= customer.username %> </p>
         <p>  Email:   <%= customer.email %> </p>
           <br> </br>
-          <form method="delete" action="/customers/<%=customer.id%>/delete">
-            <input id="delete" type="hidden" name="_method" value="delete">
-            <input type="submit" value="    DELETE    ">
-            <br> </br>
-          </form>
       <p>-----------------------------------------------------------------------
       <% end %>
       <br> </br>
