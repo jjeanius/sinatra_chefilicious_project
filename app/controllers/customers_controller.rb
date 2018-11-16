@@ -13,17 +13,6 @@ class CustomersController < ApplicationController
     end
   end
 
-  get '/customers/:id' do     #get request, "customer dynamic route" show 1 action
-    if logged_in?
-      @customer = current_customer
-        params[:id] = session[:customer_id]
-          @customer = Customer.find_by(id: params[:id])
-          mealkits = Mealkit.all
-        @customer.mealkits
-      erb :'/customers/show'
-    end
-  end
-
   get '/customers' do   #  get request "/customers" route - showing all customers action
     if logged_in?
       @customer = current_customer
@@ -31,6 +20,20 @@ class CustomersController < ApplicationController
       erb :'/customers/index'
     end
   end
+
+get '/customers/:id' do     #get request, "customer dynamic route" show 1 action
+    if logged_in?
+      @customer = current_customer
+        params[:id] = session[:customer_id]
+          @customer = Customer.find_by(id: params[:id])
+          mealkits = Mealkit.all
+        @customer.mealkits
+      erb :'/customers/show'
+    else
+
+    end
+  end
+
 
   get '/customers/:id/edit' do   # get request, "/customers/:id/edit" route, load the edit form
     if logged_in?
@@ -50,11 +53,13 @@ class CustomersController < ApplicationController
   end
 
   delete '/customers/:id/delete' do
-    @customer = Customer.find_by(id: params[:id])
-      mealkit = Mealkit.find_by(id: params[:id])
+    if logged_in? && current_customer
+  #  @customer = Customer.find_by(id: params[:id])
+  #    mealkit = Mealkit.find_by(id: params[:id])
       @customer.mealkit.delete
 
       redirect to '/customers'
+    end
   end
 
 end
