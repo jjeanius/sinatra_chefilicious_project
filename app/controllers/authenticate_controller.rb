@@ -26,7 +26,7 @@ class AuthenticateController < ApplicationController
     if logged_in?
       redirect "/main_menu"
     else
-      erb :'/authenticate/login'
+      erb :'/login'
     end
   end
 

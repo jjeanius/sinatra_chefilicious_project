@@ -18,7 +18,7 @@ class MealkitsController < ApplicationController
       @customer = current_customer
       erb :'mealkits/new'
     else
-      redirect "authenticate/login"
+      redirect "/login"
     end
   end
 
@@ -47,7 +47,7 @@ class MealkitsController < ApplicationController
         @customer.mealkits       #  set it into customer
       erb :'/mealkits/#{@customer.id}'
     else
-      redirect "authenticate/login"
+      redirect "/login"
     end
   end
 
@@ -57,7 +57,7 @@ class MealkitsController < ApplicationController
             @mealkit = Mealkit.find_by(params[:id])
           erb :'/mealkits/edit'
       else
-        redirect "authenticate/login"
+        redirect "/login"
       end
     end
 
@@ -70,7 +70,7 @@ class MealkitsController < ApplicationController
       flash[:message] = "Successfully updated!"
       redirect to ("/customers/#{@mealkit.id}")
     else
-      redirect "authenticate/login"
+      redirect "/login"
     end
   end
 

@@ -8,7 +8,7 @@ class CustomersController < ApplicationController
     if logged_in? && current_customer
       erb :'/customers/main_menu'    # rendering " main_menu"
     else
-      redirect "authenticate/login"
+      redirect "/login"
     end
   end
 
@@ -17,7 +17,7 @@ class CustomersController < ApplicationController
         @customers = Customer.all  # allow the view to access all the customer names in the db through the instance variable @customers
       erb :'/customers/index'
     else
-      redirect "authenticate/login"
+      redirect "/login"
     end
   end
 
@@ -29,7 +29,7 @@ get '/customers/:id' do     #get request, "customer dynamic route" show 1 action
         @customer.mealkits
       erb :'/customers/show'
     else
-      redirect "authenticate/login"
+      redirect "/login"
     end
   end
 
@@ -40,7 +40,7 @@ get '/customers/:id' do     #get request, "customer dynamic route" show 1 action
           @customer = Customer.find_by(id: params[:id])
       erb :'/customers/edit'
     else
-      redirect "authenticate/login"
+      redirect "/login"
     end
   end
 
@@ -52,7 +52,8 @@ get '/customers/:id' do     #get request, "customer dynamic route" show 1 action
         @customer.save
     redirect to "/customers/#{@customer.id}"
    else
-     redirect "authenticate/login"
+     redirect "/login"
+   end
   end
 
   delete '/customers/:id/delete' do
@@ -62,7 +63,7 @@ get '/customers/:id' do     #get request, "customer dynamic route" show 1 action
       @customer.mealkit.delete
       redirect to '/customers'
     else
-      redirect "authenticate/login"
+      redirect "/login"
     end
   end
 
