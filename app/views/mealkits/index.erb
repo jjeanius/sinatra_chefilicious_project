@@ -10,11 +10,10 @@
           <h3> <% if flash.has?(:message) %>
              <%= flash[:message] %>
           <% end %> </h3>
-          <p> Here are all the Meal Kits: </p>
-      <p>-------------------------------------------------------------------------------------------------------------------------------</p>
-      <% @mealkits.each do | mealkit | %>
-      <p> <h5> Meal Kit Number: <%= mealkit.id %>  </h5></p>
-      <p> <h5> Meal Kit Name: <%= mealkit.name %> </h5> </p>
+
+          <p> Here are all the Meal Kits: </p> </h5></p>
+          <% @mealkits.each do|mealkit|%>
+      <p> <h5> Meal Kit Name:<a href="/mealkits/<%=mealkit.id%>"> <%= mealkit.name %> </a></h5> </p>
       <p> <h5> Ingredients: <%= mealkit.ingredients %> </h5> </p>
       <p> <h5> Cooking Time: <%= mealkit.time %>    Minutes  </h5></p>
       <p> <h5> Serving Size: <%= mealkit.serving_size %>    People </h5></p>

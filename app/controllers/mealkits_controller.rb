@@ -5,7 +5,7 @@ class MealkitsController < ApplicationController
   use Rack::Flash
 
   get '/mealkits' do   #  get request / show all mealkit action
-    if logged_in? && current_customer
+    if logged_in?
       @mealkits = Mealkit.all   # collect all mealkits
       erb :'/mealkits/index'
     else
@@ -43,9 +43,8 @@ class MealkitsController < ApplicationController
 
   get '/mealkits/:id' do   # get request / show/ dynamic routing - accessing view through the params hash
     if logged_in? && current_customer
-      mealkit = Mealkit.find_by(id: params[:id])  # access params id of mealkit through params hash
-        @customer.mealkits       #  set it into customer
-      erb :'/mealkits/#{@customer.id}'
+      @mealkit = Mealkit.find_by(id: params[:id])  # access params id of mealkit through params hash
+      erb :"/mealkits/show"
     else
       redirect "/login"
     end
@@ -53,9 +52,13 @@ class MealkitsController < ApplicationController
 
   get '/mealkits/:id/edit' do    # get request/ load edit action   1/2
       if logged_in? && current_customer
-          mealkits = Mealkit.all
-            @mealkit = Mealkit.find_by(params[:id])
-          erb :'/mealkits/edit'
+            @mealkit = Mealkit.find_by(id: params[:id])
+          if @mealkit.customer==current_customer
+            erb :'/mealkits/edit'
+          else
+            redirect "/main_menu"
+          end
+
       else
         redirect "/login"
       end
@@ -65,10 +68,9 @@ class MealkitsController < ApplicationController
       if logged_in? && current_customer
       @mealkit = Mealkit.find_by(id: params[:id])   #now id is no longer nil because it is part of line 59
         @mealkit.update(name: params[:mealkit][:name], ingredients: params[:mealkit][:ingredients], time: params[:mealkit][:time], serving_size: params[:mealkit][:serving_size])
-        @mealkit.save
 
       flash[:message] = "Successfully updated!"
-      redirect to ("/customers/#{@mealkit.id}")
+      redirect to ("/mealkits/#{@mealkit.id}")
     else
       redirect "/login"
     end

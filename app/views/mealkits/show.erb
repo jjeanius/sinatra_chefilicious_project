@@ -1,5 +1,4 @@
 <body>
-  </form>
     <p> <h5> Username: <%= current_customer.username %> </p>
     <p> Email: <%= current_customer.email %> </h5> </p>
       <br> </br>
@@ -11,23 +10,22 @@
              <%= flash[:message] %>
           <% end %> </h3>
       <p>-------------------------------------------------------------------------------------------------------------------------------</p>
-        <h2> <p>  Here are   <%= @customer.name %>'s   Meal Kits: </p> </h2>
           <br> </br>
-            <% @customer.mealkits.each do | mealkit | %>
-              <form action="/mealkits/<%=mealkit.id%>/delete" method="post">
-              <input id="delete" type="hidden" name="_method" value="delete">
-                <p> Meal Kit Number: <%= mealkit.id %> <label> </p>
-                <p> Meal Kit Name: <%= mealkit.name %> </p>
-                <p> Ingredients: <%= mealkit.ingredients %> </p>
-                <p> Cooking Time: <%= mealkit.time %>    Minutes </p>
-                <p> Serving Size: <%= mealkit.serving_size %>    People</p>
+                <p> Meal Kit Number: <%= @mealkit.id %> <label> </p>
+                <p> Meal Kit Name: <%= @mealkit.name %> </p>
+                <p> Ingredients: <%= @mealkit.ingredients %> </p>
+                <p> Cooking Time: <%= @mealkit.time %>    Minutes </p>
+                <p> Serving Size: <%= @mealkit.serving_size %>    People</p>
                 <br> </br>
               <br> </br>
-          <% end %>
+              <a href ="/mealkits/<%=@mealkit.id%>/edit">Edit this mealkit</a><br><br>
+              <form action="/mealkits/<%=@mealkit.id%>/delete" method="post">
+              <input id="delete" type="hidden" name="_method" value="delete">
         <input type="submit" value="     DELETE     ">  </input>
+      </form>
         <br> </br>
       <br> </br>
     <p> <a href="/main_menu"> Main Menu </a> </p>
     <p> <a href="/logout">Log Out</a> </p>
-  </form>
+
 </body>
