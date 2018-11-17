@@ -6,6 +6,7 @@ class CustomersController < ApplicationController
 
   get '/main_menu' do      # Get request  - show action
     if logged_in? && current_customer
+      @mealkit = Mealkit.find_by(id: params[:id])
       erb :'/customers/main_menu'    # rendering " main_menu"
     else
       redirect "/login"

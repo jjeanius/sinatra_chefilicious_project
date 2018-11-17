@@ -11,8 +11,10 @@
              <%= flash[:message] %>
           <% end %> </h3>
 
-          <p> Here are all the Meal Kits: </p> </h5></p>
+          <h2> Here are all the Meal Kits: </h2> <br> <br>
+
           <% @mealkits.each do|mealkit|%>
+          <h5> Mealkit Number: <%= mealkit.id %> </h5>
       <p> <h5> Meal Kit Name:<a href="/mealkits/<%=mealkit.id%>"> <%= mealkit.name %> </a></h5> </p>
       <p> <h5> Ingredients: <%= mealkit.ingredients %> </h5> </p>
       <p> <h5> Cooking Time: <%= mealkit.time %>    Minutes  </h5></p>
