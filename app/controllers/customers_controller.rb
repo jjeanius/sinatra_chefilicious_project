@@ -42,7 +42,6 @@ get '/customers/:id' do     #get request, "customer dynamic route" show 1 action
     else
       redirect "/login"
     end
-    end
   end
 
  patch '/customers/:id' do    # patch request / updating action /display the form
@@ -67,7 +66,7 @@ get '/customers/:id' do     #get request, "customer dynamic route" show 1 action
     else
       redirect "/login"
     end
-    end
   end
+ end
 
 end
