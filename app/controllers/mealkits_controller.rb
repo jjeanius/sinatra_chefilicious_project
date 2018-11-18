@@ -44,9 +44,11 @@ class MealkitsController < ApplicationController
   get '/mealkits/:id' do   # get request / show/ dynamic routing - accessing view through the params hash
     if logged_in?
       @mealkit = Mealkit.find_by(id: params[:id])  # access params id of mealkit through params hash
+  #    if @mealkit.customer == current_customer
         erb :"/mealkits/show"
     else
-        redirect "/login"
+        redirect "/mealkits"
+    #  end
     end
   end
 
@@ -64,23 +66,24 @@ class MealkitsController < ApplicationController
     patch '/mealkits/:id' do   #  patch request / edit action 2/2 it needs to match action of form submitted for get mealkit/edit
       if logged_in?
         @mealkit = Mealkit.find_by(id: params[:id])   #now id is no longer nil because it is part of line 59
-          if @mealkit.customer == current_customer
+        #  if @mealkit.customer == current_customer
             @mealkit.update(name: params[:mealkit][:name], ingredients: params[:mealkit][:ingredients], time: params[:mealkit][:time], serving_size: params[:mealkit][:serving_size])
             flash[:message] = "Successfully updated!"
-            redirect to ("/mealkits/#{@mealkit.id}")
+            redirect to ("/mealkits/update")
          else
           redirect "/login"
-        end
+  #      end
     end
   end
 
     delete '/mealkits/:id/delete' do      #  post request / delete a mealkit action
       if logged_in?
         @mealkit = Mealkit.find_by(id: params[:id])   #  find the mealkit by access params id of mealkit
-          if @mealkit.customer == current_customer
+        customer = Customer.find(session[:customer_id])
+          if current_customer ==  @mealkit.customer
             @mealkit.delete
             flash[:message] = "Meal Kit #{@mealkit.id} is deleted!"
-            erb :'/mealkits/#{@mealkit.id}'
+            erb :'/mealkits/show'
           else
             redirect to '/login'
         end

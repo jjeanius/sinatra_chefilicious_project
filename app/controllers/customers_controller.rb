@@ -6,7 +6,6 @@ class CustomersController < ApplicationController
 
   get '/main_menu' do      # Get request  - show action
     if logged_in? && current_customer
-      @mealkit = Mealkit.find_by(id: params[:id])
       erb :'/customers/main_menu'    # rendering " main_menu"
     else
       redirect "/login"
@@ -36,12 +35,13 @@ get '/customers/:id' do     #get request, "customer dynamic route" show 1 action
 
 
   get '/customers/:id/edit' do   # get request, "/customers/:id/edit" route, load the edit form
-    if logged_in? && current_customer
+    if logged_in?
         params[:id] = session[:customer_id]
           @customer = Customer.find_by(id: params[:id])
       erb :'/customers/edit'
     else
       redirect "/login"
+    end
     end
   end
 
@@ -58,13 +58,15 @@ get '/customers/:id' do     #get request, "customer dynamic route" show 1 action
   end
 
   delete '/customers/:id/delete' do
-    if logged_in? && current_customer
+    if logged_in?
+      if @customer.mealkit = current_customer.mealkit
   #  @customer = Customer.find_by(id: params[:id])
   #    mealkit = Mealkit.find_by(id: params[:id])
       @customer.mealkit.delete
       redirect to '/customers'
     else
       redirect "/login"
+    end
     end
   end
 

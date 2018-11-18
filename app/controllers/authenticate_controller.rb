@@ -13,7 +13,6 @@ class AuthenticateController < ApplicationController
     # responds to post request, create a new customer based on params from the form
     if @customer.save && @customer.username !=""   # save the new customer
       session[:customer_id] = @customer.id
-
       flash[:message] = "Thanks for signing up!"  #  provide a msg to the customer
       redirect to ("/main_menu")    #   action redirect to the "main_menu".erb view
     else
@@ -26,7 +25,7 @@ class AuthenticateController < ApplicationController
     if logged_in?
       redirect "/main_menu"
     else
-      erb :'/login'
+      erb :'/authenticate/login'
     end
   end
 

@@ -1,5 +1,4 @@
 <body>
-  </form>
     <p> <h5> Username: <%= current_customer.username %> </p>
     <p> Email: <%= current_customer.email %> </h5> </p>
       <br> </br>
@@ -12,16 +11,24 @@
           <% end %> </h3>
 
           <h2> Here are all the Meal Kits: </h2> <br> <br>
-
           <% @mealkits.each do|mealkit|%>
           <h5> Mealkit Number: <%= mealkit.id %> </h5>
-      <p> <h5> Meal Kit Name:<a href="/mealkits/<%=mealkit.id%>"> <%= mealkit.name %> </a></h5> </p>
+      <p> <h5> Meal Kit Name: <%= mealkit.name %> </h5> </p>
       <p> <h5> Ingredients: <%= mealkit.ingredients %> </h5> </p>
       <p> <h5> Cooking Time: <%= mealkit.time %>    Minutes  </h5></p>
       <p> <h5> Serving Size: <%= mealkit.serving_size %>    People </h5></p>
       <br> </br>
+
+    <h5>  <a href="/mealkits/<%= mealkit.id %>/edit"> Editing Meal Kit </a></h5>
+        <br> <br>
+      <form method="post" action="/mealkits/<%=mealkit.id%>/delete">
+        <input id="delete" type="hidden" name="_method" value="delete">
+        <input type="submit" value="    DELETE    ">
+      </form>
+      <br> <br>
       <p>-------------------------------------------------------------------------------------------------------------------------------</p>
       <% end %>
       <p> <a href="/main_menu"> Main Menu </a> </p>
       <p> <a href="/mealkits/logout"> Logout </a> </p>
         <br> </br>
+ 

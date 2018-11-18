@@ -13,19 +13,5 @@
           <input type ="submit" value ="    UPDATE    ">
         </form>
         <br> </br>
-        <% @customer.mealkits.each do |mealkit| %>
-          <h2> Edit Meal Kit </h2>
-            <form method="post" action="/customers/<%=mealkit.id%>">
-              <input id="hidden" type="hidden" name="_method" value="patch">
-              <p> Meal Kit Number:   <%= mealkit.id %></p>
-              <p> Meal Kit Name:  <input type ="text" name= "mealkit[name]" value= "<%= mealkit.name %>">
-              <p> Ingredients:  <input type ="text" name= "mealkit[ingredients]" value= "<%= mealkit.ingredients %>">
-              <p> Cooking Time:  <input type ="text" name= "mealkit[time]" value= "<%= mealkit.time %>">
-              <p> Serving Size:  <input type ="text" name= "mealkit[serving_size]" value= "<%= mealkit.serving_size %>"></input></p>
-              <br> </br>
-              <input type="submit" name="submit" value="   SUBMIT   "> </input>
-            </form>
-            <br> </br>
           <br> </br>
-        <% end %>
 </body>
