@@ -5,15 +5,12 @@ class CustomersController < ApplicationController
   use Rack::Flash
 
   get '/main_menu' do      # Get request  - show action
-    if logged_in? && current_customer
+    redirect_if_not_logged_in
       erb :'/customers/main_menu'    # rendering " main_menu"
-    else
-      redirect "/login"
-    end
   end
 
   get '/customers' do   #  get request "/customers" route - showing all customers action
-    if logged_in? && current_customer
+    if logged_in?
         @customers = Customer.all  # allow the view to access all the customer names in the db through the instance variable @customers
       erb :'/customers/index'
     else
@@ -22,11 +19,9 @@ class CustomersController < ApplicationController
   end
 
 get '/customers/:id' do     #get request, "customer dynamic route" show 1 action
-    if logged_in? && current_customer
-        params[:id] = session[:customer_id]
-          @customer = Customer.find_by(id: params[:id])
-          mealkits = Mealkit.all
-        @customer.mealkits
+      @customer = Customer.find_by(id: params[:id])
+      if logged_in? && current_customer == @customer
+        # what is scope??
       erb :'/customers/show'
     else
       redirect "/login"

@@ -8,5 +8,8 @@ validates :email,    :presence => true,
                     :uniqueness => true
                   #   :format => {:with => /\w+@\w+\.\w+/)
 #validates :password, :presence => true
+  # def self.username_taken?(username)
+  #   Customer.all.map{|c| c.username}.include?(username)
+  # end
 
 end

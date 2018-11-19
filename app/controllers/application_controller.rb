@@ -24,8 +24,16 @@ class ApplicationController < Sinatra::Base
      end
 
      def current_customer
-       @customer = Customer.find(session[:customer_id])
+       @current_customer ||= Customer.find(session[:customer_id])
      end
+
+     def redirect_if_not_logged_in
+       if !logged_in?
+         redirect "/login"
+       end
+
+     end
+
    end
 
 

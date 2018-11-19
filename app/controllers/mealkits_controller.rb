@@ -24,12 +24,12 @@ class MealkitsController < ApplicationController
 
   post '/mealkits' do    # post request / it responds to the post request
     if logged_in? && current_customer
-      if !params[:mealkit].empty?    # true
+      if !params[:mealkit].empty?   # true
         @mealkit = Mealkit.create(params[:mealkit])  # create a mealkit based from the params from the form
-          @customer.mealkits << @mealkit
+        current_customer.mealkits << @mealkit
           @mealkit.save
           flash[:message] = "Successfully created a Meal Kit!"
-        redirect to ("/mealkits/create")
+        redirect "/mealkits/#{@mealkit.id}"
       else
         redirect "/mealkits/new"
       end
