@@ -10,18 +10,14 @@ class CustomersController < ApplicationController
   end
 
   get '/customers' do   #  get request "/customers" route - showing all customers action
-    if logged_in?
-        @customers = Customer.all  # allow the view to access all the customer names in the db through the instance variable @customers
-      erb :'/customers/index'
-    else
-      redirect "/login"
-    end
+    redirect_if_not_logged_in
+      @customers = Customer.all  # allow the view to access all the customer names in the db through the instance variable @customers
+    erb :'/customers/index'
   end
 
 get '/customers/:id' do     #get request, "customer dynamic route" show 1 action
       @customer = Customer.find_by(id: params[:id])
       if logged_in? && current_customer == @customer
-        # what is scope??
       erb :'/customers/show'
     else
       redirect "/login"
@@ -30,8 +26,8 @@ get '/customers/:id' do     #get request, "customer dynamic route" show 1 action
 
 
   get '/customers/:id/edit' do   # get request, "/customers/:id/edit" route, load the edit form
-    if logged_in?
-        params[:id] = session[:customer_id]
+    if logged_in? && #current_customer = @customer
+      #  params[:id] = session[:customer_id]
           @customer = Customer.find_by(id: params[:id])
       erb :'/customers/edit'
     else
@@ -40,7 +36,7 @@ get '/customers/:id' do     #get request, "customer dynamic route" show 1 action
   end
 
  patch '/customers/:id' do    # patch request / updating action /display the form
-   if logged_in? && current_customer
+   if logged_in?
     @customer = Customer.find_by(id: params[:id])
       @customer.name = params["customer"]["name"]
       @customer.email = params["customer"]["email"]
