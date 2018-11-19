@@ -26,7 +26,7 @@ class ApplicationController < Sinatra::Base
      def current_customer
        @customer = Customer.find(session[:customer_id])
      end
-
    end
+
 
 end
