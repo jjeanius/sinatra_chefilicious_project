@@ -6,7 +6,6 @@ class MealkitsController < ApplicationController
 
   get '/mealkits' do   #  get request / show all mealkit action
     redirect_if_not_logged_in
-  #  if logged_in?
       @mealkits = Mealkit.all   # collect all mealkits
       erb :'/mealkits/index'
   #  else
@@ -46,35 +45,35 @@ class MealkitsController < ApplicationController
   get '/mealkits/:id' do   # get request / show/ dynamic routing - accessing view through the params hash
     if logged_in?
       @mealkit = Mealkit.find_by(id: params[:id])  # access params id of mealkit through params hash
-  #    if @mealkit.customer == current_customer
-        erb :"/mealkits/show"
+       if @mealkit.customer == current_customer
+        erb :'/mealkits/show'
     else
         redirect "/mealkits"
-    #  end
+       end
     end
   end
 
   get '/mealkits/:id/edit' do    # get request/ load edit action   1/2
     if logged_in?
       @mealkit = Mealkit.find_by(id: params[:id])
-        if @mealkit.customer == current_customer
+      #  if @mealkit.customer == current_customer
           erb :'/mealkits/edit'
         else
           redirect "/main_menu"
-        end
+      #  end
       end
     end
 
     patch '/mealkits/:id' do   #  patch request / edit action 2/2 it needs to match action of form submitted for get mealkit/edit
       if logged_in?
         @mealkit = Mealkit.find_by(id: params[:id])   #now id is no longer nil because it is part of line 59
-        #  if @mealkit.customer == current_customer
+          if @mealkit.customer == current_customer
             @mealkit.update(name: params[:mealkit][:name], ingredients: params[:mealkit][:ingredients], time: params[:mealkit][:time], serving_size: params[:mealkit][:serving_size])
             flash[:message] = "Successfully updated!"
-            redirect to ("/mealkits/update")
+            redirect to ("/mealkits/#{@mealkit.id}")
          else
           redirect "/login"
-  #      end
+        end
     end
   end
 
@@ -85,7 +84,7 @@ class MealkitsController < ApplicationController
           if current_customer ==  @mealkit.customer
             @mealkit.delete
             flash[:message] = "Meal Kit #{@mealkit.id} is deleted!"
-            erb :'/mealkits/show'
+            erb :'/mealkits/#{@mealkit.id}'
           else
             redirect to '/login'
         end
