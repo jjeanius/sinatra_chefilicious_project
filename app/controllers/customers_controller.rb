@@ -10,14 +10,19 @@ class CustomersController < ApplicationController
   end
 
   get '/customers' do   #  get request "/customers" route - showing all customers action
-    redirect_if_not_logged_in
+    if logged_in?
       @customers = Customer.all  # allow the view to access all the customer names in the db through the instance variable @customers
-    erb :'/customers/index'
+      if current_customer == @customer
+      erb :'/customers/index'
+    else
+      redirect "/login"
+    end
+    end
   end
 
 get '/customers/:id' do     #get request, "customer dynamic route" show 1 action
-      @customer = Customer.find_by(id: params[:id])
-      if logged_in? && current_customer == @customer
+    @customer = Customer.find_by(id: params[:id])
+    if logged_in? && current_customer == @customer
       erb :'/customers/show'
     else
       redirect "/login"
@@ -26,12 +31,13 @@ get '/customers/:id' do     #get request, "customer dynamic route" show 1 action
 
 
   get '/customers/:id/edit' do   # get request, "/customers/:id/edit" route, load the edit form
-    if logged_in? && #current_customer = @customer
-      #  params[:id] = session[:customer_id]
-          @customer = Customer.find_by(id: params[:id])
-      erb :'/customers/edit'
-    else
-      redirect "/login"
+    if logged_in?
+      @customer = Customer.find_by(id: params[:id])
+        if current_customer = @customer
+        erb :'/customers/edit'
+      else
+        redirect "/login"
+      end
     end
   end
 
@@ -49,12 +55,11 @@ get '/customers/:id' do     #get request, "customer dynamic route" show 1 action
 
   delete '/customers/:id/delete' do
     if logged_in?
-      if @customer.mealkit = current_customer.mealkit
-  #  @customer = Customer.find_by(id: params[:id])
-  #    mealkit = Mealkit.find_by(id: params[:id])
-      @customer.mealkit.delete
-      redirect to '/customers'
-    else
+        @customer = Customer.find_by(id: params[:id])
+        if current_customer = @customer
+          @customer.delete
+        redirect to '/customers'
+      else
       redirect "/login"
     end
   end
