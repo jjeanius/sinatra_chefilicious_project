@@ -4,9 +4,6 @@
   <p> <h5> Username: <%= current_customer.username %> </p>
   <p> Email: <%= current_customer.email %> </h5> </p>
     <br> </br>
-      <h3> <% if flash.has?(:message) %>
-        <%= flash[:message] %> </h3>
-      <% end %>
         <p> <h2> Please make your selection: </h2>
           <br> </br>
           <p> <a href="/customers/<%= current_customer.id %>"> Account Information </a> </p>

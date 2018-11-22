@@ -84,7 +84,7 @@ class MealkitsController < ApplicationController
           if current_customer ==  @mealkit.customer
             @mealkit.delete
             flash[:message] = "Meal Kit #{@mealkit.id} is deleted!"
-            erb :'/mealkits/#{@mealkit.id}'
+            erb :'/mealkits/show'
           else
             redirect to '/login'
         end

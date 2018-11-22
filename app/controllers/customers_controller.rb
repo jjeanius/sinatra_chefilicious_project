@@ -52,8 +52,10 @@ get '/customers/:id' do     #get request, "customer dynamic route" show 1 action
     if logged_in?
         @customer = Customer.find_by(id: params[:id])
         if current_customer = @customer
-          @customer.delete
-        redirect to '/customers'
+          @customer.save
+        #  @customer.delete
+          flash[:message] = "Sorry, You can not delete your account.  Good Try!"
+          erb :'/customers/show'
       else
       redirect "/login"
     end
