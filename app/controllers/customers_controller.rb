@@ -10,14 +10,9 @@ class CustomersController < ApplicationController
   end
 
   get '/customers' do   #  get request "/customers" route - showing all customers action
-    if logged_in?
+    redirect_if_not_logged_in
       @customers = Customer.all  # allow the view to access all the customer names in the db through the instance variable @customers
-      if current_customer == @customer
       erb :'/customers/index'
-    else
-      redirect "/login"
-    end
-    end
   end
 
 get '/customers/:id' do     #get request, "customer dynamic route" show 1 action
