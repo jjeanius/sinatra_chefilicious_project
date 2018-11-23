@@ -1,20 +1,17 @@
-<body>
     <br> </br>
-      <p> <a href="/main_menu"> Main Menu </a> </p>
-      <p> <a href="/logout">Log Out</a> </p>
+       <a href="/main_menu"> Main Menu </a>
+       <a href="/logout">Log Out</a>
     <br> </br>
-  <p> <h2> Here are the customers:  </h2> </p>
+  <p> <h2> Here are the customers:  </h2>
     <br> </br>
       <% @customers.each do|customer| %>
-        <p>  Customer ID:  <%= customer.id%> </p>
-        <p>  Customer Names:  <%= customer.name %> </p>
-        <p>  Username:  <%= customer.username %> </p>
-        <p>  Email:   <%= customer.email %> </p>
+          Customer ID:  <%= customer.id%>
+          Customer Names:  <%= customer.name %>
+          Username:  <%= customer.username %>
+          Email:   <%= customer.email %>
           <br> </br>
-      <p>-----------------------------------------------------------------------
+      -----------------------------------------------------------------------
       <% end %>
       <br> </br>
-    <p> <a href="/main_menu"> Main Menu </a> </p>
-    <p> <a href="/logout">Log Out</a> </p>
-  </body>
-</form>
+     <a href="/main_menu"> Main Menu </a>
+     <a href="/logout">Log Out</a>

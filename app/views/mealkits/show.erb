@@ -1,17 +1,14 @@
-<p> <a href="/main_menu"> Main Menu </a> </p>
-<p> <a href="/logout"> Logout </a> </p>
-    <p> <h2> <center> Account Information </center> </h2> <p>
-      <p> <h5> Customer ID: <%= current_customer.id %> </h5> </p>
-        <p> <h5> Username: <%= current_customer.username %> </h5> </p>
-        <p> <h5> Customer Name: <%= current_customer.name %> </h5> </p>
-        <p> <h5> Email: <%= current_customer.email %> </h5> </p>
-      <br> </br>
-<h3> <p>  Here is your Meal Kit: </p> </h3>
-<p> <h5> Meal Kit Number: <%= @mealkit.id %>  </h5></p>
-<p> <h5> Meal Kit Name: <%= @mealkit.name %> </h5> </p>
-<p> <h5> Ingredients: <%= @mealkit.ingredients %> </h5> </p>
-<p> <h5> Cooking Time: <%= @mealkit.time %>    Minutes  </h5></p>
-<p> <h5> Serving Size: <%= @mealkit.serving_size %>    People </h5></p>
+
+ <h5> <h2> Customer Name: <%= current_customer.name %> </h2> </h5>
+   <h5> Customer ID: <%= current_customer.id %> </h5>
+    <h5> Username: <%= current_customer.username %> </h5>
+   <br> </br>
+<h3>   Here is your Meal Kit:  </h3>
+ <h5> Meal Kit Number: <%= @mealkit.id %>  </h5>
+ <h5> Meal Kit Name: <%= @mealkit.name %> </h5>
+ <h5> Ingredients: <%= @mealkit.ingredients %> </h5>
+ <h5> Cooking Time: <%= @mealkit.time %>    Minutes  </h5>
+ <h5> Serving Size: <%= @mealkit.serving_size %>    People </h5>
 <br> </br>
 <%   if current_customer == @mealkit.customer %>
 <h5>  <a href="/mealkits/<%= @mealkit.id %>/edit"> Editing Meal Kit </a></h5>
@@ -21,6 +18,8 @@
    <input type="submit" value="    DELETE    ">
  </form>
  <% end  %>
-<p>---------------------------------------------------------------------------------------------------------------------</p>
-<p> <a href="/main_menu"> Main Menu </a> </p>
-<p> <a href="/logout">Log Out</a> </p>
+ <br> </br>
+---------------------------------------------------------------------------------------------------------------------</p>
+ <a href="/main_menu"> Main Menu </a>
+ <a href="/logout">Log Out</a>
+<br> </br>

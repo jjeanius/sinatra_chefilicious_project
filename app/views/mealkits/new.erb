@@ -1,26 +1,25 @@
-<body>
   <form method="post" action="/mealkits">
   <br> </br>
-    <p> <h2> Welcome!  <%= current_customer.name %> </h2> </p>
-    <p> <h5> Username: <%= current_customer.username %> </p>
-    <p> Email: <%= current_customer.email %> </h5> </p>
+     <h2> Welcome!  <%= current_customer.name %> </h2> </p>
+     <h5> Username: <%= current_customer.username %> </p>
+     Email: <%= current_customer.email %> </h5> </p>
       <br> </br>
-        <p> <a href="/main_menu"> Main Menu </a> </p>
+         <a href="/main_menu"> Main Menu </a> </p>
           <br> </br>
-            <label><h2> <p> New Meal Kit </p> </h2></label>
+          <form>
+            <label><h2>  New Meal Kit </p> </h2></label>
               <br> </br>
-                <p> <label> Meal Kit Name: <input type ="text" name="mealkit[name]"></label></p>
+                 <label> Meal Kit Name: <input type ="text" name="mealkit[name]"></label></p>
                 <br> </br>
-                <p><label> Ingredients :  <input type ="text" name="mealkit[ingredients]"></label></p>
+                <label> Ingredients :  <input type ="text" name="mealkit[ingredients]"></label></p>
                 <br> </br>
-                <p><label> Cooking Time: <input type ="text" name="mealkit[time]"></label></p>
+                <label> Cooking Time: <input type ="text" name="mealkit[time]"></label></p>
                 <br> </br>
-                <p><label> Serving Size:   <input type ="text" name="mealkit[serving_size]"> </label></p> </input>
+                <label> Serving Size:   <input type ="text" name="mealkit[serving_size]"> </label></p> </input>
                 <br> </br>
               <input type="submit"  value="   SUBMIT   ">
             <br> </br>
+          </form>
           <br> </br>
         <p> <a href="/logout">Log Out</a> </p>
     <br> </br>
-  </form>
-</body>

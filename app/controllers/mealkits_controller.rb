@@ -4,26 +4,19 @@ class MealkitsController < ApplicationController
 
   use Rack::Flash
 
-  get '/mealkits' do   #  get request / show all mealkit action
+  get '/mealkits' do
     redirect_if_not_logged_in
-      @mealkits = Mealkit.all   # collect all mealkits
+      @mealkits = Mealkit.all
       erb :'/mealkits/index'
-  #  else
-  #    redirect "/login"
-  #  end
   end
 
-  get '/mealkits/new' do     # get requst - '/request to load the form for new mealkit
+  get '/mealkits/new' do
     redirect_if_not_logged_in
-  #  if logged_in?
       @customer = current_customer
       erb :'mealkits/new'
-  #  else
-  #    redirect "/login"
-  #  end
   end
 
-  post '/mealkits' do    # post request / it responds to the post request
+  post '/mealkits' do
     if logged_in? && current_customer
       if !params[:mealkit].empty?   # true
         @mealkit = Mealkit.create(params[:mealkit])  # create a mealkit based from the params from the form
@@ -37,10 +30,10 @@ class MealkitsController < ApplicationController
     end
   end
 
-  get '/mealkits/create' do   # get request / new show mealkit action   3/3
-    @mealkit = Mealkit.last
-    erb :'/mealkits/create'
-  end
+#  get '/mealkits/create' do
+#    @mealkit = Mealkit.last
+#    erb :'/mealkits/create'
+#  end
 
   get '/mealkits/:id' do   # get request / show/ dynamic routing - accessing view through the params hash
     if logged_in?
@@ -77,17 +70,16 @@ class MealkitsController < ApplicationController
     end
   end
 
-    delete '/mealkits/:id/delete' do      #  post request / delete a mealkit action
+    delete '/mealkits/:id/delete' do
       if logged_in?
         @mealkit = Mealkit.find_by(id: params[:id])   #  find the mealkit by access params id of mealkit
-        customer = Customer.find(session[:customer_id])
-          if current_customer ==  @mealkit.customer
+        #  if current_customer ==  @mealkit.customer
             @mealkit.delete
             flash[:message] = "Meal Kit #{@mealkit.id} is deleted!"
             erb :'/mealkits/show'
           else
             redirect to '/login'
-        end
+      #  end
       end
     end
 

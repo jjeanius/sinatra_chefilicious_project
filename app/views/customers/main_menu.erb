@@ -1,21 +1,17 @@
-<body>
   <br> </br>
-  <p> <h2> Welcome!  <%= current_customer.name %> </h2> </p>
-  <p> <h5> Username: <%= current_customer.username %> </p>
-  <p> Email: <%= current_customer.email %> </h5> </p>
+   <h2> Welcome!  <%= current_customer.name %> </h2>
+   <h5> Username: <%= current_customer.username %>
+   Email: <%= current_customer.email %> </h5>
     <br> </br>
-        <p> <h2> Please make your selection: </h2>
+         <h2> Please make your selection: </h2>
           <br> </br>
-          <p> <a href="/customers/<%= current_customer.id %>"> Account Information </a> </p>
-          <p> <a href="/customers/<%= current_customer.id %>/edit"> Account Update </a> </p>
-          <p> <a href="/customers"> Customer List </a> </p>
-          <p> <a href="/customers/<%= current_customer.id %>"> Delete Account </a> </p>
-          <br> </br>
-          <p> <a href="/mealkits"> Reports  - Meal Kits </a> </p>
-          <p> <a href="/customers/<%= current_customer.id %>"> Customer Report </a> </p>
-          <p> <a href="/mealkits/new"> Create a Meal Kit </a> </p>
+           <a href="/customers/<%= current_customer.id %>"> Account Information </a>
+           <a href="/customers/<%= current_customer.id %>/edit"> Account Update </a>
+           <a href="/customers"> Customer List </a>
+           <a href="/customers/<%= current_customer.id %>"> Delete Account </a>
+           <a href="/mealkits/new"> Create a Meal Kit </a>
+           <a href="/mealkits"> Reports / Edit / Delete  - Meal Kits </a>
           <br>
-          <p> <a href="/logout">Log Out</a> </p>
+           <a href="/logout">Log Out</a>
         <br> </br>
       <br> </br>
-</body>

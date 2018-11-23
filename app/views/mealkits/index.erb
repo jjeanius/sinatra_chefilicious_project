@@ -1,10 +1,9 @@
-<body>
-    <p> <h5> Username: <%= current_customer.username %> </p>
-    <p> Email: <%= current_customer.email %> </h5> </p>
+     <h5> Username: <%= current_customer.username %>
+     Email: <%= current_customer.email %> </h5>
       <br> </br>
-      <p> <a href="/main_menu"> Main Menu </a> </p>
-      <p> <a href="/mealkits/logout"> Logout </a> </p>
-        <br> </br>
+       <a href="/main_menu"> Main Menu </a>
+       <a href="/mealkits/logout"> Logout </a>
+       <br> </br>
         <br> </br>
           <h3> <% if flash.has?(:message) %>
              <%= flash[:message] %>
@@ -13,10 +12,10 @@
           <h2> Here are all the Meal Kits: </h2> <br> <br>
           <% @mealkits.each do|mealkit|%>
           <h5> Mealkit Number: <%= mealkit.id %> </h5>
-      <p> <h5> Meal Kit Name: <%= mealkit.name %> </h5> </p>
-      <p> <h5> Ingredients: <%= mealkit.ingredients %> </h5> </p>
-      <p> <h5> Cooking Time: <%= mealkit.time %>    Minutes  </h5></p>
-      <p> <h5> Serving Size: <%= mealkit.serving_size %>    People </h5></p>
+       <h5> Meal Kit Name: <%= mealkit.name %> </h5>
+       <h5> Ingredients: <%= mealkit.ingredients %> </h5>
+       <h5> Cooking Time: <%= mealkit.time %>    Minutes  </h5>
+       <h5> Serving Size: <%= mealkit.serving_size %>    People </h5>
       <br> </br>
      <%   if current_customer == mealkit.customer %>
     <h5>  <a href="/mealkits/<%= mealkit.id %>/edit"> Editing Meal Kit </a></h5>
@@ -27,8 +26,8 @@
       </form>
       <% end  %>
       <br> <br>
-      <p>-------------------------------------------------------------------------------------------------------------------------------</p>
+      -------------------------------------------------------------------------------------------------------------------------------</p>
       <% end %>
-      <p> <a href="/main_menu"> Main Menu </a> </p>
-      <p> <a href="/mealkits/logout"> Logout </a> </p>
+       <a href="/main_menu"> Main Menu </a>
+       <a href="/mealkits/logout"> Logout </a>
         <br> </br>

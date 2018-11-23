@@ -3,18 +3,18 @@
     <input id="hidden" type="hidden" name="_method" value="patch">
 
     <%  if @mealkit.customer == current_customer %>
-    <p> Meal Kit Number:   <%= @mealkit.id %></p>
-    <p> Meal Kit Name:  <input type ="text" name= "mealkit[name]" value= "<%= @mealkit.name %>">
-    <p> Ingredients:  <input type ="text" name= "mealkit[ingredients]" value= "<%= @mealkit.ingredients %>">
-    <p> Cooking Time:  <input type ="text" name= "mealkit[time]" value= "<%= @mealkit.time %>">
-    <p> Serving Size:  <input type ="text" name= "mealkit[serving_size]" value= "<%= @mealkit.serving_size %>"></input></p>
+     Meal Kit Number:   <%= @mealkit.id %>
+     Meal Kit Name:  <input type ="text" name= "mealkit[name]" value= "<%= @mealkit.name %>">
+     Ingredients:  <input type ="text" name= "mealkit[ingredients]" value= "<%= @mealkit.ingredients %>">
+     Cooking Time:  <input type ="text" name= "mealkit[time]" value= "<%= @mealkit.time %>">
+     Serving Size:  <input type ="text" name= "mealkit[serving_size]" value= "<%= @mealkit.serving_size %>"></input>
     <br> </br>
     <% end %>
     <input type="submit" name="submit" value="   SUBMIT   "> </input>
   </form>
   <br> </br>
   <br> </br>
-  <p> <a href="/main_menu"> Back to Main Menu </a> </p>
+   <a href="/main_menu"> Back to Main Menu </a>
   <br> </br>
-  <p> <a href="/logout">Log Out</a> </p>
+  <p> <a href="/logout">Log Out</a>
 <br> </br>
