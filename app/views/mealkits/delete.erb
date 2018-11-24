@@ -1,4 +1,18 @@
-<form method="post" action="/mealkits/<%=mealkit.id%>/delete">
-  <input id="delete" type="hidden" name="_method" value="delete">
-  <input type="submit" value="    DELETE    ">
-</form>
+<h5> <h2> Customer Name: <%= current_customer.name %> </h2> </h5>
+  <h5> Customer ID: <%= current_customer.id %> </h5><br>
+   <h5> Username: <%= current_customer.username %> </h5><br>
+  <br> </br>
+<h3> The following mealkit has been deleted: </h3><br>
+<%   if current_customer == @mealkit.customer %>
+<h5> Meal Kit Number: <%= @mealkit.id %>  </h5><br>
+<h5> Meal Kit Name: <%= @mealkit.name %> </h5><br>
+<h5> Ingredients: <%= @mealkit.ingredients %> </h5><br>
+<h5> Cooking Time: <%= @mealkit.time %>    Minutes  </h5><br>
+<h5> Serving Size: <%= @mealkit.serving_size %>    People </h5><br>
+<br> </br>
+<% end  %>
+<br> </br>
+---------------------------------------------------------------------------------------------------------------------</p>
+<a href="/main_menu"> Return to Main Menu </a><br> <br>
+<a href="/logout">Log Out</a>
+<br> </br>

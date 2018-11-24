@@ -31,10 +31,7 @@ class ApplicationController < Sinatra::Base
        if !logged_in?
          redirect "/login"
        end
-
      end
-
    end
-
 
 end

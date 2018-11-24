@@ -66,15 +66,15 @@ class MealkitsController < ApplicationController
   end
 
     delete '/mealkits/:id/delete' do
-      if logged_in?
-        @mealkit = Mealkit.find_by(id: params[:id])   #  find the mealkit by access params id of mealkit
-        #  if current_customer ==  @mealkit.customer
+      if logged_in? && current_customer
+      #if current_customer ==  @mealkit.customer
+        @mealkit = Mealkit.find_by_id(params[:id])   #  find the mealkit by access params id of mealkit
             @mealkit.delete
             flash[:message] = "Meal Kit #{@mealkit.id} is deleted!"
-            erb :'/mealkits/show'
+
+            erb :'/mealkits/delete'
           else
             redirect to '/login'
-      #  end
       end
     end
 
