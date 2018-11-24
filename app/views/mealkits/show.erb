@@ -1,17 +1,17 @@
 
  <h5> <h2> Customer Name: <%= current_customer.name %> </h2> </h5>
-   <h5> Customer ID: <%= current_customer.id %> </h5>
-    <h5> Username: <%= current_customer.username %> </h5>
+   <h5> Customer ID: <%= current_customer.id %> </h5><br>
+    <h5> Username: <%= current_customer.username %> </h5><br>
    <br> </br>
-<h3>   Here is your Meal Kit:  </h3>
- <h5> Meal Kit Number: <%= @mealkit.id %>  </h5>
- <h5> Meal Kit Name: <%= @mealkit.name %> </h5>
- <h5> Ingredients: <%= @mealkit.ingredients %> </h5>
- <h5> Cooking Time: <%= @mealkit.time %>    Minutes  </h5>
- <h5> Serving Size: <%= @mealkit.serving_size %>    People </h5>
+<h3>   Here is your Meal Kit:  </h3><br>
+ <h5> Meal Kit Number: <%= @mealkit.id %>  </h5><br>
+ <h5> Meal Kit Name: <%= @mealkit.name %> </h5><br>
+ <h5> Ingredients: <%= @mealkit.ingredients %> </h5><br>
+ <h5> Cooking Time: <%= @mealkit.time %>    Minutes  </h5><br>
+ <h5> Serving Size: <%= @mealkit.serving_size %>    People </h5><br>
 <br> </br>
 <%   if current_customer == @mealkit.customer %>
-<h5>  <a href="/mealkits/<%= @mealkit.id %>/edit"> Editing Meal Kit </a></h5>
+<h5>  <a href="/mealkits/<%= @mealkit.id %>/edit"> Editing Meal Kit </a></h5><br>
    <br> <br>
  <form method="post" action="/mealkits/<%=@mealkit.id%>/delete">
    <input id="delete" type="hidden" name="_method" value="delete">
@@ -20,6 +20,6 @@
  <% end  %>
  <br> </br>
 ---------------------------------------------------------------------------------------------------------------------</p>
- <a href="/main_menu"> Main Menu </a>
+ <a href="/main_menu"> Main Menu </a><br> <br>
  <a href="/logout">Log Out</a>
 <br> </br>

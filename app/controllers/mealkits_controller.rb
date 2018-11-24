@@ -30,11 +30,6 @@ class MealkitsController < ApplicationController
     end
   end
 
-#  get '/mealkits/create' do
-#    @mealkit = Mealkit.last
-#    erb :'/mealkits/create'
-#  end
-
   get '/mealkits/:id' do   # get request / show/ dynamic routing - accessing view through the params hash
     if logged_in?
       @mealkit = Mealkit.find_by(id: params[:id])  # access params id of mealkit through params hash
