@@ -37,11 +37,10 @@ get '/customers/:id' do     #get request, "customer dynamic route" show 1 action
   end
 
  patch '/customers/:id' do    # patch request / updating action /display the form
-   if logged_in?
+   if logged_in? && current_customer
     @customer = Customer.find_by(id: params[:id])
-      @customer.name = params["customer"]["name"]
-      @customer.email = params["customer"]["email"]
-        @customer.save
+      @customer.update(name: params[:name], email: params[:email]) #  @customer.name = params["customer"]["name"]
+                                  #  @customer.email = params["customer"]["email"]
     redirect to "/customers/#{@customer.id}"
    else
      redirect "/login"
