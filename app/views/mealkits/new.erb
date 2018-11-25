@@ -1,25 +1,13 @@
-  <form method="post" action="/mealkits">
-  <br> </br>
-     <h2> Welcome!  <%= current_customer.name %> </h2> <br>
-     <h5> Username: <%= current_customer.username %> <br><br>
-     <h5> Email: <%= current_customer.email %> </h5> <br>
-      <br> </br>
-          <form>
-            <label><h2>  New Meal Kit <br> </h2></label>
-              <br> </br>
-                 <label> Meal Kit Name: <input type ="text" name="mealkit[name]"></label><br>
-                <br> </br>
-                <label> Ingredients :  <input type ="text" name="mealkit[ingredients]"></label><br>
-                <br> </br>
-                <label> Cooking Time: <input type ="text" name="mealkit[time]"></label><br>
-                <br> </br>
-                <label> Serving Size:   <input type ="text" name="mealkit[serving_size]"> </label><br> </input>
-                <br> </br>
-              <input type="submit"  value="   SUBMIT   ">
-            <br> </br>
-          </form>
-          <br> </br>
-          <a href="/main_menu"> Main Menu </a> <br>
-           <br> </br>
-         <a href="/logout">Log Out</a> <br>
-    <br> </br>
+<form method="post" action="/mealkits"><br> </br>
+  <h2> Welcome!  <%= current_customer.name %> </h2><br>
+  <h5> Username: <%= current_customer.username %><br><br>
+  <h5> Email: <%= current_customer.email %> </h5><br><br></br>
+    <label><h2>  New Meal Kit <br> </h2></label> <br></br>
+      <label> Meal Kit Name: <input type ="text" name="mealkit[name]"></label><br><br></br>
+      <label> Ingredients :  <input type ="text" name="mealkit[ingredients]"></label><br><br></br>
+      <label> Cooking Time: <input type ="text" name="mealkit[time]"></label><br><br> </br>
+      <label> Serving Size:   <input type ="text" name="mealkit[serving_size]"> </label><br> </input><br></br>
+  <input type="submit"  value="   SUBMIT   "> <br> </br>
+</form> <br> </br>
+<a href="/main_menu"> Main Menu </a> <br> <br> </br>
+<a href="/logout">Log Out</a> <br> <br> </br>

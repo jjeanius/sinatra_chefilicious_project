@@ -1,16 +1,12 @@
 <a href="/main_menu"> Main Menu </a> <br> <br>
-       <a href="/logout">Log Out</a> <br> <br>
-  <p> <h2> Here are the customers:  </h2>
-    <br> </br>
+<a href="/logout">Log Out</a> <br> <br>
+  <p> <h2> Here are the customers: </h2><br> </br>
       <% @customers.each do|customer| %>
           Customer ID:  <%= customer.id%> <br> <br>
           Customer Names:  <%= customer.name %> <br> <br>
           Username:  <%= customer.username %> <br> <br>
-          Email:   <%= customer.email %> <br> <br>
-          <br> </br>
-      -----------------------------------------------------------------------
-      <br> <br>
-      <% end %>
-      <br>
-     <a href="/main_menu"> Main Menu </a> <br> <br>
-     <a href="/logout">Log Out</a> <br> <br>
+          Email:   <%= customer.email %> <br> <br><br> </br>
+--------------------------------------------------------------------------------- <br> <br>
+      <% end %> <br>
+<a href="/main_menu"> Main Menu </a> <br> <br>
+<a href="/logout">Log Out</a> <br> <br>

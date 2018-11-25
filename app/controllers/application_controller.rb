@@ -19,19 +19,19 @@ class ApplicationController < Sinatra::Base
 
   helpers do
 
-     def logged_in?     #  return true or false
-       !!session[:customer_id]
-     end
+    def logged_in?     #  return true or false
+      !!session[:customer_id]
+    end
 
-     def current_customer
-       @current_customer ||= Customer.find(session[:customer_id])
-     end
+    def current_customer
+      @current_customer ||= Customer.find(session[:customer_id])
+    end
 
-     def redirect_if_not_logged_in
-       if !logged_in?
+    def redirect_if_not_logged_in
+      if !logged_in?
          redirect "/login"
-       end
-     end
+      end
+    end
    end
 
 end
