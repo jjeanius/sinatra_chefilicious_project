@@ -26,22 +26,23 @@ get '/customers/:id' do     #get request, "customer dynamic route" show 1 action
 
 
   get '/customers/:id/edit' do   # get request, "/customers/:id/edit" route, load the edit form
-    if logged_in?
-      @customer = Customer.find_by(id: params[:id])
-        if current_customer = @customer
+    @customer = Customer.find_by(id: params[:id])
+    if logged_in? && current_customer == @customer
         erb :'/customers/edit'
       else
         redirect "/login"
-      end
     end
   end
 
  patch '/customers/:id' do    # patch request / updating action /display the form
-   if logged_in? && current_customer
+   if current_customer
     @customer = Customer.find_by(id: params[:id])
-      @customer.update(name: params[:name], email: params[:email]) #  @customer.name = params["customer"]["name"]
-                                  #  @customer.email = params["customer"]["email"]
-    redirect to "/customers/#{@customer.id}"
+  #  binding.pry
+      @customer.name = params["customer"]["name"]
+      @customer.email = params["customer"]["email"]
+      @customer.save
+    #  @customer.update(name: params["customer"]["name"], email: params["customer"]["email"])
+     redirect to "/customers/#{@customer.id}"
    else
      redirect "/login"
    end
@@ -49,16 +50,16 @@ get '/customers/:id' do     #get request, "customer dynamic route" show 1 action
 
   delete '/customers/:id/delete' do
     if logged_in?
-        @customer = Customer.find_by(id: params[:id])
+      @customer = Customer.find_by(id: params[:id])
         if current_customer = @customer
           @customer.save
-        #  @customer.delete
+        #  @customer.delete   # Do not want customer to delete it's own account!
           flash[:message] = "Sorry, You can not delete your account.  Good Try!"
           erb :'/customers/show'
-      else
-      redirect "/login"
+       else
+    redirect "/login"
+       end
     end
-  end
  end
 
 end

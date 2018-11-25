@@ -1,6 +1,7 @@
  <a href="/main_menu"> Main Menu </a> <br> <br>
  <a href="/logout"> Logout </a> <br>
- <% if current_customer == @customer %>
+ <% if @customer.id == current_customer.id %>
+ <%binding.pry%>
      <h2> <center> Account Information </center> </h2> <br>
        <h5> Customer ID: <%= @customer.id %> </h5> <br>
          <h5> Username: <%= @customer.username %> </h5> <br>

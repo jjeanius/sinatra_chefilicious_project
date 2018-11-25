@@ -4,11 +4,13 @@
      <a href="/logout"> Logout </a> <br>
     <br> </br>
        <h2> Account Update  </h2> <br>
-        <form method="post" action="/customers/<%=current_customer.id %>">
+       <% if @customer.id == current_customer.id %>
+        <form method="post" action="/customers/<%=@customer.id %>">
           <input id="hidden" type="hidden" name="_method" value="patch">
              <h5> Customer Name: <input type ="text" name ="customer[name]" value ="<%= @customer.name %>"> </h5> <br> <br>
              <h5> Email: <input type ="text" name ="customer[email]" value ="<%= @customer.email %>"> </h5> <br> <br>
             <br> </br>
           <input type ="submit" value ="    UPDATE    ">
         </form>
+        <% end %>
           <br> </br>
