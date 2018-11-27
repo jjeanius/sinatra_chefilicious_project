@@ -62,23 +62,19 @@ require 'rack-flash'
          else
           redirect "/login"
         end
-
-
-
-
-
-
       end
     end
 
     delete '/mealkits/:id/delete' do
-      if logged_in? && current_customer
-        #if current_customer ==  @mealkit.customer
+      if logged_in?
           @mealkit = Mealkit.find_by_id(params[:id])
-          flash[:message] = "Meal Kit #{@mealkit.id} is deleted!"
-          erb :'/mealkits/delete'
-        else
-          redirect to '/login'
+          if current_customer ==  @mealkit.customer
+            @mealkit.delete
+            flash[:message] = "Meal Kit #{@mealkit.id} is deleted!"
+            erb :'/mealkits/show'
+          else
+            redirect to '/login'
+        end
       end
     end
 
