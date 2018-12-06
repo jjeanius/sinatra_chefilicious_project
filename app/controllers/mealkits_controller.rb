@@ -42,14 +42,13 @@ require 'rack-flash'
     end
 
     get '/mealkits/:id/edit' do
-      if logged_in?
+      redirect_if_not_logged_in
         @mealkit = Mealkit.find_by(id: params[:id])
-        #  if @mealkit.customer == current_customer
-        erb :'/mealkits/edit'
-      else
-        redirect "/main_menu"
-        #  end
-      end
+          if @mealkit.customer == current_customer
+            erb :'/mealkits/edit'
+          else
+            redirect "/main_menu"
+          end
     end
 
     patch '/mealkits/:id' do

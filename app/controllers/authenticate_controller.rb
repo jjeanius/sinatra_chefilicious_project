@@ -10,12 +10,12 @@ require 'rack-flash'
 
     post '/signup' do
       @customer = Customer.new(:name =>params[:name], :username =>params[:username], :email =>params[:email], :password =>params[:password])
-      if @customer.save && @customer.username !=""  # save the new customer
+      if @customer.save # save the new customer
           session[:customer_id] = @customer.id
           flash[:message] = "Thanks for signing up!"  #  provide a msg to the customer
           redirect to ("/main_menu")    #   action redirect to the "main_menu".erb view
         else
-          flash[:message] = "Please Try Again!"
+          flash[:message] = "#{@customer.errors.full_messages.to_sentence}.  Please Try Again!"
           redirect to ("/signup")
       end
     end

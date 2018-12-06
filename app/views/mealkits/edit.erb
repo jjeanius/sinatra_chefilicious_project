@@ -1,15 +1,16 @@
+
 <h2> Edit Meal Kit </h2><br><br>
+<% if @mealkit.customer == current_customer %>
   <form method="post" action="/mealkits/<%=@mealkit.id%>">
     <input id="hidden" type="hidden" name="_method" value="patch">
-      <% if @mealkit.customer == current_customer %>
         Meal Kit Number:   <%= @mealkit.id %><br> <br> <br>
         Meal Kit Name:  <input type ="text" name= "mealkit[name]" value= "<%= @mealkit.name %>"></input><br> <br>
         Ingredients:  <input type ="text" name= "mealkit[ingredients]" value= "<%= @mealkit.ingredients %>"></input><br> <br>
         Cooking Time:  <input type ="text" name= "mealkit[time]" value= "<%= @mealkit.time %>"></input><br> <br>
         Serving Size:  <input type ="text" name= "mealkit[serving_size]" value= "<%= @mealkit.serving_size %>"></input><br> <br><br> </br>
-      <% end %>
     <input type="submit" name="submit" value="   SUBMIT   "> </input><br>
   </form><br> </br>
+  <% end %>
 _______________________________________________________________________________
 <br> <br> <br>
 <a href="/main_menu"> Main Menu </a><br><br> </br>
