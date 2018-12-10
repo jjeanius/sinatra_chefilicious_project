@@ -41,10 +41,9 @@ require 'rack-flash'
     end
 
     get '/logout' do
-      if logged_in?
+      redirect_if_not_logged_in
         session.destroy
-        redirect "/login"
+          redirect "/login"
       end
-    end
 
 end

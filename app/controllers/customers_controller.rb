@@ -35,7 +35,7 @@ require 'rack-flash'
     end
 
     patch '/customers/:id' do
-      if current_customer
+      if current_customer == @customer
         @customer = Customer.find_by(id: params[:id])
           @customer.name = params["customer"]["name"]
           @customer.email = params["customer"]["email"]
@@ -49,7 +49,7 @@ require 'rack-flash'
     delete '/customers/:id/delete' do
       if logged_in?
         @customer = Customer.find_by(id: params[:id])
-        if current_customer = @customer
+        if current_customer == @customer
           @customer.save
           #  @customer.delete   # Do not want customer to delete it's own account!
           flash[:message] = "Sorry, You can not delete your account.  Good Try!"
